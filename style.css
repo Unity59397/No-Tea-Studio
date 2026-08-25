@@ -9,6 +9,23 @@
 	--coral-deep: #c9543c;
 	--mint: #cfe8df;
 	--line: #d9d5cc;
+	--shadow-soft: rgba(23, 33, 43, 0.08);
+	--shadow-strong: rgba(23, 33, 43, 0.15);
+	color-scheme: light;
+}
+
+html[data-theme="dark"] {
+	--ink: #edf0f4;
+	--ink-soft: #a3adb9;
+	--paper: #12161c;
+	--paper-bright: #1a1f28;
+	--coral: #e8825f;
+	--coral-deep: #f2966f;
+	--mint: #1f342f;
+	--line: #2b313c;
+	--shadow-soft: rgba(0, 0, 0, 0.35);
+	--shadow-strong: rgba(0, 0, 0, 0.5);
+	color-scheme: dark;
 }
 
 * {
@@ -27,6 +44,13 @@ body {
 		radial-gradient(circle at 92% 8%, var(--mint) 0, transparent 24rem),
 		linear-gradient(135deg, var(--paper-bright) 0%, var(--paper) 58%, #efece4 100%);
 	font-family: 'DM Sans', sans-serif;
+	transition: background-color 220ms ease, color 220ms ease;
+}
+
+html[data-theme="dark"] body {
+	background:
+		radial-gradient(circle at 92% 8%, var(--mint) 0, transparent 24rem),
+		linear-gradient(135deg, var(--paper-bright) 0%, var(--paper) 58%, #0d1015 100%);
 }
 
 .site-footer {
@@ -114,17 +138,66 @@ body {
 	color: var(--coral-deep);
 }
 
-.navigation-bar a:last-child {
+.navigation-bar .nav-cta {
 	padding: 0.75rem 1.15rem;
 	border-radius: 999px;
 	color: var(--paper-bright);
 	background: var(--coral);
 }
 
-.navigation-bar a:last-child:hover,
-.navigation-bar a:last-child:focus-visible {
+.navigation-bar .nav-cta:hover,
+.navigation-bar .nav-cta:focus-visible {
 	color: var(--paper-bright);
 	background: var(--coral-deep);
+}
+
+.theme-toggle {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	width: 40px;
+	height: 40px;
+	margin-left: 0.5rem;
+	padding: 0;
+	border: 1px solid var(--line);
+	border-radius: 50%;
+	color: var(--ink-soft);
+	background: var(--paper-bright);
+	cursor: pointer;
+	transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+	color: var(--coral-deep);
+	border-color: var(--coral);
+}
+
+.theme-toggle svg {
+	width: 18px;
+	height: 18px;
+	stroke: currentColor;
+	fill: none;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.theme-toggle .icon-sun {
+	display: none;
+}
+
+.theme-toggle .icon-moon {
+	display: block;
+}
+
+html[data-theme="dark"] .theme-toggle .icon-sun {
+	display: block;
+}
+
+html[data-theme="dark"] .theme-toggle .icon-moon {
+	display: none;
 }
 
 @media (max-width: 560px) {
@@ -138,6 +211,10 @@ body {
 	.navigation-bar a:first-child {
 		width: 100%;
 		margin-right: 0;
+	}
+
+	.theme-toggle {
+		margin-left: auto;
 	}
 }
 
@@ -261,7 +338,7 @@ body {
 	border-radius: 8px;
 	border: 1px solid var(--line);
 	width: 100%;
-	box-shadow: 0 18px 45px rgba(23, 33, 43, 0.08);
+	box-shadow: 0 18px 45px var(--shadow-soft);
 }
 
 .contact-form-container h2 {
@@ -350,7 +427,7 @@ body {
 .submit-btn:hover {
 	background: var(--coral-deep);
 	color: var(--paper-bright);
-	box-shadow: 0 4px 12px rgba(23, 33, 43, 0.2);
+	box-shadow: 0 4px 12px var(--shadow-strong);
 }
 
 .submit-btn:active {
@@ -385,7 +462,7 @@ body {
 	border: 1px solid var(--line);
 	border-radius: 50%;
 	background: var(--paper-bright);
-	box-shadow: 0 12px 30px rgba(23, 33, 43, 0.1);
+	box-shadow: 0 12px 30px var(--shadow-soft);
 	transform: translateY(-50%);
 	transition: width 220ms ease;
 }
@@ -503,7 +580,7 @@ body {
 	background: var(--paper-bright);
 	border: 1px solid var(--line);
 	border-radius: 8px;
-	box-shadow: 0 14px 32px rgba(23, 33, 43, 0.08);
+	box-shadow: 0 14px 32px var(--shadow-soft);
 	overflow: hidden;
 }
 
@@ -552,6 +629,18 @@ body {
 .project-card:nth-child(4) .project-image {
 	min-height: 250px;
 	background: #d8e0ea;
+}
+
+html[data-theme="dark"] .project-card:nth-child(2) .project-image {
+	background: #3a2c25;
+}
+
+html[data-theme="dark"] .project-card:nth-child(3) .project-image {
+	background: #2c2b24;
+}
+
+html[data-theme="dark"] .project-card:nth-child(4) .project-image {
+	background: #232a33;
 }
 
 .project-image:hover,
@@ -661,7 +750,7 @@ body {
 	border: 1px solid var(--line);
 	border-radius: 8px;
 	background: var(--paper-bright);
-	box-shadow: 0 20px 50px rgba(23, 33, 43, 0.1);
+	box-shadow: 0 20px 50px var(--shadow-soft);
 }
 
 .booking-form-container h2 {
@@ -762,7 +851,7 @@ body {
     z-index: 9999;
     background: var(--paper-bright);
     border-top: 2px solid var(--line);
-    box-shadow: 0 -4px 12px rgba(23, 33, 43, 0.15);
+    box-shadow: 0 -4px 12px var(--shadow-strong);
     animation: slideUp 300ms ease-out;
 }
 

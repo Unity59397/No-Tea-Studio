@@ -3,6 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
+    <script>
+        (function () {
+            var stored = localStorage.getItem('theme');
+            var theme = stored || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book a Website Project | No-Tea Studio</title>
     <link rel="stylesheet" href="../style.css">
@@ -22,7 +29,16 @@
         <a href="../">No-Tea Studio</a>
         <a href="../#about">About</a>
         <a href="../projects/">Projects</a>
-        <a href="./" aria-current="page">Book Us</a>
+        <a class="nav-cta" href="./" aria-current="page">Book Us</a>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+            <svg class="icon-sun" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
+            </svg>
+        </button>
     </nav>
 
     <main class="booking-container">
@@ -66,6 +82,7 @@
             <a class="footer-link" href="../privacy/">Privacy Notice</a>
         </div>
     </footer>
+    <script src="../theme-toggle.js"></script>
     <script src="../cookie-consent.js"></script>
 </body>
 
