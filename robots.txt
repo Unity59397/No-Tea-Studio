@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /home/
+
+Sitemap: https://noteastudio.co.uk/sitemap.xml
