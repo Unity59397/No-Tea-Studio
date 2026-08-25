@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Website Project | No-Tea Studio</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Tell No-Tea Studio about your website project, goals, and features to request a tailored quote.">
+    <meta name="author" content="No-Tea Studio">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Book a Website Project | No-Tea Studio">
+    <meta property="og:description" content="Share your website ideas with No-Tea Studio and request a tailored quote.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+</head>
+
+<body>
+    <nav class="navigation-bar">
+        <a href="index.html">No-Tea Studio</a>
+        <a href="index.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="booking.html" aria-current="page">Book Us</a>
+    </nav>
+
+    <main class="booking-container">
+        <section class="booking-intro">
+            <p class="eyebrow">Let’s work together</p>
+            <h1>Tell us about your next website.</h1>
+            <p>Share your ideas, goals, and must-have features. We’ll get back to you with a thoughtful recommendation and a clear quote.</p>
+            <svg class="booking-lines" viewBox="0 0 360 120" role="img" aria-label="Decorative hand-drawn lines">
+                <path d="M4 74C62 18 116 18 166 61S272 111 356 36" />
+                <path d="M18 106C81 62 125 51 185 79S286 105 343 13" />
+            </svg>
+        </section>
+
+        <section class="booking-form-container" aria-labelledby="booking-form-title">
+            <h2 id="booking-form-title">Get a quote</h2>
+            <form class="contact-form" action="https://formspree.io/f/mvkpezjv" method="POST">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="What is this about?" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Tell us what you would like your website to do, including any ideas, features, or inspiration, and we will prepare a quote." rows="6" required></textarea>
+                </div>
+                <div class="form-consent">
+                    <input type="checkbox" id="privacy-consent" name="privacy-consent" required>
+                    <label for="privacy-consent">I have read the <a href="privacy.html">Privacy Notice</a>.</label>
+                </div>
+                <button type="submit" class="submit-btn">Get Quote</button>
+            </form>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <p>&copy; 2026 No-Tea Studio. All rights reserved.</p>
+        <a class="email-button" href="mailto:casleanurenato@gmail.com">Email me</a>
+        <a class="footer-link" href="privacy.html">Privacy Notice</a>
+    </footer>
+</body>
+
+</html>
