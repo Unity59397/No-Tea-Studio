@@ -46,6 +46,12 @@ body {
 	margin: 0;
 }
 
+.footer-actions {
+	display: flex;
+	align-items: center;
+	gap: 1.25rem;
+}
+
 .email-button {
 	display: inline-block;
 	padding: 0.65rem 1rem;
@@ -716,6 +722,11 @@ body {
 	.site-footer {
 		flex-wrap: wrap;
 		width: min(100% - 2rem, 1180px);
+	}
+
+	.footer-actions {
+		width: 100%;
+		justify-content: space-between;
 	}
 
 	.legal-container {
