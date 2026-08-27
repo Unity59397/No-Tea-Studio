@@ -467,6 +467,15 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 	transition: width 220ms ease;
 }
 
+.project-cta {
+	color: var(--coral-deep);
+}
+
+.project-cta:hover,
+.project-cta:focus-visible {
+	color: var(--coral);
+}
+
 .sidebar-toggle {
 	position: absolute;
 	top: 0;
