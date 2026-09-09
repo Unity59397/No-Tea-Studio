@@ -1148,6 +1148,26 @@ html[data-theme="dark"] .project-card:nth-child(4) .project-image {
 	font-size: 0.85rem;
 }
 
+.price-urgency {
+	flex-basis: 100%;
+	color: var(--coral);
+	display: inline-flex;
+	align-items: center;
+	gap: 0.45rem;
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
+.price-urgency-dot {
+	width: 0.45rem;
+	height: 0.45rem;
+	background: var(--coral);
+	border-radius: 50%;
+	box-shadow: 0 0 0 0.22rem color-mix(in srgb, var(--coral) 18%, transparent);
+}
+
 /* Features List */
 .pricing-features {
 	list-style: none;
