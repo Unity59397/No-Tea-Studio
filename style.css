@@ -1,28 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 :root {
-	--ink: #17212b;
-	--ink-soft: #52606d;
-	--paper: #f7f4ee;
-	--paper-bright: #fffdf8;
-	--coral: #e86f51;
-	--coral-deep: #c9543c;
-	--mint: #cfe8df;
-	--line: #d9d5cc;
-	--shadow-soft: rgba(23, 33, 43, 0.08);
-	--shadow-strong: rgba(23, 33, 43, 0.15);
+	--ink: #102a43;
+	--ink-soft: #486581;
+	--paper: #f1f6f8;
+	--paper-bright: #fbfdff;
+	--coral: #1f7a8c;
+	--coral-deep: #145a68;
+	--mint: #d7ece8;
+	--line: #c9d6df;
+	--shadow-soft: rgba(16, 42, 67, 0.08);
+	--shadow-strong: rgba(16, 42, 67, 0.15);
 	color-scheme: light;
 }
 
 html[data-theme="dark"] {
-	--ink: #edf0f4;
-	--ink-soft: #a3adb9;
-	--paper: #12161c;
-	--paper-bright: #1a1f28;
-	--coral: #e8825f;
-	--coral-deep: #f2966f;
-	--mint: #1f342f;
-	--line: #2b313c;
+	--ink: #e8f1f5;
+	--ink-soft: #a7bac5;
+	--paper: #0d1b24;
+	--paper-bright: #132833;
+	--coral: #4fb3a6;
+	--coral-deep: #75cfc2;
+	--mint: #163b3d;
+	--line: #29404a;
 	--shadow-soft: rgba(0, 0, 0, 0.35);
 	--shadow-strong: rgba(0, 0, 0, 0.5);
 	color-scheme: dark;
@@ -42,7 +42,7 @@ body {
 	color: var(--ink);
 	background:
 		radial-gradient(circle at 92% 8%, var(--mint) 0, transparent 24rem),
-		linear-gradient(135deg, var(--paper-bright) 0%, var(--paper) 58%, #efece4 100%);
+		linear-gradient(135deg, var(--paper-bright) 0%, var(--paper) 58%, #e3eef2 100%);
 	font-family: 'DM Sans', sans-serif;
 	transition: background-color 220ms ease, color 220ms ease;
 }
@@ -381,7 +381,7 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 .form-group textarea:focus {
     outline: none;
 	border-color: var(--coral);
-	box-shadow: 0 0 0 3px rgba(232, 111, 81, 0.15);
+	box-shadow: 0 0 0 3px rgba(31, 122, 140, 0.15);
 }
 
 .form-group textarea {
@@ -627,12 +627,12 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 }
 
 .project-card:nth-child(2) .project-image {
-	background: #f1d6c8;
+	background: #d4e5ed;
 }
 
 .project-card:nth-child(3) .project-image {
 	min-height: 170px;
-	background: #e5e0d4;
+	background: #dce9e5;
 }
 
 .project-card:nth-child(4) .project-image {
@@ -641,11 +641,11 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 }
 
 html[data-theme="dark"] .project-card:nth-child(2) .project-image {
-	background: #3a2c25;
+	background: #1b3542;
 }
 
 html[data-theme="dark"] .project-card:nth-child(3) .project-image {
-	background: #2c2b24;
+	background: #203b3b;
 }
 
 html[data-theme="dark"] .project-card:nth-child(4) .project-image {
