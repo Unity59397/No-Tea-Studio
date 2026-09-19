@@ -61,3 +61,28 @@ if (projectSidebar && sidebarToggleButton) {
         }
     });
 }
+
+const lightbox = document.querySelector('.image-lightbox');
+const lightboxPreview = document.querySelector('.image-lightbox-preview');
+const lightboxClose = document.querySelector('.image-lightbox-close');
+const lightboxTriggers = document.querySelectorAll('.lightbox-trigger');
+
+if (lightbox && lightboxPreview && lightboxClose && lightboxTriggers.length) {
+    const closeLightbox = () => lightbox.close();
+
+    lightboxTriggers.forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+            lightboxPreview.src = trigger.dataset.lightboxSrc;
+            lightboxPreview.alt = trigger.dataset.lightboxAlt;
+            lightbox.showModal();
+        });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+
+    lightbox.addEventListener('click', (event) => {
+        if (event.target === lightbox) {
+            closeLightbox();
+        }
+    });
+}

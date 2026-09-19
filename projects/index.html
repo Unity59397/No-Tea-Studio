@@ -73,45 +73,40 @@
 
 		<section class="project-grid" aria-label="Project showcases">
 			<article class="project-card project-card-tall">
-				<a class="project-image" href="../bookings/" aria-label="Add project one link">
+				<button class="project-image lightbox-trigger" type="button" data-lightbox-src="/images/LilyGardenScreenshot.png" data-lightbox-alt="Screenshot of the Lily's Garden website" aria-label="Enlarge Lily's Garden website preview">
 					<img src="/images/LilyGardenScreenshot.png" width="480px" alt="A screenshot of one of our pages!">
-				</a>
+				</button>
 				<div class="project-card-content">
 					<h2>Lily's Garden</h2>
-					<p>A demo website for a one-page gardening website.</p>
+					<p><strong>Concept website</strong> for a one-page gardening business.</p>
 					<a href="https://unity59397.github.io/Lily-sGarden/" class="project-cta">View Project page -></a>
 				</div>
 			</article>
 			<article class="project-card project-card-offset">
-				<a class="project-image" href="https://floralsbyzaee.co.uk/" aria-label="Visit FloralsByZaee website">
+				<button class="project-image lightbox-trigger" type="button" data-lightbox-src="/images/FloralsByZaeeWebPage.png" data-lightbox-alt="Screenshot of the FloralsByZaee website" aria-label="Enlarge FloralsByZaee website preview">
 					<img src="/images/FloralsByZaeeWebPage.png" width="480" alt="Screenshot of the FloralsByZaee website">
-				</a>
+				</button>
 				<div class="project-card-content">
 					<h2>FloralsByZaee</h2>
-					<p>A happy customer with a website tailored to their liking.</p>
+					<p><strong>Live client website</strong> tailored to a floral business.</p>
+					<figure class="client-feedback">
+						<button class="client-feedback-image lightbox-trigger" type="button" data-lightbox-src="/images/FloralsByZaee-story-review.jpg" data-lightbox-alt="FloralsByZaee website shown on a device in a client Snapchat story" aria-label="Enlarge FloralsByZaee client feedback image">
+							<img src="/images/FloralsByZaee-story-review.jpg" alt="">
+						</button>
+						<figcaption>Shared by FloralsByZaee after launch: &ldquo;@vas_ren ++ for your websites!&rdquo;</figcaption>
+					</figure>
 					<a href="https://floralsbyzaee.co.uk/" class="project-cta">View Project page -&gt;</a>
-				</div>
-			</article>
-			<article class="project-card project-card-small">
-				<a class="project-image" href="../bookings/" aria-label="Add project three link">
-					<span>Book now at...</span>
-				</a>
-				<div class="project-card-content">
-					<h2>Project title</h2>
-					<p>Description...</p>
-				</div>
-			</article>
-			<article class="project-card project-card-wide">
-				<a class="project-image" href="../bookings/" aria-label="Add project four link">
-					<span>noteastudio.co.uk</span>
-				</a>
-				<div class="project-card-content">
-					<h2>Project title</h2>
-					<p>Description...</p>
 				</div>
 			</article>
 		</section>
 	</main>
+	<dialog class="image-lightbox" aria-labelledby="lightbox-title">
+		<div class="image-lightbox-header">
+			<h2 id="lightbox-title">Project preview</h2>
+			<button class="image-lightbox-close" type="button" aria-label="Close enlarged project preview">&times;</button>
+		</div>
+		<img class="image-lightbox-preview" src="" alt="">
+	</dialog>
 	<footer class="site-footer">
 		<p>&copy; 2026 No-Tea Studio. All rights reserved.</p>
 		<div class="footer-actions">

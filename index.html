@@ -37,9 +37,55 @@
             "name": "No-Tea Studio",
             "description": "Thoughtful, tailored website design services.",
             "email": "info@noteastudio.co.uk",
-            "areaServed": "GB",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Leeds",
+                "addressRegion": "England",
+                "addressCountry": "GB"
+            },
+            "areaServed": "Leeds, England",
             "serviceType": "Website design",
             "url": "https://noteastudio.co.uk/"
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "How quickly will you reply?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "We aim to respond to every enquiry within 24 hours."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How long does a website take?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Timing depends on the size and complexity of the project. We agree a clear timeline before development begins."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can you help if I am unsure what I need?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes. We can help shape the pages, features and direction around your goals and budget."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Do you build mobile-friendly websites?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes. Every site is designed and tested to work across mobile, tablet and desktop screens."
+                    }
+                }
+            ]
         }
     </script>
 </head>
@@ -63,21 +109,52 @@
     <main class="main-container" id="about">
         <div class="side-left">
             <h1>Website design, tailored to you.</h1>
-            <h3>Quality websites, tailored to you.</h3>
-            <p>We believe that great service starts with understanding exactly what you, the customer, need. From your
-                first enquiry to the finished result, we are committed to make the entire experience simple,
-                professional and to your personal liking.</p>
-            <p>Whether you are looking for something specific or need a little guidance. Our focus is on delivering you
-                a result you'll be happy with.</p>
-            <svg class="about-objects" viewBox="0 0 420 180" aria-hidden="true">
-                <rect class="object-frame" x="18" y="36" width="178" height="112" rx="6" />
-                <rect class="object-window" x="38" y="56" width="138" height="8" rx="4" />
-                <rect class="object-window" x="38" y="78" width="92" height="8" rx="4" />
-                <rect class="object-accent" x="38" y="106" width="48" height="22" rx="4" />
-                <path class="object-spark" d="M284 28L292 52L316 60L292 68L284 92L276 68L252 60L276 52Z" />
-                <circle class="object-ring" cx="340" cy="124" r="28" />
-                <path class="object-dash" d="M230 132H282M230 148H260" />
-            </svg>
+            <h3>Professional websites for small businesses, creatives and sole traders.</h3>
+            <p>We design and build responsive websites that make your business easy to find, understand and contact.
+                From a focused one-page launch to a larger custom site, every project is shaped around your goals,
+                audience and budget.</p>
+            <p>We keep the process straightforward: share your idea, review the design with us, then launch with
+                clear pricing and practical support afterwards.</p>
+            <ul class="offer-list" aria-label="What we offer">
+                <li><strong>Tailored design</strong><span>A distinctive site that fits your brand and business.</span></li>
+                <li><strong>Built for every screen</strong><span>Fast, accessible layouts that work on mobile and desktop.</span></li>
+                <li><strong>Guidance from start to launch</strong><span>Friendly collaboration, honest updates and no agency jargon.</span></li>
+            </ul>
+            <div class="trust-layout">
+                <section class="trust-section" aria-labelledby="trust-heading">
+                    <p class="eyebrow">Why work with us</p>
+                    <h2 id="trust-heading">A small team, serious about your result.</h2>
+                    <div class="trust-grid">
+                        <div class="trust-item"><strong>Within 24 hours</strong><span>Response to your enquiry</span></div>
+                        <div class="trust-item"><strong>Leeds, England</strong><span>Based locally, working online</span></div>
+                        <div class="trust-item"><strong>1 client launched</strong><span>Real work already live</span></div>
+                        <div class="trust-item"><strong>Computer science students</strong><span>Hands-on developers who care</span></div>
+                    </div>
+                    <div class="seo-proof">
+                        <strong>SEO foundations included</strong>
+                        <span>Semantic page structure, mobile-friendly layouts, descriptive metadata, canonical URLs, sitemap and robots guidance.</span>
+                    </div>
+                </section>
+            </div>
+            <section class="home-results" aria-labelledby="results-heading">
+                <p class="eyebrow">Selected work</p>
+                <h2 id="results-heading">Websites built for real people.</h2>
+                <div class="results-grid">
+                    <a class="result-card" href="https://floralsbyzaee.co.uk/">
+                        <img src="/images/FloralsByZaeeWebPage.png" alt="Preview of the FloralsByZaee website">
+                        <span><strong>FloralsByZaee</strong>Tailored website now live</span>
+                    </a>
+                    <a class="result-card" href="https://unity59397.github.io/Lily-sGarden/">
+                        <img src="/images/LilyGardenScreenshot.png" alt="Preview of the Lily's Garden website">
+                        <span><strong>Lily's Garden</strong>One-page website concept</span>
+                    </a>
+                </div>
+                <a class="results-link" href="projects/">See all projects <span aria-hidden="true">-&gt;</span></a>
+                <figure class="home-testimonial">
+                    <img src="/images/FloralsByZaee-story-review.jpg" alt="FloralsByZaee website shown in a client Snapchat story">
+                    <figcaption><strong>FloralsByZaee</strong><span>Shared after launch: &ldquo;@vas_ren ++ for your websites!&rdquo;</span></figcaption>
+                </figure>
+            </section>
         </div>
         <div class="side-right">
             <div class="contact-form-container" id="contact">
@@ -103,7 +180,48 @@
                     <button type="submit" class="submit-btn">Get Quote</button>
                 </form>
             </div>
+            <svg class="about-objects" viewBox="0 0 420 180" aria-hidden="true">
+                <rect class="object-frame" x="18" y="36" width="178" height="112" rx="6" />
+                <rect class="object-window" x="38" y="56" width="138" height="8" rx="4" />
+                <rect class="object-window" x="38" y="78" width="92" height="8" rx="4" />
+                <rect class="object-accent" x="38" y="106" width="48" height="22" rx="4" />
+                <path class="object-spark" d="M284 28L292 52L316 60L292 68L284 92L276 68L252 60L276 52Z" />
+                <circle class="object-ring" cx="340" cy="124" r="28" />
+                <path class="object-dash" d="M230 132H282M230 148H260" />
+            </svg>
         </div>
+        <section class="home-process" aria-labelledby="process-heading">
+            <p class="eyebrow">How it works</p>
+            <h2 id="process-heading">A clear path from idea to launch.</h2>
+            <ol class="process-grid">
+                <li><strong>Tell us your idea</strong><span>We learn about your business, audience and goals.</span></li>
+                <li><strong>Shape the direction</strong><span>We agree the pages, features and visual approach.</span></li>
+                <li><strong>Review the build</strong><span>You see progress and guide the details as we work.</span></li>
+                <li><strong>Launch with confidence</strong><span>We test the site, make final refinements and get it live.</span></li>
+            </ol>
+        </section>
+        <section class="home-faq" aria-labelledby="home-faq-heading">
+            <p class="eyebrow">Common questions</p>
+            <h2 id="home-faq-heading">Useful answers before you begin.</h2>
+            <div class="home-faq-grid">
+                <details>
+                    <summary>How quickly will you reply?</summary>
+                    <p>We aim to respond to every enquiry within 24 hours.</p>
+                </details>
+                <details>
+                    <summary>How long does a website take?</summary>
+                    <p>Timing depends on the size and complexity of the project. We agree a clear timeline before development begins.</p>
+                </details>
+                <details>
+                    <summary>Can you help if I am unsure what I need?</summary>
+                    <p>Yes. We can help shape the pages, features and direction around your goals and budget.</p>
+                </details>
+                <details>
+                    <summary>Do you build mobile-friendly websites?</summary>
+                    <p>Yes. Every site is designed and tested to work across mobile, tablet and desktop screens.</p>
+                </details>
+            </div>
+        </section>
     </main>
     <footer class="site-footer">
         <p>&copy; 2026 No-Tea Studio. All rights reserved.</p>
