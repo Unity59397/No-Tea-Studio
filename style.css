@@ -351,7 +351,7 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 
 .results-grid {
 	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
+	grid-template-columns: repeat(3, minmax(0, 1fr));
 	gap: 1rem;
 }
 
@@ -882,9 +882,10 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 }
 
 .project-card-small {
-	grid-column: 3 / span 4;
-	margin-top: -1rem;
-	transform: rotate(-1.5deg);
+	grid-column: 1 / span 5;
+	grid-row: 2;
+	margin-top: 0;
+	transform: none;
 }
 
 .project-card-wide {
