@@ -1,16 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en-GB" data-theme="light" data-palette="hibiscus">
 <head>
     <meta charset="UTF-8">
+    <!-- Sets theme (light/dark) and palette before first paint so there is no flash. Pink (Hibiscus) is the default. -->
     <script>
         (function () {
-            var stored = localStorage.getItem('theme');
-            var theme = stored || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            document.documentElement.setAttribute('data-theme', theme);
+            var d = document.documentElement;
+            var theme = 'light';
+            var palette = 'hibiscus';
+            try {
+                var stored = localStorage.getItem('theme');
+                theme = stored || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                var p = localStorage.getItem('palette');
+                if (/^(matcha|builders|earlgrey|hibiscus)$/.test(p || '')) { palette = p; }
+            } catch (e) { }
+            d.setAttribute('data-theme', theme);
+            d.setAttribute('data-palette', palette);
+            d.classList.add('js');
+            setTimeout(function () {
+                if (!d.classList.contains('js-ready')) { d.classList.remove('js'); }
+            }, 5000);
         })();
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#fff6f6" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1a0d12" media="(prefers-color-scheme: dark)">
+
     <!-- Traditional fallback favicon for older browsers -->
     <link rel="shortcut icon" href="/images/favicon.ico">
 
@@ -20,198 +36,432 @@
 
     <!-- Apple Touch Icon for iOS devices -->
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
     <title>Pricing | No-Tea Studio</title>
-    <link rel="stylesheet" href="../style.css">
-    <meta name="description"
-        content="Transparent, affordable web design pricing. Custom websites starting at £150. See our pricing tiers and what's included.">
+    <meta name="description" content="Transparent, affordable web design pricing. Custom websites starting at £150. See our pricing tiers and what&#x27;s included.">
     <meta name="author" content="No-Tea Studio">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://noteastudio.co.uk/pricing/">
+    <link rel="alternate" hreflang="en-GB" href="https://noteastudio.co.uk/pricing/">
+    <link rel="alternate" hreflang="x-default" href="https://noteastudio.co.uk/pricing/">
+
+    <!-- Open Graph / social sharing -->
     <meta property="og:title" content="Pricing | No-Tea Studio">
-    <meta property="og:description"
-        content="Affordable web design pricing starting at £150. Custom websites tailored to your business.">
+    <meta property="og:description" content="Affordable web design pricing starting at £150. Custom websites tailored to your business.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://noteastudio.co.uk/pricing/">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:site_name" content="No-Tea Studio">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:image" content="https://noteastudio.co.uk/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="No-Tea Studio: tailored website design.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pricing | No-Tea Studio">
+    <meta name="twitter:description" content="Affordable web design pricing starting at £150. Custom websites tailored to your business.">
+    <meta name="twitter:image" content="https://noteastudio.co.uk/images/og-image.png">
+    <meta name="twitter:image:alt" content="No-Tea Studio: tailored website design.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <link rel="stylesheet" href="/home.css">
+    <link rel="stylesheet" href="/pages.css">
+    <!-- Structured data -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebPage",
+            "@id": "https://noteastudio.co.uk/pricing/#webpage",
+            "url": "https://noteastudio.co.uk/pricing/",
+            "name": "Pricing",
+            "description": "Transparent, affordable web design pricing. Custom websites starting at £150. See our pricing tiers and what's included.",
+            "inLanguage": "en-GB",
+            "isPartOf": {
+                "@id": "https://noteastudio.co.uk/#website"
+            },
+            "about": {
+                "@id": "https://noteastudio.co.uk/#business"
+            },
+            "breadcrumb": {
+                "@id": "https://noteastudio.co.uk/pricing/#breadcrumb"
+            },
+            "primaryImageOfPage": {
+                "@type": "ImageObject",
+                "url": "https://noteastudio.co.uk/images/og-image.png",
+                "width": 1200,
+                "height": 630
+            },
+            "dateModified": "2026-10-10"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://noteastudio.co.uk/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Pricing",
+                    "item": "https://noteastudio.co.uk/pricing/"
+                }
+            ],
+            "@id": "https://noteastudio.co.uk/pricing/#breadcrumb"
+        },
+        {
+            "@type": "FAQPage",
+            "@id": "https://noteastudio.co.uk/pricing/#faq",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What's included in the price?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Our prices include design, development, revisions, SSL certificate, and hosting setup. Additional services like custom photography or e-commerce functionality may have separate costs."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can I upgrade later?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Absolutely. If you start with a Starter site and want to add more pages or features, we can expand your website. We'll discuss pricing based on what you add."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Do we offer payment plans?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes! We're flexible with payment. For projects over £400, we typically offer a 50% deposit upfront and 50% on completion. Let's discuss what works for you."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How long does a website take?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Starter sites typically take 1-2 weeks. Standard sites take 3-5 weeks. Premium projects vary based on complexity. We'll give you a clear timeline before we start."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What about ongoing costs?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "We include hosting and SSL for the first 2-3 months, depending on your tier. After that, annual hosting costs are typically £60-£150 depending on your site. We handle renewals for you."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Do you offer maintenance or updates?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "We offer a maintenance retainer starting at £50/month for updates, security patches, and technical support. Or you can contact us ad-hoc for specific work."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Are there free hosting options?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes! For simpler websites, we can use GitHub Pages or other free hosting platforms. You'd only pay for your domain (~£10-15/year). However, more complex sites with advanced features may require paid hosting (£50-150/year). We'll discuss what's best for your specific needs."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can I customize my package?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Absolutely. The tiers above are guidelines, not rules. If you need a mix of features from different packages, or have specific requirements, we're happy to create a custom plan. Just get in touch and we'll work out pricing together."
+                    }
+                }
+            ]
+        }
+    ]
+}
+    </script>
 </head>
-
 <body>
-    <nav class="navigation-bar">
-        <a href="../">No-Tea Studio</a>
-        <a href="../about/">About</a>
-        <a href="../pricing/" aria-current="page">Pricing</a>
-        <a href="../projects/">Projects</a>
-        <a class="nav-cta" href="../bookings/">Book Us</a>
-        <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
-            <svg class="icon-sun" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="4" />
-                <path
-                    d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
-            </svg>
-            <svg class="icon-moon" viewBox="0 0 24 24">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
-            </svg>
-        </button>
-    </nav>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="progress" aria-hidden="true"><span></span></div>
 
-    <main class="pricing-container">
-        <section class="pricing-intro">
-            <h1>Simple, Transparent Pricing</h1>
-            <p>We believe pricing should be straightforward. No hidden fees, no surprise costs - just honest value for
-                your investment.</p>
-        </section>
-<!-- Normal price tag.
-                    <div class="pricing-card pricing-starter">
-                <div class="pricing-header">
-                    <h2>Starter</h2>
-                    <p class="pricing-description">Perfect for businesses just getting online</p>
-                </div>
-                <div class="pricing-price">
-                    <span class="price-amount"><del class="thick-del">£150</del></span>
-                    <span class="price-note">Starting from</span>
-                </div> -->
+    <header class="site-header">
+        <nav class="nav container" aria-label="Main">
+            <a class="brand" href="/" aria-label="No-Tea Studio, home">
+                <svg viewBox="20 44 150 94" aria-hidden="true">
+                    <ellipse class="cup-saucer" cx="80" cy="132" rx="62" ry="10" />
+                    <path class="cup-handle" d="M128 70c26-4 26 34-2 34" />
+                    <path class="cup-handle-in" d="M128 70c26-4 26 34-2 34" />
+                    <path class="cup-body" d="M28 56h104v16c0 30-22 52-52 52s-52-22-52-52z" />
+                    <ellipse class="cup-tea" cx="80" cy="56" rx="52" ry="9" />
+                </svg>
+                <span>No-Tea Studio</span>
+            </a>
 
-        <section class="pricing-grid">
-            <!-- Starter Tier -->
-            <div class="pricing-card pricing-starter">
-                <div class="pricing-offer-badge">Limited Offer</div>
-                <div class="pricing-header">
-                    <h2>Starter</h2>
-                    <p class="pricing-description">Perfect for businesses just getting online</p>
-                </div>
-                <div class="pricing-price">
-                    <span class="price-amount">£0</span>
-                    <span class="price-original"><del>£150</del></span>
-                    <span class="price-note">First 3 customers only</span>
-                    <span class="price-urgency"><span class="price-urgency-dot" aria-hidden="true"></span>Only 1 customer left</span>
-                </div>
-                <!-- ------------------ -->
-                <ul class="pricing-features">
-                    <li>3-5 pages</li>
-                    <li>Mobile responsive</li>
-                    <li>Contact form</li>
-                    <li>Basic SEO setup</li>
-                    <li>1 month of support & revisions</li>
-                    <li>SSL certificate</li>
+            <div class="nav-panel" id="nav-panel">
+                <ul class="nav-links">
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/pricing/" aria-current="page">Pricing</a></li>
+                    <li><a href="/projects/">Projects</a></li>
                 </ul>
-                <a href="../bookings/" class="pricing-cta">Get Started</a>
+                <a class="btn btn-primary btn-sm nav-cta" href="/bookings/">Book Us</a>
             </div>
 
-            <!-- Standard Tier -->
-            <div class="pricing-card pricing-standard pricing-featured">
-                <div class="pricing-badge">Most Popular</div>
-                <div class="pricing-header">
-                    <h2>Standard</h2>
-                    <p class="pricing-description">Our most popular choice</p>
+            <div class="nav-tools">
+                <div class="palette">
+                    <button class="tool-btn palette-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="palette-pop" aria-label="Choose a colour palette">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3s6 6.2 6 10.5A6 6 0 0 1 6 13.5C6 9.2 12 3 12 3z" /></svg>
+                    </button>
+                    <div class="palette-pop" id="palette-pop" role="radiogroup" aria-label="Colour palette" hidden>
+                        <p class="palette-title">Pick your brew</p>
+                        <button type="button" role="radio" aria-checked="true" data-palette="hibiscus"><span class="swatch" style="--sw1:#c2255c;--sw2:#ffb703"></span>Hibiscus</button>
+                        <button type="button" role="radio" aria-checked="false" data-palette="matcha"><span class="swatch" style="--sw1:#2d6a4f;--sw2:#ff7a45"></span>Matcha</button>
+                        <button type="button" role="radio" aria-checked="false" data-palette="builders"><span class="swatch" style="--sw1:#a24a17;--sw2:#f2b134"></span>Builder's Tea</button>
+                        <button type="button" role="radio" aria-checked="false" data-palette="earlgrey"><span class="swatch" style="--sw1:#4a52c4;--sw2:#f59fb5"></span>Earl Grey</button>
+                    </div>
                 </div>
-                <div class="pricing-price">
-                    <span class="price-amount">£250</span>
-                    <span class="price-note">Starting from</span>
-                </div>
-                <ul class="pricing-features">
-                    <li>6–10 pages</li>
-                    <li>Custom design</li>
-                    <li>Contact & inquiry forms</li>
-                    <li>SEO optimization</li>
-                    <li>3 months of support & revisions</li>
-                    <li>Blog/news section (optional)</li>
-                    <li>SSL certificate & hosting</li>
-                </ul>
-                <a href="../bookings/" class="pricing-cta pricing-cta-primary">Get a Quote</a>
-            </div>
 
-            <!-- Premium Tier -->
-            <div class="pricing-card pricing-premium">
-                <div class="pricing-header">
-                    <h2>Premium</h2>
-                    <p class="pricing-description">For ambitious businesses</p>
-                </div>
-                <div class="pricing-price">
-                    <span class="price-amount">£450+</span>
-                    <span class="price-note">Completely custom</span>
-                </div>
-                <ul class="pricing-features">
-                    <li>10+ pages</li>
-                    <li>Advanced custom features</li>
-                    <li>E-commerce capabilities</li>
-                    <li>Advanced SEO & analytics</li>
-                    <li>1 year of support & revisions</li>
-                    <li>Blog & content management (optional)</li>
-                    <li>Priority support</li>
-                    <li>SSL certificate & hosting</li>
-                </ul>
-                <a href="../bookings/" class="pricing-cta">Let's Talk</a>
+                <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="4" />
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+                    </svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
+                    </svg>
+                </button>
+
+                <button class="tool-btn nav-burger" type="button" aria-expanded="false" aria-controls="nav-panel" aria-label="Open menu"><span></span></button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main">
+        <section class="page-hero" aria-labelledby="page-title">
+            <svg class="page-spark a" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" /></svg>
+            <svg class="page-spark b" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" /></svg>
+            <svg class="page-spark c" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" /></svg>
+            <div class="container">
+                <nav aria-label="Breadcrumb">
+                <ol class="crumbs">
+                    <li><a href="/">Home</a></li>
+                    <li aria-current="page">Pricing</li>
+                </ol>
+            </nav>
+                <p class="eyebrow">Pricing</p>
+                <h1 id="page-title">Simple, <span class="hl">Transparent</span> Pricing</h1>
+                <p class="lead">We believe pricing should be straightforward. No hidden fees, no surprise costs - just honest value for your investment.</p>
             </div>
         </section>
 
-        <section class="pricing-faq">
-            <h2>Common Questions</h2>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <h3>What's included in the price?</h3>
-                    <p>Our prices include design, development, revisions, SSL certificate, and hosting setup. Additional
-                        services like custom photography or e-commerce functionality may have separate costs.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Can I upgrade later?</h3>
-                    <p>Absolutely. If you start with a Starter site and want to add more pages or features, we can
-                        expand your website. We'll discuss pricing based on what you add.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Do we offer payment plans?</h3>
-                    <p>Yes! We're flexible with payment. For projects over £400, we typically offer a 50% deposit
-                        upfront and 50% on completion. Let's discuss what works for you.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>How long does a website take?</h3>
-                    <p>Starter sites typically take 1-2 weeks. Standard sites take 3-5 weeks. Premium projects vary
-                        based on complexity. We'll give you a clear timeline before we start.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>What about ongoing costs?</h3>
-                    <p>We include hosting and SSL for the first 2-3 months, depending on your tier. After that, annual
-                        hosting costs are typically £60-£150 depending on your site. We handle renewals for you.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Do you offer maintenance or updates?</h3>
-                    <p>We offer a maintenance retainer starting at £50/month for updates, security patches, and
-                        technical support. Or you can contact us ad-hoc for specific work.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Are there free hosting options?</h3>
-                    <p>Yes! For simpler websites, we can use GitHub Pages or other free hosting platforms. You'd only
-                        pay for your domain (~£10-15/year). However, more complex sites with advanced features may
-                        require paid hosting (£50-150/year). We'll discuss what's best for your specific needs.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Can I customize my package?</h3>
-                    <p>Absolutely. The tiers above are guidelines, not rules. If you need a mix of features from
-                        different packages, or have specific requirements, we're happy to create a custom plan. Just get
-                        in touch and we'll work out pricing together.</p>
+        <section class="page-section" aria-label="Packages">
+            <div class="container">
+                <!-- To end the Starter offer: change the price to £150, then delete the "Limited Offer" badge, the strike-through price and the "Only 1 customer left" line. -->
+                <div class="price-grid">
+                    <article class="price-card reveal">
+                        <p class="price-badge is-offer">Limited Offer</p>
+                        <h2>Starter</h2>
+                        <p class="price-desc">Perfect for businesses just getting online</p>
+                        <div class="price-figure">
+                            <span class="price-amount">£0</span>
+                            <span class="price-was"><del>£150</del></span>
+                            <span class="price-note">First 3 customers only</span>
+                            <span class="price-urgency"><span class="price-dot" aria-hidden="true"></span>Only 1 customer left</span>
+                        </div>
+                        <ul class="price-list">
+                            <li>3-5 pages</li>
+                            <li>Mobile responsive</li>
+                            <li>Contact form</li>
+                            <li>Basic SEO setup</li>
+                            <li>1 month of support &amp; revisions</li>
+                            <li>SSL certificate</li>
+                        </ul>
+                        <a class="btn btn-ghost" href="/bookings/">Get Started</a>
+                    </article>
+
+                    <article class="price-card is-featured reveal">
+                        <p class="price-badge">Most Popular</p>
+                        <h2>Standard</h2>
+                        <p class="price-desc">Our most popular choice</p>
+                        <div class="price-figure">
+                            <span class="price-amount">£250</span>
+                            <span class="price-note">Starting from</span>
+                        </div>
+                        <ul class="price-list">
+                            <li>6&ndash;10 pages</li>
+                            <li>Custom design</li>
+                            <li>Contact &amp; inquiry forms</li>
+                            <li>SEO optimization</li>
+                            <li>3 months of support &amp; revisions</li>
+                            <li>Blog/news section (optional)</li>
+                            <li>SSL certificate &amp; hosting</li>
+                        </ul>
+                        <a class="btn btn-primary" href="/bookings/">Get a Quote</a>
+                    </article>
+
+                    <article class="price-card reveal">
+                        <h2>Premium</h2>
+                        <p class="price-desc">For ambitious businesses</p>
+                        <div class="price-figure">
+                            <span class="price-amount">£450+</span>
+                            <span class="price-note">Completely custom</span>
+                        </div>
+                        <ul class="price-list">
+                            <li>10+ pages</li>
+                            <li>Advanced custom features</li>
+                            <li>E-commerce capabilities</li>
+                            <li>Advanced SEO &amp; analytics</li>
+                            <li>1 year of support &amp; revisions</li>
+                            <li>Blog &amp; content management (optional)</li>
+                            <li>Priority support</li>
+                            <li>SSL certificate &amp; hosting</li>
+                        </ul>
+                        <a class="btn btn-ghost" href="/bookings/">Let's Talk</a>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <section class="pricing-cta-section">
-            <h2>Ready to Get Started?</h2>
-            <p>Not sure which tier is right for you? Let's chat.</p>
-            <div class="pricing-cta-buttons">
-                <a href="../bookings/" class="pricing-cta pricing-cta-primary">Book a Consultation</a>
-                <a href="mailto:info@noteastudio.co.uk" class="pricing-cta pricing-cta-secondary">Email Us</a>
+        <section class="page-section" aria-labelledby="compare-h">
+            <div class="container">
+                <div class="section-head reveal">
+                    <p class="eyebrow">At a glance</p>
+                    <h2 id="compare-h">Compare the packages</h2>
+                </div>
+                <div class="compare-wrap reveal" tabindex="0" role="region" aria-labelledby="compare-h">
+                    <table class="compare">
+                        <caption class="visually-hidden">Comparison of the Starter, Standard and Premium packages</caption>
+                        <thead>
+                            <tr><th scope="col">What you get</th><th scope="col">Starter</th><th scope="col" class="col-pop">Standard</th><th scope="col">Premium</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><th scope="row">Pages</th><td>3-5</td><td class="col-pop">6&ndash;10</td><td>10+</td></tr>
+                            <tr><th scope="row">Support &amp; revisions</th><td>1 month</td><td class="col-pop">3 months</td><td>1 year</td></tr>
+                            <tr><th scope="row">SEO</th><td>Basic setup</td><td class="col-pop">SEO optimization</td><td>Advanced SEO &amp; analytics</td></tr>
+                            <tr><th scope="row">SSL certificate</th><td>Included</td><td class="col-pop">Included</td><td>Included</td></tr>
+                            <tr><th scope="row">Blog or news section</th><td><span class="dash" aria-hidden="true">&mdash;</span><span class="visually-hidden">Not listed</span></td><td class="col-pop">Optional</td><td>Optional</td></tr>
+                            <tr><th scope="row">E-commerce</th><td><span class="dash" aria-hidden="true">&mdash;</span><span class="visually-hidden">Not listed</span></td><td class="col-pop"><span class="dash" aria-hidden="true">&mdash;</span><span class="visually-hidden">Not listed</span></td><td>Included</td></tr>
+                            <tr><th scope="row">Priority support</th><td><span class="dash" aria-hidden="true">&mdash;</span><span class="visually-hidden">Not listed</span></td><td class="col-pop"><span class="dash" aria-hidden="true">&mdash;</span><span class="visually-hidden">Not listed</span></td><td>Included</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt" aria-labelledby="faq-h">
+            <div class="container">
+                <div class="section-head reveal">
+                    <p class="eyebrow">Common questions</p>
+                    <h2 id="faq-h">Common Questions</h2>
+                </div>
+                <div class="faq-list reveal">
+                    <details name="faq">
+                        <summary>What&#x27;s included in the price?</summary>
+                        <p>Our prices include design, development, revisions, SSL certificate, and hosting setup. Additional services like custom photography or e-commerce functionality may have separate costs.</p>
+                    </details>
+                    <details name="faq">
+                        <summary>Can I upgrade later?</summary>
+                        <p>Absolutely. If you start with a Starter site and want to add more pages or features, we can expand your website. We&#x27;ll discuss pricing based on what you add.</p>
+                    </details>
+                    <details name="faq">
+                        <summary>Do we offer payment plans?</summary>
+                        <p>Yes! We&#x27;re flexible with payment. For projects over £400, we typically offer a 50% deposit upfront and 50% on completion. Let&#x27;s discuss what works for you.</p>
+                    </details>
+                    <details name="faq">
+                        <summary>How long does a website take?</summary>
+                        <p>Starter sites typically take 1-2 weeks. Standard sites take 3-5 weeks. Premium projects vary based on complexity. We&#x27;ll give you a clear timeline before we start.</p>
+                    </details>
+                    <details name="faq">
+                        <summary>What about ongoing costs?</summary>
+                        <p>We include hosting and SSL for the first 2-3 months, depending on your tier. After that, annual hosting costs are typically £60-£150 depending on your site. We handle renewals for you.</p>
+                    </details>
+                    <details name="faq">
+                        <summary>Do you offer maintenance or updates?</summary>
+                        <p>We offer a maintenance retainer starting at £50/month for updates, security patches, and technical support. Or you can contact us ad-hoc for specific work.</p>
+                    </details>
+                    <details name="faq">
+                        <summary>Are there free hosting options?</summary>
+                        <p>Yes! For simpler websites, we can use GitHub Pages or other free hosting platforms. You&#x27;d only pay for your domain (~£10-15/year). However, more complex sites with advanced features may require paid hosting (£50-150/year). We&#x27;ll discuss what&#x27;s best for your specific needs.</p>
+                    </details>
+                    <details name="faq">
+                        <summary>Can I customize my package?</summary>
+                        <p>Absolutely. The tiers above are guidelines, not rules. If you need a mix of features from different packages, or have specific requirements, we&#x27;re happy to create a custom plan. Just get in touch and we&#x27;ll work out pricing together.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-section" aria-labelledby="cta-h">
+            <div class="container">
+                <div class="cta-band reveal">
+                    <h2 id="cta-h">Ready to Get Started?</h2>
+                    <p>Not sure which tier is right for you? Let's chat.</p>
+                    <div class="cta-actions">
+                        <a class="btn btn-light" href="/bookings/">Book a Consultation</a>
+                        <a class="btn btn-outline" href="mailto:info@noteastudio.co.uk">Email Us</a>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <footer class="site-footer">
-        <p>&copy; 2026 No-Tea Studio. All rights reserved.</p>
-        <div class="footer-actions">
-            <a class="email-button" href="mailto:info@noteastudio.co.uk">Email me</a>
-            <a class="footer-link" href="../privacy/">Privacy Notice</a>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a class="brand" href="/" aria-label="No-Tea Studio, home">
+                        <svg viewBox="20 44 150 94" aria-hidden="true">
+                    <ellipse class="cup-saucer" cx="80" cy="132" rx="62" ry="10" />
+                    <path class="cup-handle" d="M128 70c26-4 26 34-2 34" />
+                    <path class="cup-handle-in" d="M128 70c26-4 26 34-2 34" />
+                    <path class="cup-body" d="M28 56h104v16c0 30-22 52-52 52s-52-22-52-52z" />
+                    <ellipse class="cup-tea" cx="80" cy="56" rx="52" ry="9" />
+                </svg>
+                        <span>No-Tea Studio</span>
+                    </a>
+                    <p>Thoughtful, tailored websites built around the people and businesses they represent.</p>
+                </div>
+                <nav aria-label="Footer">
+                    <h2>Explore</h2>
+                    <ul class="footer-links">
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="/pricing/">Pricing</a></li>
+                        <li><a href="/projects/">Projects</a></li>
+                        <li><a href="/bookings/">Book Us</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <h2>Say hello</h2>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@noteastudio.co.uk">Email me</a></li>
+                        <li><a href="/privacy/">Privacy Notice</a></li>
+                        <li>Leeds, England</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-base">
+                <p>&copy; 2026 No-Tea Studio. All rights reserved.</p>
+                <p>Made in Leeds. Brewed with curiosity, served with a side of plain English.</p>
+            </div>
         </div>
     </footer>
 
-    <script src="../theme-toggle.js"></script>
-    <script src="../cookie-consent.js"></script>
-</body>
+    <button class="to-top" type="button" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" /></svg>
+    </button>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+    <script src="/theme-toggle.js"></script>
+    <script src="/cookie-consent.js"></script>
+    <script src="/home.js"></script>
+    <script src="/pages.js"></script>
+</body>
 </html>

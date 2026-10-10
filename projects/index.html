@@ -1,17 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en-GB" data-theme="light" data-palette="hibiscus">
 <head>
-	<meta charset="UTF-8">
-	<script>
-		(function () {
-			var stored = localStorage.getItem('theme');
-			var theme = stored || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-			document.documentElement.setAttribute('data-theme', theme);
-		})();
-	</script>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <!-- Traditional fallback favicon for older browsers -->
+    <meta charset="UTF-8">
+    <!-- Sets theme (light/dark) and palette before first paint so there is no flash. Pink (Hibiscus) is the default. -->
+    <script>
+        (function () {
+            var d = document.documentElement;
+            var theme = 'light';
+            var palette = 'hibiscus';
+            try {
+                var stored = localStorage.getItem('theme');
+                theme = stored || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                var p = localStorage.getItem('palette');
+                if (/^(matcha|builders|earlgrey|hibiscus)$/.test(p || '')) { palette = p; }
+            } catch (e) { }
+            d.setAttribute('data-theme', theme);
+            d.setAttribute('data-palette', palette);
+            d.classList.add('js');
+            setTimeout(function () {
+                if (!d.classList.contains('js-ready')) { d.classList.remove('js'); }
+            }, 5000);
+        })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#fff6f6" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1a0d12" media="(prefers-color-scheme: dark)">
+
+    <!-- Traditional fallback favicon for older browsers -->
     <link rel="shortcut icon" href="/images/favicon.ico">
 
     <!-- Standard PNG favicons for modern browsers and Google Search -->
@@ -20,113 +36,357 @@
 
     <!-- Apple Touch Icon for iOS devices -->
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-	<title>Website Design Projects | No-Tea Studio</title>
-	<link rel="stylesheet" href="../style.css">
-	<meta name="description" content="Explore website design projects and showcases from No-Tea Studio.">
-	<meta name="author" content="No-Tea Studio">
-	<meta name="robots" content="index, follow">
-	<link rel="canonical" href="https://noteastudio.co.uk/projects/">
-	<meta property="og:title" content="Website Design Projects | No-Tea Studio">
-	<meta property="og:description" content="Explore website design projects and showcases from No-Tea Studio.">
-	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://noteastudio.co.uk/projects/">
-	<meta name="twitter:card" content="summary">
+
+    <title>Website Design Projects | No-Tea Studio</title>
+    <meta name="description" content="Explore website design projects and showcases from No-Tea Studio.">
+    <meta name="author" content="No-Tea Studio">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://noteastudio.co.uk/projects/">
+    <link rel="alternate" hreflang="en-GB" href="https://noteastudio.co.uk/projects/">
+    <link rel="alternate" hreflang="x-default" href="https://noteastudio.co.uk/projects/">
+
+    <!-- Open Graph / social sharing -->
+    <meta property="og:title" content="Website Design Projects | No-Tea Studio">
+    <meta property="og:description" content="Explore website design projects and showcases from No-Tea Studio.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://noteastudio.co.uk/projects/">
+    <meta property="og:site_name" content="No-Tea Studio">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:image" content="https://noteastudio.co.uk/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="No-Tea Studio: tailored website design.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Website Design Projects | No-Tea Studio">
+    <meta name="twitter:description" content="Explore website design projects and showcases from No-Tea Studio.">
+    <meta name="twitter:image" content="https://noteastudio.co.uk/images/og-image.png">
+    <meta name="twitter:image:alt" content="No-Tea Studio: tailored website design.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <link rel="stylesheet" href="/home.css">
+    <link rel="stylesheet" href="/pages.css">
+    <!-- Structured data -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "CollectionPage",
+            "@id": "https://noteastudio.co.uk/projects/#webpage",
+            "url": "https://noteastudio.co.uk/projects/",
+            "name": "Projects",
+            "description": "Explore website design projects and showcases from No-Tea Studio.",
+            "inLanguage": "en-GB",
+            "isPartOf": {
+                "@id": "https://noteastudio.co.uk/#website"
+            },
+            "about": {
+                "@id": "https://noteastudio.co.uk/#business"
+            },
+            "breadcrumb": {
+                "@id": "https://noteastudio.co.uk/projects/#breadcrumb"
+            },
+            "primaryImageOfPage": {
+                "@type": "ImageObject",
+                "url": "https://noteastudio.co.uk/images/og-image.png",
+                "width": 1200,
+                "height": 630
+            },
+            "dateModified": "2026-10-10",
+            "mainEntity": {
+                "@type": "ItemList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "item": {
+                            "@type": "CreativeWork",
+                            "name": "FloralsByZaee",
+                            "url": "https://floralsbyzaee.co.uk/",
+                            "image": "https://noteastudio.co.uk/images/floralsbyzaee-1100.webp",
+                            "creator": {
+                                "@id": "https://noteastudio.co.uk/#business"
+                            }
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "item": {
+                            "@type": "CreativeWork",
+                            "name": "Lily's Garden",
+                            "url": "https://unity59397.github.io/Lily-sGarden/",
+                            "image": "https://noteastudio.co.uk/images/lilys-garden-1100.webp",
+                            "creator": {
+                                "@id": "https://noteastudio.co.uk/#business"
+                            }
+                        }
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "item": {
+                            "@type": "CreativeWork",
+                            "name": "LawFirmConcept",
+                            "url": "https://unity59397.github.io/Jane-Jill-Law-Firm/",
+                            "image": "https://noteastudio.co.uk/images/lawfirmconcept-1100.webp",
+                            "creator": {
+                                "@id": "https://noteastudio.co.uk/#business"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://noteastudio.co.uk/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Projects",
+                    "item": "https://noteastudio.co.uk/projects/"
+                }
+            ],
+            "@id": "https://noteastudio.co.uk/projects/#breadcrumb"
+        }
+    ]
+}
+    </script>
 </head>
-
 <body>
-	<nav class="navigation-bar">
-		<a href="../">No-Tea Studio</a>
-		<a href="../about/">About</a>
-		<a href="../pricing/">Pricing</a>  
-		<a href="./" aria-current="page">Projects</a>
-		<a class="nav-cta" href="../bookings/">Book Us</a>
-		<button class="theme-toggle" type="button" aria-label="Toggle dark mode">
-			<svg class="icon-sun" viewBox="0 0 24 24">
-				<circle cx="12" cy="12" r="4" />
-				<path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
-			</svg>
-			<svg class="icon-moon" viewBox="0 0 24 24">
-				<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
-			</svg>
-		</button>
-	</nav>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="progress" aria-hidden="true"><span></span></div>
 
-	<aside class="project-sidebar">
-		<input class="sidebar-toggle" type="checkbox" id="sidebar-toggle">
-		<label class="sidebar-toggle-button" for="sidebar-toggle" aria-label="Open project page sidebar">
-			<span aria-hidden="true">&rarr;</span>
-		</label>
-		<div class="project-sidebar-content">
-			<p class="eyebrow">Explore</p>
-			<a href="../">Back to home ->
+    <header class="site-header">
+        <nav class="nav container" aria-label="Main">
+            <a class="brand" href="/" aria-label="No-Tea Studio, home">
+                <svg viewBox="20 44 150 94" aria-hidden="true">
+                    <ellipse class="cup-saucer" cx="80" cy="132" rx="62" ry="10" />
+                    <path class="cup-handle" d="M128 70c26-4 26 34-2 34" />
+                    <path class="cup-handle-in" d="M128 70c26-4 26 34-2 34" />
+                    <path class="cup-body" d="M28 56h104v16c0 30-22 52-52 52s-52-22-52-52z" />
+                    <ellipse class="cup-tea" cx="80" cy="56" rx="52" ry="9" />
+                </svg>
+                <span>No-Tea Studio</span>
             </a>
-			<a href="../bookings/">Get a quote -> </a>
-		</div>
-	</aside>
 
-	<main class="projects-container">
-		<header class="projects-intro">
-			<p class="eyebrow">Our work</p>
-			<h1>Projects &amp; showcases</h1>
-			<p>Thoughtful websites built around the people and businesses they represent.</p>
-		</header>
+            <div class="nav-panel" id="nav-panel">
+                <ul class="nav-links">
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/pricing/">Pricing</a></li>
+                    <li><a href="/projects/" aria-current="page">Projects</a></li>
+                </ul>
+                <a class="btn btn-primary btn-sm nav-cta" href="/bookings/">Book Us</a>
+            </div>
 
-		<section class="project-grid" aria-label="Project showcases">
-			<article class="project-card project-card-tall">
-				<button class="project-image lightbox-trigger" type="button" data-lightbox-src="/images/LilyGardenScreenshot.png" data-lightbox-alt="Screenshot of the Lily's Garden website" aria-label="Enlarge Lily's Garden website preview">
-					<img src="/images/LilyGardenScreenshot.png" width="480px" target="_blank" alt="A screenshot of one of our pages!">
-				</button>
-				<div class="project-card-content">
-					<h2>Lily's Garden</h2>
-					<p><strong>Concept website</strong> for a one-page gardening business.</p>
-					<a href="https://unity59397.github.io/Lily-sGarden/" target="_blank" rel="noopener noreferrer" class="project-cta">View Project page -></a>
-				</div>
-			</article>
-			<article class="project-card project-card-offset">
-				<button class="project-image lightbox-trigger" type="button" data-lightbox-src="/images/FloralsByZaeeWebPage.png" data-lightbox-alt="Screenshot of the FloralsByZaee website" aria-label="Enlarge FloralsByZaee website preview">
-					<img src="/images/FloralsByZaeeWebPage.png" width="480" target="_blank" alt="Screenshot of the FloralsByZaee website">
-				</button>
-				<div class="project-card-content">
-					<h2>FloralsByZaee</h2>
-					<p><strong>Live client website</strong> tailored to a floral business.</p>
-					<figure class="client-feedback">
-						<button class="client-feedback-image lightbox-trigger" type="button" data-lightbox-src="/images/FloralsByZaee-story-review.jpg" data-lightbox-alt="FloralsByZaee website shown on a device in a client Snapchat story" aria-label="Enlarge FloralsByZaee client feedback image">
-							<img src="/images/FloralsByZaee-story-review.jpg" alt="">
-						</button>
-						<figcaption>Shared by FloralsByZaee after launch: &ldquo;@vas_ren ++ for your websites!&rdquo;</figcaption>
-					</figure>
-					<a href="https://floralsbyzaee.co.uk/" target="_blank" rel="noopener noreferrer" class="project-cta">View Project page -&gt;</a>
-				</div>
-			</article>
-			<article class="project-card project-card-small">
-				<button class="project-image lightbox-trigger" type="button" data-lightbox-src="/images/LawFirmConceptSite.png" data-lightbox-alt="Screenshot of the LawFirmConcept website" aria-label="Enlarge LawFirmConcept website preview">
-					<img src="/images/LawFirmConceptSite.png" width="480" target="_blank" alt="Screenshot of the LawFirmConcept website">
-				</button>
-				<div class="project-card-content">
-					<h2>LawFirmConcept</h2>
-					<p><strong>Concept website</strong> for a modern law firm landing page.</p>
-					<a href="https://unity59397.github.io/Jane-Jill-Law-Firm/" target="_blank" rel="noopener noreferrer" class="project-cta">View Project page -&gt;</a>
-				</div>
-			</article>
-		</section>
-	</main>
-	<dialog class="image-lightbox" aria-labelledby="lightbox-title">
-		<div class="image-lightbox-header">
-			<h2 id="lightbox-title">Project preview</h2>
-			<button class="image-lightbox-close" type="button" aria-label="Close enlarged project preview">&times;</button>
-		</div>
-		<img class="image-lightbox-preview" src="" alt="">
-	</dialog>
-	<footer class="site-footer">
-		<p>&copy; 2026 No-Tea Studio. All rights reserved.</p>
-		<div class="footer-actions">
-			<a class="email-button" href="mailto:info@noteastudio.co.uk">Email me</a>
-			<a class="footer-link" href="../privacy/">Privacy Notice</a>
-		</div>
-	</footer>
-	<script src="../script.js"></script>
-	<script src="../theme-toggle.js"></script>
-	<script src="../cookie-consent.js"></script>
+            <div class="nav-tools">
+                <div class="palette">
+                    <button class="tool-btn palette-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="palette-pop" aria-label="Choose a colour palette">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3s6 6.2 6 10.5A6 6 0 0 1 6 13.5C6 9.2 12 3 12 3z" /></svg>
+                    </button>
+                    <div class="palette-pop" id="palette-pop" role="radiogroup" aria-label="Colour palette" hidden>
+                        <p class="palette-title">Pick your brew</p>
+                        <button type="button" role="radio" aria-checked="true" data-palette="hibiscus"><span class="swatch" style="--sw1:#c2255c;--sw2:#ffb703"></span>Hibiscus</button>
+                        <button type="button" role="radio" aria-checked="false" data-palette="matcha"><span class="swatch" style="--sw1:#2d6a4f;--sw2:#ff7a45"></span>Matcha</button>
+                        <button type="button" role="radio" aria-checked="false" data-palette="builders"><span class="swatch" style="--sw1:#a24a17;--sw2:#f2b134"></span>Builder's Tea</button>
+                        <button type="button" role="radio" aria-checked="false" data-palette="earlgrey"><span class="swatch" style="--sw1:#4a52c4;--sw2:#f59fb5"></span>Earl Grey</button>
+                    </div>
+                </div>
+
+                <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="4" />
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+                    </svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
+                    </svg>
+                </button>
+
+                <button class="tool-btn nav-burger" type="button" aria-expanded="false" aria-controls="nav-panel" aria-label="Open menu"><span></span></button>
+            </div>
+        </nav>
+    </header>
+
+    <aside class="project-sidebar" aria-label="Quick links">
+        <input class="sidebar-toggle" type="checkbox" id="sidebar-toggle">
+        <label class="sidebar-toggle-button" for="sidebar-toggle" aria-label="Open project page sidebar">
+            <span aria-hidden="true">&rarr;</span>
+        </label>
+        <div class="project-sidebar-content">
+            <p class="eyebrow">Explore</p>
+            <a href="/">Back to home &rarr;</a>
+            <a href="/bookings/">Get a quote &rarr;</a>
+        </div>
+    </aside>
+
+    <main id="main">
+        <section class="page-hero" aria-labelledby="page-title">
+            <svg class="page-spark a" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" /></svg>
+            <svg class="page-spark b" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" /></svg>
+            <svg class="page-spark c" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" /></svg>
+            <div class="container">
+                <nav aria-label="Breadcrumb">
+                <ol class="crumbs">
+                    <li><a href="/">Home</a></li>
+                    <li aria-current="page">Projects</li>
+                </ol>
+            </nav>
+                <p class="eyebrow">Our work</p>
+                <h1 id="page-title">Projects &amp; <span class="hl">showcases</span></h1>
+                <p class="lead">Thoughtful websites built around the people and businesses they represent.</p>
+            </div>
+        </section>
+
+        <section class="page-section" aria-label="Project showcases">
+            <div class="container">
+                <div class="work-tools reveal">
+                    <div class="seg" role="group" aria-label="Filter projects">
+                        <button type="button" data-filter="all" aria-pressed="true">All</button>
+                        <button type="button" data-filter="live" aria-pressed="false">Live</button>
+                        <button type="button" data-filter="concept" aria-pressed="false">Concepts</button>
+                    </div>
+                </div>
+                <div class="project-list">
+                    <article class="project-row reveal" data-kind="live">
+                        <button class="project-shot" type="button" data-lightbox-src="/images/FloralsByZaeeWebPage.png" data-lightbox-alt="Screenshot of the FloralsByZaee website" aria-label="Enlarge FloralsByZaee website preview">
+                            <span class="work-chrome" aria-hidden="true"><i></i><i></i><i></i><span>floralsbyzaee.co.uk</span></span>
+                            <img src="/images/floralsbyzaee-1100.webp"
+                                srcset="/images/floralsbyzaee-640.webp 640w, /images/floralsbyzaee-1100.webp 1100w"
+                                sizes="(max-width: 1020px) 92vw, 600px"
+                                width="1100" height="507" loading="lazy" decoding="async"
+                                alt="Preview of the FloralsByZaee website">
+                        </button>
+                        <div class="project-copy">
+                            <span class="work-tag is-live">Live client site</span>
+                            <h2>FloralsByZaee</h2>
+                            <p><strong>Live client website</strong> tailored to a floral business.</p>
+                        <figure class="client-feedback">
+                            <button type="button" data-lightbox-src="/images/FloralsByZaee-story-review.jpg" data-lightbox-alt="FloralsByZaee website shown on a device in a client Snapchat story" aria-label="Enlarge FloralsByZaee client feedback image">
+                                <img src="/images/floralsbyzaee-story-200.webp" width="200" height="355" loading="lazy" decoding="async" alt="">
+                            </button>
+                            <figcaption>Shared by FloralsByZaee after launch: &ldquo;@vas_ren ++ for your websites!&rdquo;</figcaption>
+                        </figure>
+                            <a class="btn btn-primary" href="https://floralsbyzaee.co.uk/" target="_blank" rel="noopener noreferrer">View project page <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg><span class="visually-hidden"> (opens in a new tab)</span></a>
+                        </div>
+                    </article>
+                    <article class="project-row reveal" data-kind="concept">
+                        <button class="project-shot" type="button" data-lightbox-src="/images/LilyGardenScreenshot.png" data-lightbox-alt="Screenshot of the Lily&#x27;s Garden website" aria-label="Enlarge Lily&#x27;s Garden website preview">
+                            <span class="work-chrome" aria-hidden="true"><i></i><i></i><i></i><span>Lily&#x27;s Garden</span></span>
+                            <img src="/images/lilys-garden-1100.webp"
+                                srcset="/images/lilys-garden-640.webp 640w, /images/lilys-garden-1100.webp 1100w"
+                                sizes="(max-width: 1020px) 92vw, 600px"
+                                width="1100" height="593" loading="lazy" decoding="async"
+                                alt="Preview of the Lily&#x27;s Garden website">
+                        </button>
+                        <div class="project-copy">
+                            <span class="work-tag">Concept</span>
+                            <h2>Lily&#x27;s Garden</h2>
+                            <p><strong>Concept website</strong> for a one-page gardening business.</p>
+                            <a class="btn btn-primary" href="https://unity59397.github.io/Lily-sGarden/" target="_blank" rel="noopener noreferrer">View project page <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg><span class="visually-hidden"> (opens in a new tab)</span></a>
+                        </div>
+                    </article>
+                    <article class="project-row reveal" data-kind="concept">
+                        <button class="project-shot" type="button" data-lightbox-src="/images/LawFirmConceptSite.png" data-lightbox-alt="Screenshot of the LawFirmConcept website" aria-label="Enlarge LawFirmConcept website preview">
+                            <span class="work-chrome" aria-hidden="true"><i></i><i></i><i></i><span>LawFirmConcept</span></span>
+                            <img src="/images/lawfirmconcept-1100.webp"
+                                srcset="/images/lawfirmconcept-640.webp 640w, /images/lawfirmconcept-1100.webp 1100w"
+                                sizes="(max-width: 1020px) 92vw, 600px"
+                                width="1100" height="559" loading="lazy" decoding="async"
+                                alt="Preview of the LawFirmConcept website">
+                        </button>
+                        <div class="project-copy">
+                            <span class="work-tag">Concept</span>
+                            <h2>LawFirmConcept</h2>
+                            <p><strong>Concept website</strong> for a modern law firm landing page.</p>
+                            <a class="btn btn-primary" href="https://unity59397.github.io/Jane-Jill-Law-Firm/" target="_blank" rel="noopener noreferrer">View project page <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg><span class="visually-hidden"> (opens in a new tab)</span></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-section" aria-labelledby="cta-h">
+            <div class="container">
+                <div class="cta-band reveal">
+                    <h2 id="cta-h">Fancy something like this?</h2>
+                    <p>Tell us about your idea and we will prepare a quote.</p>
+                    <div class="cta-actions">
+                        <a class="btn btn-light" href="/bookings/">Get a quote</a>
+                        <a class="btn btn-outline" href="/pricing/">See pricing</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a class="brand" href="/" aria-label="No-Tea Studio, home">
+                        <svg viewBox="20 44 150 94" aria-hidden="true">
+                    <ellipse class="cup-saucer" cx="80" cy="132" rx="62" ry="10" />
+                    <path class="cup-handle" d="M128 70c26-4 26 34-2 34" />
+                    <path class="cup-handle-in" d="M128 70c26-4 26 34-2 34" />
+                    <path class="cup-body" d="M28 56h104v16c0 30-22 52-52 52s-52-22-52-52z" />
+                    <ellipse class="cup-tea" cx="80" cy="56" rx="52" ry="9" />
+                </svg>
+                        <span>No-Tea Studio</span>
+                    </a>
+                    <p>Thoughtful, tailored websites built around the people and businesses they represent.</p>
+                </div>
+                <nav aria-label="Footer">
+                    <h2>Explore</h2>
+                    <ul class="footer-links">
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="/pricing/">Pricing</a></li>
+                        <li><a href="/projects/">Projects</a></li>
+                        <li><a href="/bookings/">Book Us</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <h2>Say hello</h2>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@noteastudio.co.uk">Email me</a></li>
+                        <li><a href="/privacy/">Privacy Notice</a></li>
+                        <li>Leeds, England</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-base">
+                <p>&copy; 2026 No-Tea Studio. All rights reserved.</p>
+                <p>Made in Leeds. Brewed with curiosity, served with a side of plain English.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="to-top" type="button" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" /></svg>
+    </button>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <dialog class="lightbox lightbox-wide" id="lightbox" aria-labelledby="lightbox-title">
+        <div class="lightbox-head">
+            <h2 id="lightbox-title">Project preview</h2>
+            <button class="lightbox-close" type="button" aria-label="Close enlarged project preview">&times;</button>
+        </div>
+        <img id="lightbox-img" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
+    </dialog>
+
+    <script src="/script.js"></script>
+    <script src="/theme-toggle.js"></script>
+    <script src="/cookie-consent.js"></script>
+    <script src="/home.js"></script>
 </body>
-
 </html>

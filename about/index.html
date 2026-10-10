@@ -1,16 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en-GB" data-theme="light" data-palette="hibiscus">
 <head>
     <meta charset="UTF-8">
+    <!-- Sets theme (light/dark) and palette before first paint so there is no flash. Pink (Hibiscus) is the default. -->
     <script>
         (function () {
-            var stored = localStorage.getItem('theme');
-            var theme = stored || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            document.documentElement.setAttribute('data-theme', theme);
+            var d = document.documentElement;
+            var theme = 'light';
+            var palette = 'hibiscus';
+            try {
+                var stored = localStorage.getItem('theme');
+                theme = stored || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                var p = localStorage.getItem('palette');
+                if (/^(matcha|builders|earlgrey|hibiscus)$/.test(p || '')) { palette = p; }
+            } catch (e) { }
+            d.setAttribute('data-theme', theme);
+            d.setAttribute('data-palette', palette);
+            d.classList.add('js');
+            setTimeout(function () {
+                if (!d.classList.contains('js-ready')) { d.classList.remove('js'); }
+            }, 5000);
         })();
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#fff6f6" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1a0d12" media="(prefers-color-scheme: dark)">
+
     <!-- Traditional fallback favicon for older browsers -->
     <link rel="shortcut icon" href="/images/favicon.ico">
 
@@ -20,147 +36,301 @@
 
     <!-- Apple Touch Icon for iOS devices -->
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
     <title>About | No-Tea Studio</title>
-    <link rel="stylesheet" href="../style.css">
     <meta name="description" content="Learn about No-Tea Studio. We build custom, tailored websites with transparent AI use and genuine collaboration. Founded by two Computer Science students.">
     <meta name="author" content="No-Tea Studio">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://noteastudio.co.uk/about/">
+    <link rel="alternate" hreflang="en-GB" href="https://noteastudio.co.uk/about/">
+    <link rel="alternate" hreflang="x-default" href="https://noteastudio.co.uk/about/">
+
+    <!-- Open Graph / social sharing -->
     <meta property="og:title" content="About No-Tea Studio | Custom Web Design">
     <meta property="og:description" content="We build custom websites with transparent AI use and genuine client collaboration. Learn more about our approach.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://noteastudio.co.uk/about/">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:site_name" content="No-Tea Studio">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:image" content="https://noteastudio.co.uk/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="No-Tea Studio: tailored website design.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About No-Tea Studio | Custom Web Design">
+    <meta name="twitter:description" content="We build custom websites with transparent AI use and genuine client collaboration. Learn more about our approach.">
+    <meta name="twitter:image" content="https://noteastudio.co.uk/images/og-image.png">
+    <meta name="twitter:image:alt" content="No-Tea Studio: tailored website design.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <link rel="stylesheet" href="/home.css">
+    <link rel="stylesheet" href="/pages.css">
+    <!-- Structured data -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "AboutPage",
+            "@id": "https://noteastudio.co.uk/about/#webpage",
+            "url": "https://noteastudio.co.uk/about/",
+            "name": "About No-Tea Studio",
+            "description": "Learn about No-Tea Studio. We build custom, tailored websites with transparent AI use and genuine collaboration. Founded by two Computer Science students.",
+            "inLanguage": "en-GB",
+            "isPartOf": {
+                "@id": "https://noteastudio.co.uk/#website"
+            },
+            "about": {
+                "@id": "https://noteastudio.co.uk/#business"
+            },
+            "breadcrumb": {
+                "@id": "https://noteastudio.co.uk/about/#breadcrumb"
+            },
+            "primaryImageOfPage": {
+                "@type": "ImageObject",
+                "url": "https://noteastudio.co.uk/images/og-image.png",
+                "width": 1200,
+                "height": 630
+            },
+            "dateModified": "2026-10-10"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://noteastudio.co.uk/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "About No-Tea Studio",
+                    "item": "https://noteastudio.co.uk/about/"
+                }
+            ],
+            "@id": "https://noteastudio.co.uk/about/#breadcrumb"
+        }
+    ]
+}
+    </script>
 </head>
-
 <body>
-    <nav class="navigation-bar">
-        <a href="../">No-Tea Studio</a>
-        <a href="./" aria-current="page">About</a>
-        <a href="../pricing/">Pricing</a>  
-        <a href="../projects/">Projects</a>
-        <a class="nav-cta" href="../bookings/">Book Us</a>
-        <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
-            <svg class="icon-sun" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="4" />
-                <path
-                    d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
-            </svg>
-            <svg class="icon-moon" viewBox="0 0 24 24">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
-            </svg>
-        </button>
-    </nav>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="progress" aria-hidden="true"><span></span></div>
 
-<main class="main-container about-page">
-    <div class="about-layout">
-        <div class="about-content">
-            <h1>About No-Tea Studio</h1>
+    <header class="site-header">
+        <nav class="nav container" aria-label="Main">
+            <a class="brand" href="/" aria-label="No-Tea Studio, home">
+                <svg viewBox="20 44 150 94" aria-hidden="true">
+                    <ellipse class="cup-saucer" cx="80" cy="132" rx="62" ry="10" />
+                    <path class="cup-handle" d="M128 70c26-4 26 34-2 34" />
+                    <path class="cup-handle-in" d="M128 70c26-4 26 34-2 34" />
+                    <path class="cup-body" d="M28 56h104v16c0 30-22 52-52 52s-52-22-52-52z" />
+                    <ellipse class="cup-tea" cx="80" cy="56" rx="52" ry="9" />
+                </svg>
+                <span>No-Tea Studio</span>
+            </a>
 
-            <section id="philosophy" class="about-intro">
-                <h2>Our Philosophy</h2>
-                <p>We believe the best websites come from genuine collaboration and transparency. Too often, businesses end up with generic sites that don't reflect who they really are. We wanted to change that.</p>
-            </section>
-
-            <section id="story" class="about-story">
-                <h2>Our Story</h2>
-                <p>No-Tea Studio was founded by Vasile-Renato and Imran, two Computer Science students who saw a gap in the web design market. We noticed businesses were being sold generic AI websites with zero transparency about how they were built or what they were actually getting.</p>
-                <p>We decided to do it differently. We write custom code from the ground up, tailored specifically to your business. We use AI strategically – for styling refinement, color palettes, bulk updates, or optimization – but you're always in control. Every line of code is reviewed and customized by us. We're not feeding prompts into ChatGPT and calling it a website. We're building something real, with your input at every step.</p>
-                <p>We're young, we're ambitious, and we're transparent about our process. You're not a transaction; you're a collaborator.</p>
-            </section>
-
-            <section id="approach" class="about-approach">
-                <h2>How We Work</h2>
-                <ol>
-                    <li><strong>Discovery</strong> – We chat with you about your vision, goals, and needs</li>
-                    <li><strong>Development</strong> – We build your site with custom code, keeping you updated and making changes as we go</li>
-                    <li><strong>Refinement</strong> – Your feedback shapes every iteration until it's exactly what you wanted</li>
-                    <li><strong>Launch</strong> – Once you're happy, we get it live and make sure everything runs smoothly</li>
-                </ol>
-            </section>
-
-            <section id="ai-use" class="about-ai">
-                <h2>Our AI Use</h2>
-                <p>We're transparent about how we use AI. It's a tool that makes us more efficient, not a replacement for understanding and craftsmanship:</p>
-                <ul>
-                    <li><strong>CSS & Styling</strong> – We use AI for color palette suggestions, responsive design refinement, and styling optimization</li>
-                    <li><strong>Bulk Updates</strong> – Adding features across multiple pages? AI helps us implement changes consistently</li>
-                    <li><strong>Optimization</strong> – We use AI to debug, optimize performance, and suggest improvements</li>
-                    <li><strong>Collaboration</strong> – AI helps us work faster so we can spend more time on what matters: understanding your business</li>
+            <div class="nav-panel" id="nav-panel">
+                <ul class="nav-links">
+                    <li><a href="/about/" aria-current="page">About</a></li>
+                    <li><a href="/pricing/">Pricing</a></li>
+                    <li><a href="/projects/">Projects</a></li>
                 </ul>
-                <p>The important bit: <strong>we review everything</strong>. AI generates ideas; we make the decisions. You get a website built by real people who understand your needs.</p>
-            </section>
+                <a class="btn btn-primary btn-sm nav-cta" href="/bookings/">Book Us</a>
+            </div>
 
-            <section id="ideal-client" class="about-ideal-client">
-                <h2>Our Ideal Client</h2>
-                <p>You're perfect for us if you're:</p>
-                <ul>
-                    <li>A small business owner or solopreneur (hairdresser, coach, consultant, tradesperson, creative)</li>
-                    <li>Looking for a professional online presence without the corporate agency price tag</li>
-                    <li>Open to collaboration and genuine feedback</li>
-                    <li>Value transparency and honest communication</li>
-                    <li>Bootstrapping or budget-conscious but won't compromise on quality</li>
-                </ul>
-                <p>We're best suited for businesses that understand they're working with talented young developers who are hungry to prove themselves – not an established agency. You get exceptional value and genuine care; we get the opportunity to build our portfolio and reputation. It's a genuine win-win.</p>
-            </section>
-
-            <section id="credentials" class="about-credentials">
-                <h2>Our Credentials</h2>
-                <ul>
-                    <li><strong>Vasile-Renato:</strong> A-Level Computer Science student</li>
-                    <li><strong>Imran:</strong> T-Level Digital Software Development student</li>
-                    <li>Custom web development from the ground up</li>
-                    <li>Continuous learning through real-world projects and industry best practices</li>
-                </ul>
-            </section>
-
-            <section id="get-in-touch" class="about-cta">
-                <h2>Ready to Work Together?</h2>
-                <p>We'd love to chat about your project. Whether you have a clear vision or need guidance, we're here to help.</p>
-                <div class="cta-buttons">
-                    <a href="../bookings/" class="cta-primary">Get a Quote</a>
-                    <a href="mailto:info@noteastudio.co.uk" class="cta-secondary">Email Us</a>
+            <div class="nav-tools">
+                <div class="palette">
+                    <button class="tool-btn palette-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="palette-pop" aria-label="Choose a colour palette">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3s6 6.2 6 10.5A6 6 0 0 1 6 13.5C6 9.2 12 3 12 3z" /></svg>
+                    </button>
+                    <div class="palette-pop" id="palette-pop" role="radiogroup" aria-label="Colour palette" hidden>
+                        <p class="palette-title">Pick your brew</p>
+                        <button type="button" role="radio" aria-checked="true" data-palette="hibiscus"><span class="swatch" style="--sw1:#c2255c;--sw2:#ffb703"></span>Hibiscus</button>
+                        <button type="button" role="radio" aria-checked="false" data-palette="matcha"><span class="swatch" style="--sw1:#2d6a4f;--sw2:#ff7a45"></span>Matcha</button>
+                        <button type="button" role="radio" aria-checked="false" data-palette="builders"><span class="swatch" style="--sw1:#a24a17;--sw2:#f2b134"></span>Builder's Tea</button>
+                        <button type="button" role="radio" aria-checked="false" data-palette="earlgrey"><span class="swatch" style="--sw1:#4a52c4;--sw2:#f59fb5"></span>Earl Grey</button>
+                    </div>
                 </div>
-            </section>
-        </div>
 
-        <aside class="about-rail" aria-hidden="true">
-            <nav class="about-rail-nav">
-                <a href="#philosophy" class="rail-node" data-label="Philosophy">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7l2 5-2 5-2-5z"/></svg>
-                </a>
-                <a href="#story" class="rail-node" data-label="Our story">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6a2 2 0 0 1 2-2h5v14H6a2 2 0 0 0-2 2V6z"/><path d="M20 6a2 2 0 0 0-2-2h-5v14h5a2 2 0 0 1 2 2V6z"/></svg>
-                </a>
-                <a href="#approach" class="rail-node" data-label="How we work">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4v-4h4v-4h4v-4h4"/></svg>
-                </a>
-                <a href="#ai-use" class="rail-node" data-label="Our AI use">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="1"/><path d="M9 6V3M15 6V3M9 21v-3M15 21v-3M6 9H3M6 15H3M21 9h-3M21 15h-3"/></svg>
-                </a>
-                <a href="#ideal-client" class="rail-node" data-label="Ideal client">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></svg>
-                </a>
-                <a href="#credentials" class="rail-node" data-label="Credentials">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="M9 13.5 7 21l5-3 5 3-2-7.5"/></svg>
-                </a>
-                <a href="#get-in-touch" class="rail-node" data-label="Get in touch">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
-                </a>
+                <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="4" />
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+                    </svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
+                    </svg>
+                </button>
+
+                <button class="tool-btn nav-burger" type="button" aria-expanded="false" aria-controls="nav-panel" aria-label="Open menu"><span></span></button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main">
+        <section class="page-hero" aria-labelledby="page-title">
+            <svg class="page-spark a" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" /></svg>
+            <svg class="page-spark b" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" /></svg>
+            <svg class="page-spark c" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" /></svg>
+            <div class="container">
+                <nav aria-label="Breadcrumb">
+                <ol class="crumbs">
+                    <li><a href="/">Home</a></li>
+                    <li aria-current="page">About</li>
+                </ol>
             </nav>
-        </aside>
-    </div>
+                <p class="eyebrow">About us</p>
+                <h1 id="page-title">About <span class="hl">No-Tea Studio</span></h1>
+                <p class="lead">Two Computer Science students building tailored websites, with your input at every step.</p>
+            </div>
+        </section>
+
+        <div class="container page-section">
+            <div class="about-layout">
+                <aside class="rail" aria-label="On this page">
+                    <p class="rail-title">On this page</p>
+                    <ol>
+                        <li><a href="#philosophy">Philosophy</a></li>
+                        <li><a href="#story">Our story</a></li>
+                        <li><a href="#approach">How we work</a></li>
+                        <li><a href="#ai-use">Our AI use</a></li>
+                        <li><a href="#ideal-client">Ideal client</a></li>
+                        <li><a href="#credentials">Credentials</a></li>
+                        <li><a href="#get-in-touch">Get in touch</a></li>
+                    </ol>
+                </aside>
+
+                <div class="about-body">
+                    <section id="philosophy" class="block block-pop reveal" aria-labelledby="philosophy-h">
+                        <h2 id="philosophy-h">Our Philosophy</h2>
+                        <p>We believe the best websites come from genuine collaboration and transparency. Too often, businesses end up with generic sites that don't reflect who they really are. We wanted to change that.</p>
+                    </section>
+
+                    <section id="story" class="block reveal" aria-labelledby="story-h">
+                        <h2 id="story-h">Our Story</h2>
+                        <p>No-Tea Studio was founded by Vasile-Renato and Imran, two Computer Science students who saw a gap in the web design market. We noticed businesses were being sold generic AI websites with zero transparency about how they were built or what they were actually getting.</p>
+                        <p>We decided to do it differently. We write custom code from the ground up, tailored specifically to your business. We use AI strategically &ndash; for styling refinement, color palettes, bulk updates, or optimization &ndash; but you're always in control. Every line of code is reviewed and customized by us. We're not feeding prompts into ChatGPT and calling it a website. We're building something real, with your input at every step.</p>
+                        <p>We're young, we're ambitious, and we're transparent about our process. You're not a transaction; you're a collaborator.</p>
+                    </section>
+
+                    <section id="approach" class="block reveal" aria-labelledby="approach-h">
+                        <h2 id="approach-h">How We Work</h2>
+                        <ol class="mini-steps">
+                            <li><strong>Discovery</strong> We chat with you about your vision, goals, and needs</li>
+                            <li><strong>Development</strong> We build your site with custom code, keeping you updated and making changes as we go</li>
+                            <li><strong>Refinement</strong> Your feedback shapes every iteration until it's exactly what you wanted</li>
+                            <li><strong>Launch</strong> Once you're happy, we get it live and make sure everything runs smoothly</li>
+                        </ol>
+                    </section>
+
+                    <section id="ai-use" class="block reveal" aria-labelledby="ai-h">
+                        <h2 id="ai-h">Our AI Use</h2>
+                        <p>We're transparent about how we use AI. It's a tool that makes us more efficient, not a replacement for understanding and craftsmanship:</p>
+                        <ul class="cards-2" style="margin-top:1.2rem">
+                            <li class="mini-card"><div class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9c0-1.7-1.3-2.5-3-2.5h-1.5a2 2 0 0 1-1.4-3.4C16 4.9 14.3 3 12 3z" /><circle cx="7.5" cy="11" r="1" /><circle cx="10.5" cy="7" r="1" /></svg></div><strong>CSS &amp; Styling</strong> We use AI for color palette suggestions, responsive design refinement, and styling optimization</li>
+                            <li class="mini-card"><div class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5" /><rect x="13" y="3" width="8" height="8" rx="1.5" /><rect x="3" y="13" width="8" height="8" rx="1.5" /><rect x="13" y="13" width="8" height="8" rx="1.5" /></svg></div><strong>Bulk Updates</strong> Adding features across multiple pages? AI helps us implement changes consistently</li>
+                            <li class="mini-card"><div class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z" /></svg></div><strong>Optimization</strong> We use AI to debug, optimize performance, and suggest improvements</li>
+                            <li class="mini-card"><div class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2" /><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" /><circle cx="17" cy="9" r="2.5" /><path d="M16 14.2c2.9-.4 5 1.7 5 4.8" /></svg></div><strong>Collaboration</strong> AI helps us work faster so we can spend more time on what matters: understanding your business</li>
+                        </ul>
+                        <p class="note">The important bit: <strong>we review everything</strong>. AI generates ideas; we make the decisions. You get a website built by real people who understand your needs.</p>
+                    </section>
+
+                    <section id="ideal-client" class="block reveal" aria-labelledby="ideal-h">
+                        <h2 id="ideal-h">Our Ideal Client</h2>
+                        <p style="margin-bottom:1rem">You're perfect for us if you're:</p>
+                        <ul class="tick-list">
+                            <li>A small business owner or solopreneur (hairdresser, coach, consultant, tradesperson, creative)</li>
+                            <li>Looking for a professional online presence without the corporate agency price tag</li>
+                            <li>Open to collaboration and genuine feedback</li>
+                            <li>Value transparency and honest communication</li>
+                            <li>Bootstrapping or budget-conscious but won't compromise on quality</li>
+                        </ul>
+                        <p>We're best suited for businesses that understand they're working with talented young developers who are hungry to prove themselves &ndash; not an established agency. You get exceptional value and genuine care; we get the opportunity to build our portfolio and reputation. It's a genuine win-win.</p>
+                    </section>
+
+                    <section id="credentials" class="block reveal" aria-labelledby="cred-h">
+                        <h2 id="cred-h">Our Credentials</h2>
+                        <ul class="cards-2" style="margin-bottom:1.3rem">
+                            <li class="person"><span class="avatar" aria-hidden="true">V</span><span><strong>Vasile-Renato</strong>A-Level Computer Science student</span></li>
+                            <li class="person"><span class="avatar" aria-hidden="true">I</span><span><strong>Imran</strong>T-Level Digital Software Development student</span></li>
+                        </ul>
+                        <ul class="tick-list" style="margin-bottom:0">
+                            <li>Custom web development from the ground up</li>
+                            <li>Continuous learning through real-world projects and industry best practices</li>
+                        </ul>
+                    </section>
+
+                    <section id="get-in-touch" aria-labelledby="touch-h">
+                        <div class="cta-band reveal">
+                            <h2 id="touch-h">Ready to Work Together?</h2>
+                            <p>We'd love to chat about your project. Whether you have a clear vision or need guidance, we're here to help.</p>
+                            <div class="cta-actions">
+                                <a class="btn btn-light" href="/bookings/">Get a Quote</a>
+                                <a class="btn btn-outline" href="mailto:info@noteastudio.co.uk">Email Us</a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer class="site-footer">
-        <p>&copy; 2026 No-Tea Studio. All rights reserved.</p>
-        <div class="footer-actions">
-            <a class="email-button" href="mailto:info@noteastudio.co.uk">Email me</a>
-            <a class="footer-link" href="../privacy/">Privacy Notice</a>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a class="brand" href="/" aria-label="No-Tea Studio, home">
+                        <svg viewBox="20 44 150 94" aria-hidden="true">
+                    <ellipse class="cup-saucer" cx="80" cy="132" rx="62" ry="10" />
+                    <path class="cup-handle" d="M128 70c26-4 26 34-2 34" />
+                    <path class="cup-handle-in" d="M128 70c26-4 26 34-2 34" />
+                    <path class="cup-body" d="M28 56h104v16c0 30-22 52-52 52s-52-22-52-52z" />
+                    <ellipse class="cup-tea" cx="80" cy="56" rx="52" ry="9" />
+                </svg>
+                        <span>No-Tea Studio</span>
+                    </a>
+                    <p>Thoughtful, tailored websites built around the people and businesses they represent.</p>
+                </div>
+                <nav aria-label="Footer">
+                    <h2>Explore</h2>
+                    <ul class="footer-links">
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="/pricing/">Pricing</a></li>
+                        <li><a href="/projects/">Projects</a></li>
+                        <li><a href="/bookings/">Book Us</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <h2>Say hello</h2>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@noteastudio.co.uk">Email me</a></li>
+                        <li><a href="/privacy/">Privacy Notice</a></li>
+                        <li>Leeds, England</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-base">
+                <p>&copy; 2026 No-Tea Studio. All rights reserved.</p>
+                <p>Made in Leeds. Brewed with curiosity, served with a side of plain English.</p>
+            </div>
         </div>
     </footer>
-    <script src="../theme-toggle.js"></script>
-    <script src="../cookie-consent.js"></script>
-</body>
 
+    <button class="to-top" type="button" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" /></svg>
+    </button>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="/theme-toggle.js"></script>
+    <script src="/cookie-consent.js"></script>
+    <script src="/home.js"></script>
+    <script src="/pages.js"></script>
+</body>
 </html>
