@@ -1699,6 +1699,106 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 }
 
 /* =====================================================================
+   Free website promo (homepage)
+   ===================================================================== */
+
+.promo-section {
+	padding-bottom: 0;
+}
+
+.promo {
+	position: relative;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	align-items: center;
+	gap: clamp(1.5rem, 4vw, 3rem);
+	padding: clamp(1.8rem, 4vw, 3rem);
+	overflow: hidden;
+	border: 2px solid var(--c-ink);
+	border-radius: 30px;
+	background: var(--c-surface);
+	box-shadow: 10px 10px 0 var(--c-accent);
+}
+
+.promo::before {
+	content: '';
+	position: absolute;
+	inset: -6rem auto auto -6rem;
+	width: 16rem;
+	height: 16rem;
+	border-radius: 50%;
+	background: color-mix(in srgb, var(--c-primary) 10%, transparent);
+	pointer-events: none;
+}
+
+.promo-copy {
+	position: relative;
+	max-width: 40rem;
+}
+
+.promo h2 {
+	font-size: clamp(1.8rem, 4vw, 2.8rem);
+}
+
+.promo p:not(.eyebrow) {
+	margin-top: 0.9rem;
+	color: var(--c-ink-soft);
+}
+
+.promo-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.9rem;
+	margin-top: 1.6rem;
+}
+
+.promo-badge {
+	position: relative;
+	display: grid;
+	place-items: center;
+	align-content: center;
+	width: clamp(8rem, 18vw, 11rem);
+	aspect-ratio: 1;
+	border: 2px solid var(--c-ink);
+	border-radius: 50%;
+	color: var(--c-on-primary);
+	background: var(--c-primary);
+	box-shadow: 6px 6px 0 var(--c-accent);
+	transform: rotate(-8deg);
+	animation: bob 5s ease-in-out infinite;
+}
+
+.promo-badge span {
+	font-family: var(--font-display);
+	font-size: clamp(2.4rem, 6vw, 3.6rem);
+	font-weight: 700;
+	line-height: 1;
+}
+
+.promo-badge small {
+	font-size: 0.85rem;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+}
+
+@media (max-width: 720px) {
+	.promo {
+		grid-template-columns: 1fr;
+	}
+
+	.promo-badge {
+		justify-self: start;
+		width: 7.5rem;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.promo-badge {
+		animation: none;
+	}
+}
+
+/* =====================================================================
    Contact
    ===================================================================== */
 

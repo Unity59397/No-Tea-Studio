@@ -1063,3 +1063,342 @@
 @keyframes draw {
 	to { stroke-dashoffset: 0; }
 }
+
+/* =====================================================================
+   Free website page
+   ===================================================================== */
+
+.free-hero {
+	display: grid;
+	grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+	align-items: center;
+	gap: clamp(2rem, 5vw, 4rem);
+}
+
+.ticket {
+	position: relative;
+	padding: 1.6rem 1.6rem 1.4rem;
+	border: 2px dashed var(--c-ink);
+	border-radius: 22px;
+	background: var(--c-surface);
+	box-shadow: 8px 8px 0 var(--c-accent);
+	transform: rotate(2deg);
+	transition: transform 300ms var(--ease);
+}
+
+.ticket:hover {
+	transform: rotate(0deg) translateY(-3px);
+}
+
+.ticket::before,
+.ticket::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	width: 1.6rem;
+	height: 1.6rem;
+	margin-top: -0.8rem;
+	border: 2px solid var(--c-ink);
+	border-radius: 50%;
+	background: var(--c-bg);
+}
+
+.ticket::before { left: -0.85rem; clip-path: inset(0 0 0 50%); }
+.ticket::after { right: -0.85rem; clip-path: inset(0 50% 0 0); }
+
+.ticket-kicker {
+	margin-bottom: 0.8rem;
+	color: var(--c-primary-deep);
+	font-family: var(--font-display);
+	font-size: 0.8rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+
+.ticket ul {
+	display: grid;
+	gap: 0.55rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	color: var(--c-ink-soft);
+}
+
+.ticket li strong {
+	display: inline-block;
+	margin-right: 0.3rem;
+	color: var(--c-ink);
+	font-family: var(--font-display);
+	font-size: 1.35rem;
+}
+
+.ticket-foot {
+	margin-top: 1rem;
+	padding-top: 0.9rem;
+	border-top: 2px dashed var(--c-line);
+	color: var(--c-ink-soft);
+	font-size: 0.92rem;
+	font-weight: 600;
+}
+
+.cards-3 {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1.1rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.cards-3 .mini-card {
+	padding: 1.4rem;
+	background: var(--c-surface);
+}
+
+.cards-3 + .note {
+	max-width: 50rem;
+}
+
+.fit-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+	align-items: center;
+	gap: clamp(2rem, 6vw, 5rem);
+}
+
+.fit-title {
+	font-size: clamp(2rem, 4.4vw, 3.2rem);
+}
+
+.fit-lead {
+	margin-top: 1rem;
+	color: var(--c-ink-soft);
+	font-size: 1.1rem;
+}
+
+.fit-card {
+	padding: clamp(1.4rem, 3.5vw, 2.2rem);
+	border: 2px solid var(--c-ink);
+	border-radius: 26px;
+	background: var(--c-surface);
+	box-shadow: 9px 9px 0 var(--c-accent);
+}
+
+.fit-list {
+	display: grid;
+	gap: 0.55rem;
+	margin: 0 0 1.4rem;
+	padding: 0;
+	list-style: none;
+}
+
+.fit-item {
+	display: flex;
+	align-items: center;
+	gap: 0.85rem;
+	padding: 0.7rem 0.95rem;
+	border: 2px solid var(--c-line);
+	border-radius: 14px;
+	background: var(--c-bg);
+	font-weight: 600;
+	cursor: pointer;
+	transition: border-color 160ms ease, background 160ms ease, transform 160ms var(--ease);
+}
+
+.fit-item:hover {
+	border-color: var(--c-primary);
+	transform: translateX(3px);
+}
+
+.fit-item:has(input:checked) {
+	border-color: var(--c-primary);
+	background: color-mix(in srgb, var(--c-primary) 10%, var(--c-surface));
+}
+
+.fit-item:has(input:focus-visible) {
+	outline: 3px solid var(--c-accent);
+	outline-offset: 2px;
+}
+
+.fit-item input,
+.check input {
+	flex-shrink: 0;
+	width: 1.3rem;
+	height: 1.3rem;
+	margin: 0;
+	accent-color: var(--c-primary);
+}
+
+.fit-meter {
+	height: 0.7rem;
+	overflow: hidden;
+	border: 2px solid var(--c-ink);
+	border-radius: 999px;
+	background: var(--c-bg-alt);
+}
+
+.fit-meter span {
+	display: block;
+	height: 100%;
+	background: linear-gradient(90deg, var(--c-primary), var(--c-accent));
+	transform: scaleX(0);
+	transform-origin: left;
+	transition: transform 400ms var(--ease);
+}
+
+.fit-result {
+	margin: 0.8rem 0 1.2rem;
+	color: var(--c-ink-soft);
+	font-weight: 600;
+}
+
+.fit-result.is-good {
+	color: var(--c-primary-deep);
+}
+
+.deal-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: clamp(1.1rem, 3vw, 1.8rem);
+	align-items: start;
+}
+
+.block h3 {
+	margin-bottom: 1rem;
+	font-size: 1.5rem;
+}
+
+.apply-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+	align-items: start;
+	gap: clamp(2rem, 6vw, 4.5rem);
+}
+
+.apply-intro {
+	position: sticky;
+	top: 6.5rem;
+}
+
+.form-row {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1.15rem;
+}
+
+.field select {
+	width: 100%;
+	padding: 0.8rem 0.95rem;
+	border: 2px solid var(--c-line);
+	border-radius: 12px;
+	color: var(--c-ink);
+	background: var(--c-bg);
+	font: inherit;
+	font-size: 1rem;
+	transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.field select:focus {
+	outline: none;
+	border-color: var(--c-primary);
+	box-shadow: 0 0 0 4px color-mix(in srgb, var(--c-primary) 22%, transparent);
+}
+
+.optional {
+	color: var(--c-ink-soft);
+	font-weight: 500;
+}
+
+.check-group {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	min-width: 0;
+}
+
+.check-group legend {
+	margin-bottom: 0.5rem;
+	padding: 0;
+	font-size: 0.95rem;
+	font-weight: 700;
+}
+
+.check-grid {
+	display: grid;
+	gap: 0.5rem;
+}
+
+.check {
+	display: flex;
+	align-items: center;
+	gap: 0.7rem;
+	padding: 0.55rem 0.8rem;
+	border: 2px solid var(--c-line);
+	border-radius: 12px;
+	background: var(--c-bg);
+	font-size: 0.97rem;
+	cursor: pointer;
+	transition: border-color 160ms ease, background 160ms ease;
+}
+
+.check:hover {
+	border-color: var(--c-primary);
+}
+
+.check:has(input:checked) {
+	border-color: var(--c-primary);
+	background: color-mix(in srgb, var(--c-primary) 10%, var(--c-surface));
+}
+
+.check:has(input:focus-visible) {
+	outline: 3px solid var(--c-accent);
+	outline-offset: 2px;
+}
+
+.check-group[aria-invalid="true"] .check {
+	border-color: var(--c-accent-text);
+}
+
+.price-aside {
+	margin-top: 1.6rem;
+	text-align: center;
+	color: var(--c-ink-soft);
+	font-weight: 600;
+}
+
+@media (max-width: 1020px) {
+	.cards-3 {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.free-hero,
+	.fit-grid,
+	.apply-grid,
+	.deal-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.ticket {
+		max-width: 24rem;
+		transform: none;
+	}
+
+	.apply-intro {
+		position: static;
+	}
+}
+
+@media (max-width: 560px) {
+	.cards-3,
+	.form-row {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.ticket,
+	.fit-meter span {
+		transition: none;
+	}
+}

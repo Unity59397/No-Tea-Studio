@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-theme="light" data-palette="hibiscus">
+<head>
+    <meta charset="UTF-8">
+    <!-- Sets theme (light/dark) and palette before first paint so there is no flash. Pink (Hibiscus) is the default. -->
+    <script>
+        (function () {
+            var d = document.documentElement;
+            var theme = 'light';
+            var palette = 'hibiscus';
+            try {
+                var stored = localStorage.getItem('theme');
+                theme = stored || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                var p = localStorage.getItem('palette');
+                if (/^(matcha|builders|earlgrey|hibiscus)$/.test(p || '')) { palette = p; }
+            } catch (e) { }
+            d.setAttribute('data-theme', theme);
+            d.setAttribute('data-palette', palette);
+            d.classList.add('js');
+            setTimeout(function () {
+                if (!d.classList.contains('js-ready')) { d.classList.remove('js'); }
+            }, 5000);
+        })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#fff6f6" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1a0d12" media="(prefers-color-scheme: dark)">
+
+    <!-- Traditional fallback favicon for older browsers -->
+    <link rel="shortcut icon" href="/images/favicon.ico">
+
+    <!-- Standard PNG favicons for modern browsers and Google Search -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
+
+    <!-- Apple Touch Icon for iOS devices -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <title>Apply for a Free Website | No-Tea Studio</title>
+    <meta name="description" content="Small business or community group in the UK? Apply for a free website from No-Tea Studio. See who qualifies, what&#x27;s included and how to apply.">
+    <meta name="author" content="No-Tea Studio">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://noteastudio.co.uk/free-website/">
+    <link rel="alternate" hreflang="en-GB" href="https://noteastudio.co.uk/free-website/">
+    <link rel="alternate" hreflang="x-default" href="https://noteastudio.co.uk/free-website/">
+
+    <!-- Open Graph / social sharing -->
+    <meta property="og:title" content="Apply for a Free Website | No-Tea Studio">
+    <meta property="og:description" content="We build a small number of free websites for small businesses that want to grow their online presence. See if you qualify and apply.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://noteastudio.co.uk/free-website/">
+    <meta property="og:site_name" content="No-Tea Studio">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:image" content="https://noteastudio.co.uk/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="No-Tea Studio: tailored website design.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Apply for a Free Website | No-Tea Studio">
+    <meta name="twitter:description" content="We build a small number of free websites for small businesses that want to grow their online presence. See if you qualify and apply.">
+    <meta name="twitter:image" content="https://noteastudio.co.uk/images/og-image.png">
+    <meta name="twitter:image:alt" content="No-Tea Studio: tailored website design.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <link rel="stylesheet" href="/home.css">
+    <link rel="stylesheet" href="/pages.css">
+    <!-- Structured data -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebPage",
+            "@id": "https://noteastudio.co.uk/free-website/#webpage",
+            "url": "https://noteastudio.co.uk/free-website/",
+            "name": "Free Website",
+            "description": "Small business or community group in the UK? Apply for a free website from No-Tea Studio. See who qualifies, what's included and how to apply.",
+            "inLanguage": "en-GB",
+            "isPartOf": {
+                "@id": "https://noteastudio.co.uk/#website"
+            },
+            "about": {
+                "@id": "https://noteastudio.co.uk/#business"
+            },
+            "breadcrumb": {
+                "@id": "https://noteastudio.co.uk/free-website/#breadcrumb"
+            },
+            "primaryImageOfPage": {
+                "@type": "ImageObject",
+                "url": "https://noteastudio.co.uk/images/og-image.png",
+                "width": 1200,
+                "height": 630
+            },
+            "dateModified": "2026-10-10"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://noteastudio.co.uk/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Free Website",
+                    "item": "https://noteastudio.co.uk/free-website/"
+                }
+            ],
+            "@id": "https://noteastudio.co.uk/free-website/#breadcrumb"
+        },
+        {
+            "@type": "FAQPage",
+            "@id": "https://noteastudio.co.uk/free-website/#faq",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "Is the website really free?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes. For a successful application, our design and build time is free. The only cost you'd normally pay is your own domain name (around £10-15 a year), and we can often use free hosting such as GitHub Pages for simpler sites."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What's the catch?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "No catch, but a fair swap. We ask that you take part properly (send content, give feedback), let us feature the finished site in our portfolio, and share a short testimonial if you're happy with it. We build our reputation, you get a website."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How many free websites do you build?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "We take on a small number of free projects at a time so each one gets proper attention. If we can't start yours straight away, we'll tell you honestly and keep your application in mind for the next opening."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What if my application isn't chosen?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "We reply to everyone. If it's not the right fit right now, we'll say why and, where it makes sense, point you to one of our paid packages, which start from a very small budget."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What does a free website include?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "A Starter-style site: 3-5 pages, mobile responsive design, a contact form, basic SEO setup, an SSL certificate and one month of support and revisions."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Do I need to have my content ready?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Not perfectly. A logo (if you have one), a few photos and some notes about what you do is a great start. We'll help you shape the words and pages."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What about ongoing costs and changes later?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "After the first month you can manage small updates yourself, ask us for ad-hoc work, or take our maintenance retainer from £50 a month. You can also upgrade to a bigger site later: see the Pricing page."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can I apply if I need an online shop?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "E-commerce is outside what we can offer for free, but tell us about it in your application and we'll point you to the right package."
+                    }
+                }
+            ]
+        }
+    ]
+}
+    </script>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="progress" aria-hidden="true"><span></span></div>
+
+    <header class="site-header">
+        <nav class="nav container" aria-label="Main">
+            <a class="brand" href="/" aria-label="No-Tea Studio, home">
+                <svg viewBox="20 44 150 94" aria-hidden="true">
+                    <ellipse class="cup-saucer" cx="80" cy="132" rx="62" ry="10" />
+                    <path class="cup-handle" d="M128 70c26-4 26 34-2 34" />
+                    <path class="cup-handle-in" d="M128 70c26-4 26 34-2 34" />
+                    <path class="cup-body" d="M28 56h104v16c0 30-22 52-52 52s-52-22-52-52z" />
+                    <ellipse class="cup-tea" cx="80" cy="56" rx="52" ry="9" />
+                </svg>
+                <span>No-Tea Studio</span>
+            </a>
+
+            <div class="nav-panel" id="nav-panel">
+                <ul class="nav-links">
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/pricing/">Pricing</a></li>
+                    <li><a href="/projects/">Projects</a></li>
+                    <li><a href="/free-website/" aria-current="page">Free Website</a></li>
+                </ul>
+                <a class="btn btn-primary btn-sm nav-cta" href="/bookings/">Book Us</a>
+            </div>
+
+            <div class="nav-tools">
+                <div class="palette">
+                    <button class="tool-btn palette-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="palette-pop" aria-label="Choose a colour palette">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3s6 6.2 6 10.5A6 6 0 0 1 6 13.5C6 9.2 12 3 12 3z" /></svg>
+                    </button>
+                    <div class="palette-pop" id="palette-pop" role="radiogroup" aria-label="Colour palette" hidden>
+                        <p class="palette-title">Pick your brew</p>
+                        <button type="button" role="radio" aria-checked="true" data-palette="hibiscus"><span class="swatch" style="--sw1:#c2255c;--sw2:#ffb703"></span>Hibiscus</button>
+                        <button type="button" role="radio" aria-checked="false" data-palette="matcha"><span class="swatch" style="--sw1:#2d6a4f;--sw2:#ff7a45"></span>Matcha</button>
+                        <button type="button" role="radio" aria-checked="false" data-palette="builders"><span class="swatch" style="--sw1:#a24a17;--sw2:#f2b134"></span>Builder's Tea</button>
+                        <button type="button" role="radio" aria-checked="false" data-palette="earlgrey"><span class="swatch" style="--sw1:#4a52c4;--sw2:#f59fb5"></span>Earl Grey</button>
+                    </div>
+                </div>
+
+                <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="4" />
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+                    </svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
+                    </svg>
+                </button>
+
+                <button class="tool-btn nav-burger" type="button" aria-expanded="false" aria-controls="nav-panel" aria-label="Open menu"><span></span></button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main">
+        <section class="page-hero" aria-labelledby="page-title">
+            <svg class="page-spark a" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" /></svg>
+            <svg class="page-spark b" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" /></svg>
+            <svg class="page-spark c" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" /></svg>
+            <div class="container">
+                <nav aria-label="Breadcrumb">
+                <ol class="crumbs">
+                    <li><a href="/">Home</a></li>
+                    <li aria-current="page">Free Website</li>
+                </ol>
+            </nav>
+                <div class="free-hero">
+                    <div>
+                        <p class="eyebrow">Free website programme</p>
+                        <h1 id="page-title" style="max-width:none">Apply for a <span class="hl">free website.</span></h1>
+                        <p class="lead">We build a small number of free websites for small businesses that could use a hand getting online. Here is who it is for, what you get and how to apply.</p>
+                        <div class="page-hero-actions">
+                            <a class="btn btn-primary" href="#apply">Apply now <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+                            <a class="btn btn-ghost" href="#fit">Check you qualify</a>
+                        </div>
+                    </div>
+                    <aside class="ticket" aria-label="At a glance">
+                        <p class="ticket-kicker">Free for successful applicants</p>
+                        <ul>
+                            <li><strong>£0</strong> design and build</li>
+                            <li><strong>3-5</strong> page mobile-friendly site</li>
+                            <li><strong>About 5 minutes</strong> to apply</li>
+                        </ul>
+                        <p class="ticket-foot">Limited places. We reply to everyone.</p>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-section" id="who" aria-labelledby="who-h">
+            <div class="container">
+                <div class="section-head reveal">
+                    <p class="eyebrow">Who it's for</p>
+                    <h2 id="who-h">The requirements</h2>
+                    <p>We would love to help everyone, but we can only take on a few free projects at a time. These are the things we look for.</p>
+                </div>
+                <ul class="cards-3">
+                    <li class="mini-card reveal"><div class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" /></svg></div><strong>A small business or sole trader</strong>Roughly ten people or fewer: a sole trader, a micro business, or a small community group or charity.</li>
+                    <li class="mini-card reveal"><div class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" /><circle cx="12" cy="10" r="2.5" /></svg></div><strong>Based in the UK</strong>We&#x27;re in Leeds, so Yorkshire businesses are the easiest to work with, but we will look at applications from anywhere in the UK.</li>
+                    <li class="mini-card reveal"><div class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8" /><path d="M15 7h6v6" /></svg></div><strong>Ready to grow your online presence</strong>You have no website yet, or yours is outdated or not pulling its weight, and you want to be easier to find on Google, social media and local listings.</li>
+                    <li class="mini-card reveal"><div class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 9l1.5-5h13L20 9" /><path d="M4 9h16v11H4z" /><path d="M9 20v-6h6v6" /></svg></div><strong>A real business, trading or about to launch</strong>We want to build for a genuine business or group with something to show: services, products, a story, a cause.</li>
+                    <li class="mini-card reveal"><div class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z" /></svg></div><strong>Happy to collaborate</strong>You can send your logo, photos and a few words about what you do, and give us feedback along the way. Good websites are built together.</li>
+                    <li class="mini-card reveal"><div class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z" /></svg></div><strong>OK with us showing the finished site</strong>You&#x27;re happy for us to add it to our portfolio and share a short, honest testimonial once you love it.</li>
+                </ul>
+                <p class="note reveal"><strong>Bonus points, not requirements:</strong> you plan to keep your online presence fresh (a Google Business Profile, regular social posts, collecting reviews), you serve a local community, and you have a story worth telling.</p>
+            </div>
+        </section>
+
+        <section class="section section-alt" id="fit" aria-labelledby="fit-h">
+            <div class="container fit-grid">
+                <div class="reveal">
+                    <p class="eyebrow">Quick check</p>
+                    <h2 id="fit-h" class="fit-title">Do you qualify?</h2>
+                    <p class="fit-lead">Tick everything that sounds like you. It is only a guide, and nothing is sent.</p>
+                </div>
+                <div class="fit-card reveal">
+                    <ul class="fit-list">
+                        <li><label class="fit-item"><input type="checkbox"><span>A small business or sole trader</span></label></li>
+                        <li><label class="fit-item"><input type="checkbox"><span>Based in the UK</span></label></li>
+                        <li><label class="fit-item"><input type="checkbox"><span>Ready to grow your online presence</span></label></li>
+                        <li><label class="fit-item"><input type="checkbox"><span>A real business, trading or about to launch</span></label></li>
+                        <li><label class="fit-item"><input type="checkbox"><span>Happy to collaborate</span></label></li>
+                        <li><label class="fit-item"><input type="checkbox"><span>OK with us showing the finished site</span></label></li>
+                    </ul>
+                    <div class="fit-meter" aria-hidden="true"><span id="fit-bar"></span></div>
+                    <p class="fit-result" id="fit-result" role="status" aria-live="polite">0 of 6 ticked</p>
+                    <a class="btn btn-primary" href="#apply">Go to the application <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-section" aria-labelledby="deal-h">
+            <div class="container">
+                <div class="section-head reveal">
+                    <p class="eyebrow">The deal</p>
+                    <h2 id="deal-h">What you get, and what we ask</h2>
+                </div>
+                <div class="deal-grid">
+                    <div class="block reveal">
+                        <h3>What you get</h3>
+                        <ul class="tick-list">
+                            <li>A 3-5 page custom website, designed around your business</li>
+                            <li>Mobile responsive design</li>
+                            <li>A contact form so customers can reach you</li>
+                            <li>Basic SEO setup to help people find you</li>
+                            <li>SSL certificate</li>
+                            <li>1 month of support and revisions</li>
+                            <li>Free hosting where it suits (for example GitHub Pages), so you only pay for your domain, around £10-15 a year</li>
+                        </ul>
+                    </div>
+                    <div class="block reveal">
+                        <h3>What we ask in return</h3>
+                        <ul class="tick-list">
+                            <li>Your content: logo, photos and a few words about what you do</li>
+                            <li>Timely replies and honest feedback while we build</li>
+                            <li>Permission to feature the finished site in our portfolio</li>
+                            <li>A short, honest testimonial if you are happy with the result</li>
+                            <li>A small &ldquo;Website by No-Tea Studio&rdquo; credit in the footer</li>
+                        </ul>
+                        <p class="note"><strong>Not a fit for the free programme:</strong> online shops, large custom web apps, and businesses or causes we cannot support (for example gambling, adult content or anything misleading or illegal). Bigger projects are very welcome on our <a href="/pricing/">paid packages</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt" aria-labelledby="how-h">
+            <div class="container">
+                <div class="section-head reveal">
+                    <p class="eyebrow">How it works</p>
+                    <h2 id="how-h">From application to launch</h2>
+                </div>
+                <ol class="steps">
+                    <li class="step reveal"><strong>Apply</strong><span>Fill in the short form below. It takes about five minutes.</span></li>
+                    <li class="step reveal"><strong>We review</strong><span>We read every application and reply to everyone, whether it is a yes, a not yet or a better fit elsewhere.</span></li>
+                    <li class="step reveal"><strong>Plan together</strong><span>We chat about your goals, your customers and the pages you need.</span></li>
+                    <li class="step reveal"><strong>Build and launch</strong><span>We build it, you give feedback, and we launch it together. Starter sites typically take 1-2 weeks.</span></li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="page-section" id="apply" aria-labelledby="apply-h">
+            <div class="container apply-grid">
+                <div class="apply-intro reveal">
+                    <p class="eyebrow">Apply</p>
+                    <h2 id="apply-h" class="fit-title">Tell us about your business</h2>
+                    <p class="fit-lead">The more we know, the easier it is to say yes. There are no wrong answers, and you can tell us in your own words.</p>
+                    <ul class="tick-list" style="margin-top:1.4rem">
+                        <li>No payment details needed, ever</li>
+                        <li>We reply to every application</li>
+                        <li>Prefer email? <a href="mailto:info@noteastudio.co.uk">info@noteastudio.co.uk</a></li>
+                    </ul>
+                </div>
+
+                <div class="form-card reveal" id="apply-card">
+                    <div id="apply-wrap">
+                        <form class="contact-form" id="apply-form" action="https://formspree.io/f/xbgrnyqe" method="POST">
+<input type="hidden" name="_subject" value="Free website application">
+<input type="hidden" name="application-type" value="Free website programme">
+<div class="form-row"><div class="field"><label for="a-name">Your name</label><input type="text" id="a-name" name="name" autocomplete="name" required aria-describedby="a-name-error"><p class="field-error" id="a-name-error"></p></div><div class="field"><label for="a-email">Email address</label><input type="email" id="a-email" name="email" placeholder="your.email@example.com" autocomplete="email" required aria-describedby="a-email-error"><p class="field-error" id="a-email-error"></p></div></div>
+<div class="form-row"><div class="field"><label for="a-business">Business or group name</label><input type="text" id="a-business" name="business-name" autocomplete="organization" required aria-describedby="a-business-error"><p class="field-error" id="a-business-error"></p></div><div class="field"><label for="a-location">Town or city</label><input type="text" id="a-location" name="location" placeholder="For example, Leeds"  required aria-describedby="a-location-error"><p class="field-error" id="a-location-error"></p></div></div>
+<div class="form-row"><div class="field"><label for="a-type">What kind of business?</label><select id="a-type" name="business-type" required aria-describedby="a-type-error"><option value="">Choose one</option><option>Trades or home services</option><option>Beauty, hair or wellbeing</option><option>Food, drink or hospitality</option><option>Creative, photography or events</option><option>Coaching, consulting or professional services</option><option>Retail or handmade products</option><option>Charity, club or community group</option><option>Something else</option></select><p class="field-error" id="a-type-error"></p></div><div class="field"><label for="a-size">How big is the team?</label><select id="a-size" name="team-size" required aria-describedby="a-size-error"><option value="">Choose one</option><option>Just me</option><option>2-5 people</option><option>6-10 people</option><option>More than 10</option></select><p class="field-error" id="a-size-error"></p></div></div>
+<div class="field"><label for="a-links">Current website or social media <span class="optional">(optional)</span></label><input type="text" id="a-links" name="current-links" placeholder="Links to anything you already have"></div>
+<fieldset class="field check-group" id="a-needs" aria-describedby="a-needs-error"><legend>What would you like a website to help with?</legend><div class="check-grid">
+                                    <label class="check"><input type="checkbox" name="needs" value="I don&#x27;t have a website yet"><span>I don&#x27;t have a website yet</span></label>
+                                    <label class="check"><input type="checkbox" name="needs" value="My website is outdated or hard to use"><span>My website is outdated or hard to use</span></label>
+                                    <label class="check"><input type="checkbox" name="needs" value="I want to be easier to find on Google"><span>I want to be easier to find on Google</span></label>
+                                    <label class="check"><input type="checkbox" name="needs" value="I want to grow my social media or online presence"><span>I want to grow my social media or online presence</span></label>
+                                    <label class="check"><input type="checkbox" name="needs" value="I want customers to contact or book me online"><span>I want customers to contact or book me online</span></label>
+                                    <label class="check"><input type="checkbox" name="needs" value="Something else"><span>Something else</span></label>
+</div><p class="field-error" id="a-needs-error"></p></fieldset>
+<div class="field"><label for="a-about">Tell us about your business</label><textarea id="a-about" name="about-the-business" rows="4" placeholder="What you do, who your customers are and how long you have been going." required aria-describedby="a-about-error"></textarea><p class="field-error" id="a-about-error"></p></div>
+<div class="field"><label for="a-why">How would a free website help you grow?</label><textarea id="a-why" name="how-it-would-help" rows="4" placeholder="For example, reaching more local customers, looking more professional, or building your presence online." required aria-describedby="a-why-error"></textarea><p class="field-error" id="a-why-error"></p></div>
+<p class="hp" aria-hidden="true"><label>Leave this field empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></p>
+<div class="consent"><div class="consent-row"><input type="checkbox" id="a-eligible" name="confirms-eligibility" required aria-describedby="a-eligible-error"><label for="a-eligible">I run a small business, sole trader operation or community group, and the details above are true.</label></div><p class="field-error" id="a-eligible-error"></p></div>
+<div class="consent"><div class="consent-row"><input type="checkbox" id="a-portfolio" name="agrees-to-portfolio-and-testimonial" required aria-describedby="a-portfolio-error"><label for="a-portfolio">If I am chosen, I am happy for No-Tea Studio to feature the finished website in its portfolio and to ask me for a short testimonial.</label></div><p class="field-error" id="a-portfolio-error"></p></div>
+<div class="consent"><div class="consent-row"><input type="checkbox" id="a-privacy" name="privacy-consent" required aria-describedby="a-privacy-error"><label for="a-privacy">I have read the <a href="/privacy/">Privacy Notice</a>.</label></div><p class="field-error" id="a-privacy-error"></p></div>
+<div class="form-status is-error" id="apply-status" role="alert" hidden></div>
+<button type="submit" class="btn btn-primary" id="apply-btn">Send my application</button>
+                        </form>
+                    </div>
+                    <div class="form-success" id="apply-success" tabindex="-1" hidden>
+                        <div class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg></div>
+                        <h2>Application sent. Fingers crossed!</h2>
+                        <p>Thank you for applying. We read every application and will be in touch, whatever the outcome.</p>
+                        <a class="btn btn-ghost btn-sm" href="/projects/">See our work while you wait</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt" aria-labelledby="faq-h">
+            <div class="container">
+                <div class="section-head reveal">
+                    <p class="eyebrow">Common questions</p>
+                    <h2 id="faq-h">Free website FAQs</h2>
+                </div>
+                <div class="faq-list reveal">
+                    <details name="faq">
+                        <summary>Is the website really free?</summary>
+                        <p>Yes. For a successful application, our design and build time is free. The only cost you&#x27;d normally pay is your own domain name (around £10-15 a year), and we can often use free hosting such as GitHub Pages for simpler sites.</p>
+                    </details>
+                    <details name="faq">
+                        <summary>What&#x27;s the catch?</summary>
+                        <p>No catch, but a fair swap. We ask that you take part properly (send content, give feedback), let us feature the finished site in our portfolio, and share a short testimonial if you&#x27;re happy with it. We build our reputation, you get a website.</p>
+                    </details>
+                    <details name="faq">
+                        <summary>How many free websites do you build?</summary>
+                        <p>We take on a small number of free projects at a time so each one gets proper attention. If we can&#x27;t start yours straight away, we&#x27;ll tell you honestly and keep your application in mind for the next opening.</p>
+                    </details>
+                    <details name="faq">
+                        <summary>What if my application isn&#x27;t chosen?</summary>
+                        <p>We reply to everyone. If it&#x27;s not the right fit right now, we&#x27;ll say why and, where it makes sense, point you to one of our paid packages, which start from a very small budget.</p>
+                    </details>
+                    <details name="faq">
+                        <summary>What does a free website include?</summary>
+                        <p>A Starter-style site: 3-5 pages, mobile responsive design, a contact form, basic SEO setup, an SSL certificate and one month of support and revisions.</p>
+                    </details>
+                    <details name="faq">
+                        <summary>Do I need to have my content ready?</summary>
+                        <p>Not perfectly. A logo (if you have one), a few photos and some notes about what you do is a great start. We&#x27;ll help you shape the words and pages.</p>
+                    </details>
+                    <details name="faq">
+                        <summary>What about ongoing costs and changes later?</summary>
+                        <p>After the first month you can manage small updates yourself, ask us for ad-hoc work, or take our maintenance retainer from £50 a month. You can also upgrade to a bigger site later: see the Pricing page.</p>
+                    </details>
+                    <details name="faq">
+                        <summary>Can I apply if I need an online shop?</summary>
+                        <p>E-commerce is outside what we can offer for free, but tell us about it in your application and we&#x27;ll point you to the right package.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-section" aria-labelledby="cta-h">
+            <div class="container">
+                <div class="cta-band reveal">
+                    <h2 id="cta-h">Not sure it is for you?</h2>
+                    <p>Ask us. If the free programme is not the right fit, there is usually a package that is.</p>
+                    <div class="cta-actions">
+                        <a class="btn btn-light" href="/bookings/">Get a quote</a>
+                        <a class="btn btn-outline" href="/pricing/">See pricing</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a class="brand" href="/" aria-label="No-Tea Studio, home">
+                        <svg viewBox="20 44 150 94" aria-hidden="true">
+                    <ellipse class="cup-saucer" cx="80" cy="132" rx="62" ry="10" />
+                    <path class="cup-handle" d="M128 70c26-4 26 34-2 34" />
+                    <path class="cup-handle-in" d="M128 70c26-4 26 34-2 34" />
+                    <path class="cup-body" d="M28 56h104v16c0 30-22 52-52 52s-52-22-52-52z" />
+                    <ellipse class="cup-tea" cx="80" cy="56" rx="52" ry="9" />
+                </svg>
+                        <span>No-Tea Studio</span>
+                    </a>
+                    <p>Thoughtful, tailored websites built around the people and businesses they represent.</p>
+                </div>
+                <nav aria-label="Footer">
+                    <h2>Explore</h2>
+                    <ul class="footer-links">
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="/pricing/">Pricing</a></li>
+                        <li><a href="/projects/">Projects</a></li>
+                        <li><a href="/free-website/">Free Website</a></li>
+                        <li><a href="/bookings/">Book Us</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <h2>Say hello</h2>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@noteastudio.co.uk">Email me</a></li>
+                        <li><a href="/privacy/">Privacy Notice</a></li>
+                        <li>Leeds, England</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-base">
+                <p>&copy; 2026 No-Tea Studio. All rights reserved.</p>
+                <p>Made in Leeds. Brewed with curiosity, served with a side of plain English.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="to-top" type="button" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" /></svg>
+    </button>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="/theme-toggle.js"></script>
+    <script src="/cookie-consent.js"></script>
+    <script src="/home.js"></script>
+    <script src="/apply.js"></script>
+</body>
+</html>
