@@ -15,6 +15,11 @@
 	--radius-sm: 14px;
 	--ease: cubic-bezier(0.2, 0.8, 0.2, 1);
 	--container: 1180px;
+	/* Outline and hard-shadow colours. Light mode keeps the bold ink outline and
+	   colour-block shadow; dark mode swaps them for soft edges (see the dark block). */
+	--c-edge: var(--c-ink);
+	--c-pop: var(--c-accent);
+	--c-pop-2: var(--c-primary);
 }
 
 /* ---- Palette 1: Matcha ---- */
@@ -35,22 +40,6 @@ html[data-palette="matcha"] {
 	color-scheme: light;
 }
 
-html[data-theme="dark"][data-palette="matcha"] {
-	--c-bg: #0e1812;
-	--c-bg-alt: #13221a;
-	--c-surface: #182b21;
-	--c-ink: #eef4ea;
-	--c-ink-soft: #a9bbae;
-	--c-primary: #6fcf97;
-	--c-on-primary: #06210f;
-	--c-primary-deep: #8ee3b0;
-	--c-accent: #ff9366;
-	--c-accent-text: #ffab87;
-	--c-on-accent: #2b1204;
-	--c-line: #27402f;
-	--c-shadow: rgba(0, 0, 0, 0.45);
-	color-scheme: dark;
-}
 
 /* ---- Palette 2: Builder's Tea ---- */
 html[data-palette="builders"] {
@@ -70,22 +59,6 @@ html[data-palette="builders"] {
 	color-scheme: light;
 }
 
-html[data-theme="dark"][data-palette="builders"] {
-	--c-bg: #1a120c;
-	--c-bg-alt: #22170f;
-	--c-surface: #2a1c13;
-	--c-ink: #f7ecdf;
-	--c-ink-soft: #c9b3a0;
-	--c-primary: #f0a05a;
-	--c-on-primary: #2a1405;
-	--c-primary-deep: #ffc388;
-	--c-accent: #f2c14e;
-	--c-accent-text: #f6cd6a;
-	--c-on-accent: #2a1d05;
-	--c-line: #402d1f;
-	--c-shadow: rgba(0, 0, 0, 0.5);
-	color-scheme: dark;
-}
 
 /* ---- Palette 3: Earl Grey ---- */
 html[data-palette="earlgrey"] {
@@ -105,22 +78,6 @@ html[data-palette="earlgrey"] {
 	color-scheme: light;
 }
 
-html[data-theme="dark"][data-palette="earlgrey"] {
-	--c-bg: #10121f;
-	--c-bg-alt: #161930;
-	--c-surface: #1d2140;
-	--c-ink: #eceefb;
-	--c-ink-soft: #aeb4d4;
-	--c-primary: #9aa4ff;
-	--c-on-primary: #0e1236;
-	--c-primary-deep: #bcc3ff;
-	--c-accent: #ff9fbe;
-	--c-accent-text: #ffa9c4;
-	--c-on-accent: #3a0a1a;
-	--c-line: #2d3260;
-	--c-shadow: rgba(0, 0, 0, 0.5);
-	color-scheme: dark;
-}
 
 /* ---- Palette 4: Hibiscus (pink, the default) ---- */
 :root,
@@ -141,22 +98,93 @@ html[data-palette="hibiscus"] {
 	color-scheme: light;
 }
 
+/* ---- One shared dark mode ----
+   Every palette uses the same charcoal surfaces (soft edges, no hard shadows, a
+   gentle glow in the corners). The palette only chooses the accent colours. */
+html[data-theme="dark"] {
+	--c-bg: #131417;
+	--c-bg-alt: #181a1e;
+	--c-surface: #202228;
+	--c-ink: #f4f1f4;
+	--c-ink-soft: #b3aeb6;
+	--c-line: #30323a;
+	--c-shadow: rgba(0, 0, 0, 0.5);
+	--c-edge: #3a3c46;
+	--c-pop: transparent;
+	--c-pop-2: transparent;
+	color-scheme: dark;
+}
+
 html[data-theme="dark"][data-palette="hibiscus"],
 html[data-theme="dark"]:not([data-palette]) {
-	--c-bg: #1a0d12;
-	--c-bg-alt: #24121a;
-	--c-surface: #2e1822;
-	--c-ink: #fbeaee;
-	--c-ink-soft: #d3adb8;
 	--c-primary: #ff7fa8;
 	--c-on-primary: #3b0620;
 	--c-primary-deep: #ffa8c3;
 	--c-accent: #ffcf5c;
 	--c-accent-text: #ffd679;
 	--c-on-accent: #2a1a00;
-	--c-line: #47252f;
-	--c-shadow: rgba(0, 0, 0, 0.5);
-	color-scheme: dark;
+}
+
+html[data-theme="dark"][data-palette="matcha"] {
+	--c-primary: #6fcf97;
+	--c-on-primary: #06210f;
+	--c-primary-deep: #8ee3b0;
+	--c-accent: #ff9366;
+	--c-accent-text: #ffab87;
+	--c-on-accent: #2b1204;
+}
+
+html[data-theme="dark"][data-palette="builders"] {
+	--c-primary: #f0a05a;
+	--c-on-primary: #2a1405;
+	--c-primary-deep: #ffc388;
+	--c-accent: #f2c14e;
+	--c-accent-text: #f6cd6a;
+	--c-on-accent: #2a1d05;
+}
+
+html[data-theme="dark"][data-palette="earlgrey"] {
+	--c-primary: #9aa4ff;
+	--c-on-primary: #0e1236;
+	--c-primary-deep: #bcc3ff;
+	--c-accent: #ff9fbe;
+	--c-accent-text: #ffa9c4;
+	--c-on-accent: #3a0a1a;
+}
+
+/* Soft colour glow in two corners (fixed, so it never scrolls or repaints) */
+html[data-theme="dark"] body {
+	background: transparent;
+}
+
+html[data-theme="dark"] body::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+	background:
+		radial-gradient(55rem 38rem at 105% -8%, color-mix(in srgb, var(--c-primary) 16%, transparent), transparent 70%),
+		radial-gradient(48rem 36rem at -8% 108%, color-mix(in srgb, var(--c-primary) 12%, transparent), transparent 70%);
+}
+
+/* Buttons: flat gradient pill with a soft glow instead of the chunky shadow */
+html[data-theme="dark"] .btn-primary {
+	border-color: transparent;
+	background: linear-gradient(135deg, var(--c-primary), color-mix(in srgb, var(--c-primary) 55%, var(--c-accent)));
+	box-shadow: 0 8px 22px color-mix(in srgb, var(--c-primary) 28%, transparent);
+}
+
+html[data-theme="dark"] .btn-primary:hover {
+	box-shadow: 0 10px 28px color-mix(in srgb, var(--c-primary) 40%, transparent);
+}
+
+html[data-theme="dark"] .btn-primary:active {
+	box-shadow: 0 2px 8px color-mix(in srgb, var(--c-primary) 30%, transparent);
+}
+
+html[data-theme="dark"] .hero::before {
+	background: radial-gradient(circle, color-mix(in srgb, var(--c-primary) 20%, transparent), transparent 68%);
 }
 
 /* =====================================================================
@@ -665,11 +693,11 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 	z-index: 130;
 	width: min(18.5rem, calc(100vw - 2.5rem));
 	padding: 1rem 1.1rem 1.05rem;
-	border: 2px solid var(--c-ink);
+	border: 2px solid var(--c-edge);
 	border-radius: 18px;
 	color: var(--c-ink);
 	background: var(--c-surface);
-	box-shadow: 5px 5px 0 var(--c-accent);
+	box-shadow: 5px 5px 0 var(--c-pop);
 	opacity: 0;
 	transform: translateY(-8px) scale(0.97);
 	transform-origin: top right;
@@ -690,8 +718,8 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 	right: var(--arrow-x, 3rem);
 	width: 14px;
 	height: 14px;
-	border-top: 2px solid var(--c-ink);
-	border-left: 2px solid var(--c-ink);
+	border-top: 2px solid var(--c-edge);
+	border-left: 2px solid var(--c-edge);
 	background: var(--c-surface);
 	transform: rotate(45deg);
 }
@@ -920,10 +948,10 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 .art-window {
 	width: min(100%, 26.5rem);
 	overflow: hidden;
-	border: 2px solid var(--c-ink);
+	border: 2px solid var(--c-edge);
 	border-radius: 20px;
 	background: var(--c-surface);
-	box-shadow: 10px 10px 0 var(--c-primary);
+	box-shadow: 10px 10px 0 var(--c-pop-2);
 	transform: rotate(-2.5deg);
 }
 
@@ -932,7 +960,7 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 	align-items: center;
 	gap: 0.4rem;
 	padding: 0.7rem 0.9rem;
-	border-bottom: 2px solid var(--c-ink);
+	border-bottom: 2px solid var(--c-edge);
 	background: var(--c-bg-alt);
 }
 
@@ -1134,14 +1162,14 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 	width: max-content;
 	max-width: min(15rem, 62vw);
 	padding: 0.7rem 1rem;
-	border: 2px solid var(--c-ink);
+	border: 2px solid var(--c-edge);
 	border-radius: 16px 16px 4px 16px;
 	color: var(--c-ink);
 	background: var(--c-surface);
 	font-size: 0.9rem;
 	font-weight: 500;
 	line-height: 1.4;
-	box-shadow: 4px 4px 0 var(--c-accent);
+	box-shadow: 4px 4px 0 var(--c-pop);
 	opacity: 0;
 	transform: translateY(8px) scale(0.96);
 	transform-origin: bottom right;
@@ -1158,7 +1186,7 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 	position: absolute;
 	z-index: 3;
 	padding: 0.5rem 0.95rem;
-	border: 2px solid var(--c-ink);
+	border: 2px solid var(--c-edge);
 	border-radius: 999px;
 	font-family: var(--font-display);
 	font-size: 0.85rem;
@@ -1206,7 +1234,7 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 
 .marquee {
 	overflow: hidden;
-	border-block: 2px solid var(--c-ink);
+	border-block: 2px solid var(--c-edge);
 	color: var(--c-on-primary);
 	background: var(--c-primary);
 	transform: rotate(-1deg);
@@ -1290,7 +1318,7 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 	border-radius: 16px;
 	color: var(--c-on-primary);
 	background: var(--c-primary);
-	box-shadow: 4px 4px 0 var(--c-accent);
+	box-shadow: 4px 4px 0 var(--c-pop);
 	transition: transform 220ms var(--ease);
 }
 
@@ -1490,8 +1518,8 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	justify-content: space-between;
-	gap: 1.5rem;
+	justify-content: flex-start;   /* was: space-between */
+	gap: 2rem;                     /* was: 1.5rem */
 	margin-top: 2rem;
 }
 
@@ -1522,7 +1550,7 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 	height: 4.1rem;
 	padding: 0;
 	overflow: hidden;
-	border: 2px solid var(--c-ink);
+	border: 2px solid var(--c-edge);
 	border-radius: 14px;
 	background: var(--c-bg-alt);
 	cursor: zoom-in;
@@ -1673,14 +1701,14 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 	width: 3.4rem;
 	height: 3.4rem;
 	margin-bottom: 0.7rem;
-	border: 2px solid var(--c-ink);
+	border: 2px solid var(--c-edge);
 	border-radius: 50%;
 	color: var(--c-on-primary);
 	background: var(--c-primary);
 	font-family: var(--font-display);
 	font-size: 1.4rem;
 	font-weight: 700;
-	box-shadow: 4px 4px 0 var(--c-accent);
+	box-shadow: 4px 4px 0 var(--c-pop);
 	transition: transform 220ms var(--ease);
 }
 
@@ -1714,10 +1742,10 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 	gap: clamp(1.5rem, 4vw, 3rem);
 	padding: clamp(1.8rem, 4vw, 3rem);
 	overflow: hidden;
-	border: 2px solid var(--c-ink);
+	border: 2px solid var(--c-edge);
 	border-radius: 30px;
 	background: var(--c-surface);
-	box-shadow: 10px 10px 0 var(--c-accent);
+	box-shadow: 10px 10px 0 var(--c-pop);
 }
 
 .promo::before {
@@ -1759,11 +1787,11 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 	align-content: center;
 	width: clamp(8rem, 18vw, 11rem);
 	aspect-ratio: 1;
-	border: 2px solid var(--c-ink);
+	border: 2px solid var(--c-edge);
 	border-radius: 50%;
 	color: var(--c-on-primary);
 	background: var(--c-primary);
-	box-shadow: 6px 6px 0 var(--c-accent);
+	box-shadow: 6px 6px 0 var(--c-pop);
 	transform: rotate(-8deg);
 	animation: bob 5s ease-in-out infinite;
 }
@@ -1896,10 +1924,10 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 .form-card {
 	position: relative;
 	padding: clamp(1.5rem, 4vw, 2.5rem);
-	border: 2px solid var(--c-ink);
+	border: 2px solid var(--c-edge);
 	border-radius: 26px;
 	background: var(--c-surface);
-	box-shadow: 10px 10px 0 var(--c-accent);
+	box-shadow: 10px 10px 0 var(--c-pop);
 }
 
 .form-card h3 {
@@ -2036,11 +2064,11 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 	place-items: center;
 	width: 4rem;
 	height: 4rem;
-	border: 2px solid var(--c-ink);
+	border: 2px solid var(--c-edge);
 	border-radius: 50%;
 	color: var(--c-on-primary);
 	background: var(--c-primary);
-	box-shadow: 4px 4px 0 var(--c-accent);
+	box-shadow: 4px 4px 0 var(--c-pop);
 	animation: pop 500ms var(--ease);
 }
 
@@ -2132,11 +2160,11 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 	position: relative;
 	overflow: hidden;
 	padding: clamp(2.5rem, 6vw, 4.5rem);
-	border: 2px solid var(--c-ink);
+	border: 2px solid var(--c-edge);
 	border-radius: 32px;
 	color: var(--c-on-primary);
 	background: var(--c-primary);
-	box-shadow: 10px 10px 0 var(--c-accent);
+	box-shadow: 10px 10px 0 var(--c-pop);
 	text-align: center;
 }
 
@@ -2189,12 +2217,12 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 	color: var(--c-ink);
 	background: var(--c-surface);
 	border-color: var(--c-ink);
-	box-shadow: 0 4px 0 var(--c-ink);
+	box-shadow: 0 4px 0 var(--c-edge);
 }
 
 .cta-band .btn-light:hover {
 	transform: translateY(-2px);
-	box-shadow: 0 6px 0 var(--c-ink);
+	box-shadow: 0 6px 0 var(--c-edge);
 }
 
 .cta-band .btn-outline {
@@ -2284,11 +2312,11 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 	width: 3rem;
 	height: 3rem;
 	padding: 0;
-	border: 2px solid var(--c-ink);
+	border: 2px solid var(--c-edge);
 	border-radius: 50%;
 	color: var(--c-on-primary);
 	background: var(--c-primary);
-	box-shadow: 0 4px 0 var(--c-ink);
+	box-shadow: 0 4px 0 var(--c-edge);
 	cursor: pointer;
 	opacity: 0;
 	transform: translateY(1rem);
@@ -2319,12 +2347,12 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 	z-index: 150;
 	max-width: calc(100% - 2rem);
 	padding: 0.8rem 1.3rem;
-	border: 2px solid var(--c-ink);
+	border: 2px solid var(--c-edge);
 	border-radius: 999px;
 	color: var(--c-ink);
 	background: var(--c-surface);
 	font-weight: 600;
-	box-shadow: 4px 4px 0 var(--c-accent);
+	box-shadow: 4px 4px 0 var(--c-pop);
 	opacity: 0;
 	transform: translate(-50%, 1rem);
 	pointer-events: none;
@@ -2340,11 +2368,11 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 	width: min(92vw, 28rem);
 	max-height: 92vh;
 	padding: 1rem;
-	border: 2px solid var(--c-ink);
+	border: 2px solid var(--c-edge);
 	border-radius: var(--radius);
 	color: var(--c-ink);
 	background: var(--c-surface);
-	box-shadow: 10px 10px 0 var(--c-accent);
+	box-shadow: 10px 10px 0 var(--c-pop);
 }
 
 .lightbox::backdrop {
@@ -2389,7 +2417,7 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 	position: fixed;
 	inset: auto 0 0 0;
 	z-index: 160;
-	border-top: 2px solid var(--c-ink);
+	border-top: 2px solid var(--c-edge);
 	background: var(--c-surface);
 	box-shadow: 0 -10px 30px -12px var(--c-shadow);
 	animation: slide-up 320ms var(--ease);
@@ -2648,11 +2676,17 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 	}
 
 	.art-window {
-		box-shadow: 7px 7px 0 var(--c-primary);
+		box-shadow: 7px 7px 0 var(--c-pop-2);
 	}
 
 	.sticker-b {
 		display: none;
+	}
+
+	/* keep the reply sticker clear of the phone's address bar on small screens */
+	.sticker-a {
+		top: -1.6rem;
+		right: 0.25rem;
 	}
 
 	.cta-actions .btn {

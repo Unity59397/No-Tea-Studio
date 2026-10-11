@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
         <loc>https://noteastudio.co.uk/</loc>
-        <lastmod>2026-10-10</lastmod>
+        <lastmod>2026-10-11</lastmod>
         <image:image>
             <image:loc>https://noteastudio.co.uk/images/og-image.png</image:loc>
         </image:image>
@@ -18,25 +18,26 @@
     </url>
     <url>
         <loc>https://noteastudio.co.uk/projects/</loc>
-        <lastmod>2026-10-10</lastmod>
+        <lastmod>2026-10-11</lastmod>
     </url>
     <url>
         <loc>https://noteastudio.co.uk/free-website/</loc>
-        <lastmod>2026-10-10</lastmod>
+        <lastmod>2026-10-11</lastmod>
     </url>
     <url>
         <loc>https://noteastudio.co.uk/bookings/</loc>
-        <lastmod>2026-10-10</lastmod>
+        <lastmod>2026-10-11</lastmod>
     </url>
     <url>
         <loc>https://noteastudio.co.uk/about/</loc>
-        <lastmod>2026-10-10</lastmod>
+        <lastmod>2026-10-11</lastmod>
     </url>
     <url>
         <loc>https://noteastudio.co.uk/pricing/</loc>
-        <lastmod>2026-10-10</lastmod>
+        <lastmod>2026-10-11</lastmod>
     </url>
     <url>
         <loc>https://noteastudio.co.uk/privacy/</loc>
+        <lastmod>2026-10-11</lastmod>
     </url>
 </urlset>

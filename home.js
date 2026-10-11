@@ -495,6 +495,12 @@
             var trap = form.elements._gotcha;
             if (trap && trap.value) { showSuccess(); return; }
 
+            // Email subject for the inbox: "New project enquiry: <what they typed>"
+            var mailSubject = form.elements._subject;
+            if (mailSubject && subjectInput && subjectInput.value.trim()) {
+                mailSubject.value = mailSubject.defaultValue + ': ' + subjectInput.value.trim();
+            }
+
             setBusy(true);
             if (status) { status.hidden = true; }
 

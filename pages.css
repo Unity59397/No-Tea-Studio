@@ -192,10 +192,10 @@
 }
 
 .block-pop {
-	border: 2px solid var(--c-ink);
+	border: 2px solid var(--c-edge);
 	color: var(--c-on-primary);
 	background: var(--c-primary);
-	box-shadow: 8px 8px 0 var(--c-accent);
+	box-shadow: 8px 8px 0 var(--c-pop);
 }
 
 .block-pop h2,
@@ -242,13 +242,13 @@
 	place-items: center;
 	width: 2.4rem;
 	height: 2.4rem;
-	border: 2px solid var(--c-ink);
+	border: 2px solid var(--c-edge);
 	border-radius: 50%;
 	color: var(--c-on-primary);
 	background: var(--c-primary);
 	font-family: var(--font-display);
 	font-weight: 700;
-	box-shadow: 3px 3px 0 var(--c-accent);
+	box-shadow: 3px 3px 0 var(--c-pop);
 }
 
 .mini-steps strong {
@@ -346,14 +346,14 @@
 	place-items: center;
 	width: 3.2rem;
 	height: 3.2rem;
-	border: 2px solid var(--c-ink);
+	border: 2px solid var(--c-edge);
 	border-radius: 50%;
 	color: var(--c-on-accent);
 	background: var(--c-accent);
 	font-family: var(--font-display);
 	font-size: 1.25rem;
 	font-weight: 700;
-	box-shadow: 3px 3px 0 var(--c-primary);
+	box-shadow: 3px 3px 0 var(--c-pop-2);
 }
 
 .person strong {
@@ -398,12 +398,12 @@
 
 .price-card.is-featured {
 	border-color: var(--c-ink);
-	box-shadow: 9px 9px 0 var(--c-accent);
+	box-shadow: 9px 9px 0 var(--c-pop);
 }
 
 .price-card.is-featured:hover {
 	border-color: var(--c-ink);
-	box-shadow: 11px 11px 0 var(--c-accent);
+	box-shadow: 11px 11px 0 var(--c-pop);
 }
 
 .price-badge {
@@ -411,7 +411,7 @@
 	top: -0.95rem;
 	left: 1.5rem;
 	padding: 0.28rem 0.95rem;
-	border: 2px solid var(--c-ink);
+	border: 2px solid var(--c-edge);
 	border-radius: 999px;
 	color: var(--c-on-primary);
 	background: var(--c-primary);
@@ -614,10 +614,10 @@
 	width: 100%;
 	padding: 0;
 	overflow: hidden;
-	border: 2px solid var(--c-ink);
+	border: 2px solid var(--c-edge);
 	border-radius: var(--radius);
 	background: var(--c-surface);
-	box-shadow: 9px 9px 0 var(--c-accent);
+	box-shadow: 9px 9px 0 var(--c-pop);
 	cursor: zoom-in;
 	text-align: left;
 	transition: transform 240ms var(--ease), box-shadow 240ms var(--ease);
@@ -625,7 +625,7 @@
 
 .project-shot:hover {
 	transform: translate(-3px, -3px);
-	box-shadow: 12px 12px 0 var(--c-accent);
+	box-shadow: 12px 12px 0 var(--c-pop);
 }
 
 .project-shot img {
@@ -668,7 +668,7 @@
 	width: 4.6rem;
 	padding: 0;
 	overflow: hidden;
-	border: 2px solid var(--c-ink);
+	border: 2px solid var(--c-edge);
 	border-radius: 12px;
 	background: var(--c-bg-alt);
 	cursor: zoom-in;
@@ -699,11 +699,11 @@
 	z-index: 90;
 	width: 3.3rem;
 	height: 3.3rem;
-	border: 2px solid var(--c-ink);
+	border: 2px solid var(--c-edge);
 	border-radius: 50%;
 	color: var(--c-ink);
 	background: var(--c-surface);
-	box-shadow: 4px 4px 0 var(--c-accent);
+	box-shadow: 4px 4px 0 var(--c-pop);
 	transform: translateY(-50%);
 }
 
@@ -844,7 +844,7 @@
 	place-items: center;
 	width: 2rem;
 	height: 2rem;
-	border: 2px solid var(--c-ink);
+	border: 2px solid var(--c-edge);
 	border-radius: 50%;
 	color: var(--c-on-primary);
 	background: var(--c-primary);
@@ -1081,7 +1081,7 @@
 	border: 2px dashed var(--c-ink);
 	border-radius: 22px;
 	background: var(--c-surface);
-	box-shadow: 8px 8px 0 var(--c-accent);
+	box-shadow: 8px 8px 0 var(--c-pop);
 	transform: rotate(2deg);
 	transition: transform 300ms var(--ease);
 }
@@ -1098,7 +1098,7 @@
 	width: 1.6rem;
 	height: 1.6rem;
 	margin-top: -0.8rem;
-	border: 2px solid var(--c-ink);
+	border: 2px solid var(--c-edge);
 	border-radius: 50%;
 	background: var(--c-bg);
 }
@@ -1179,10 +1179,10 @@
 
 .fit-card {
 	padding: clamp(1.4rem, 3.5vw, 2.2rem);
-	border: 2px solid var(--c-ink);
+	border: 2px solid var(--c-edge);
 	border-radius: 26px;
 	background: var(--c-surface);
-	box-shadow: 9px 9px 0 var(--c-accent);
+	box-shadow: 9px 9px 0 var(--c-pop);
 }
 
 .fit-list {
@@ -1233,7 +1233,7 @@
 .fit-meter {
 	height: 0.7rem;
 	overflow: hidden;
-	border: 2px solid var(--c-ink);
+	border: 2px solid var(--c-edge);
 	border-radius: 999px;
 	background: var(--c-bg-alt);
 }
@@ -1401,4 +1401,21 @@
 	.fit-meter span {
 		transition: none;
 	}
+}
+
+
+/* Shared dark mode: softer page-level pieces */
+html[data-theme="dark"] .page-hero::before {
+	background: radial-gradient(circle, color-mix(in srgb, var(--c-primary) 18%, transparent), transparent 68%);
+}
+
+html[data-theme="dark"] .block-pop {
+	border-color: color-mix(in srgb, var(--c-primary) 50%, transparent);
+	color: var(--c-ink);
+	background: linear-gradient(135deg, color-mix(in srgb, var(--c-primary) 22%, var(--c-surface)), var(--c-surface));
+}
+
+html[data-theme="dark"] .block-pop h2,
+html[data-theme="dark"] .block-pop p {
+	color: var(--c-ink);
 }

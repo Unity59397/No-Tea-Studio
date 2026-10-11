@@ -32,7 +32,7 @@
         banner.innerHTML = `
             <div class="cookie-consent-container">
                 <div class="cookie-consent-content">
-                    <p class="cookie-consent-text">We use cookies to improve your experience. By continuing to use this site, you accept our use of cookies and <a href="/privacy/">Privacy Notice</a>.</p>
+                    <p class="cookie-consent-text">No tracking or analytics here. We only remember your choices, like colour and dark mode, on your device. See our <a href="/privacy/">Privacy Notice</a>.</p>
                     <div class="cookie-consent-buttons">
                         <button class="cookie-accept-btn" id="cookie-accept">Accept</button>
                         <button class="cookie-decline-btn" id="cookie-decline">Decline</button>
