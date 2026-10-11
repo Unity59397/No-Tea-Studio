@@ -1518,8 +1518,8 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	justify-content: flex-start;   /* was: space-between */
-	gap: 2rem;                     /* was: 1.5rem */
+	justify-content: space-between;
+	gap: 1.5rem;
 	margin-top: 2rem;
 }
 
@@ -1804,9 +1804,14 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 }
 
 .promo-badge small {
+	display: block;
+	max-width: 10ch;
+	margin-top: 0.3rem;
 	font-size: 0.85rem;
 	font-weight: 700;
-	letter-spacing: 0.04em;
+	letter-spacing: 0.02em;
+	line-height: 1.15;
+	text-align: center;
 }
 
 @media (max-width: 720px) {
@@ -1816,7 +1821,7 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 
 	.promo-badge {
 		justify-self: start;
-		width: 7.5rem;
+		width: 8.5rem;
 	}
 }
 
