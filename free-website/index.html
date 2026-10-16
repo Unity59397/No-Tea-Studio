@@ -12,7 +12,7 @@
                 var stored = localStorage.getItem('theme');
                 theme = stored || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
                 var p = localStorage.getItem('palette');
-                if (/^(matcha|builders|earlgrey|hibiscus)$/.test(p || '')) { palette = p; }
+                if (/^(matcha|builders|earlgrey|midnight|signal|hibiscus)$/.test(p || '')) { palette = p; }
             } catch (e) { }
             d.setAttribute('data-theme', theme);
             d.setAttribute('data-palette', palette);
@@ -37,8 +37,8 @@
     <!-- Apple Touch Icon for iOS devices -->
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
 
-    <title>Apply for a Free Website | No-Tea Studio</title>
-    <meta name="description" content="Small business or community group in the UK? Apply for a free website from No-Tea Studio. Offered to a few small businesses only, with no guarantee. See who qualifies and how to apply.">
+    <title>Free Website for Leeds Small Businesses | No-Tea Studio</title>
+    <meta name="description" content="Small business or community group in Leeds or Yorkshire? Apply for a free website from No-Tea Studio. Offered to a few small businesses only, with no guarantee. See who qualifies and how to apply.">
     <meta name="author" content="No-Tea Studio">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://noteastudio.co.uk/free-website/">
@@ -46,7 +46,7 @@
     <link rel="alternate" hreflang="x-default" href="https://noteastudio.co.uk/free-website/">
 
     <!-- Open Graph / social sharing -->
-    <meta property="og:title" content="Apply for a Free Website | No-Tea Studio">
+    <meta property="og:title" content="Free Website for Leeds Small Businesses | No-Tea Studio">
     <meta property="og:description" content="We offer a free website to a few small businesses to help them expand. Places are limited and not guaranteed. See if you qualify.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://noteastudio.co.uk/free-website/">
@@ -57,7 +57,7 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="No-Tea Studio: tailored website design.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Apply for a Free Website | No-Tea Studio">
+    <meta name="twitter:title" content="Free Website for Leeds Small Businesses | No-Tea Studio">
     <meta name="twitter:description" content="We offer a free website to a few small businesses to help them expand. Places are limited and not guaranteed. See if you qualify.">
     <meta name="twitter:image" content="https://noteastudio.co.uk/images/og-image.png">
     <meta name="twitter:image:alt" content="No-Tea Studio: tailored website design.">
@@ -78,7 +78,7 @@
             "@id": "https://noteastudio.co.uk/free-website/#webpage",
             "url": "https://noteastudio.co.uk/free-website/",
             "name": "Free Website",
-            "description": "Small business or community group in the UK? Apply for a free website from No-Tea Studio. Offered to a few small businesses only, with no guarantee. See who qualifies and how to apply.",
+            "description": "Small business or community group in Leeds or Yorkshire? Apply for a free website from No-Tea Studio. Offered to a few small businesses only, with no guarantee. See who qualifies and how to apply.",
             "inLanguage": "en-GB",
             "isPartOf": {
                 "@id": "https://noteastudio.co.uk/#website"
@@ -137,6 +137,14 @@
                 },
                 {
                     "@type": "Question",
+                    "name": "Do you offer free websites in Leeds and Yorkshire?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes. We are based in Leeds and mainly work with small businesses and community groups in Leeds and across Yorkshire, though we also welcome applications from elsewhere in the UK. Places are limited and there is no guarantee."
+                    }
+                },
+                {
+                    "@type": "Question",
                     "name": "How many free websites do you build?",
                     "acceptedAnswer": {
                         "@type": "Answer",
@@ -184,6 +192,26 @@
                     }
                 }
             ]
+        },
+        {
+            "@type": "ProfessionalService",
+            "@id": "https://noteastudio.co.uk/#business",
+            "name": "No-Tea Studio",
+            "url": "https://noteastudio.co.uk/",
+            "areaServed": [
+                {
+                    "@type": "City",
+                    "name": "Leeds"
+                },
+                {
+                    "@type": "AdministrativeArea",
+                    "name": "West Yorkshire"
+                },
+                {
+                    "@type": "AdministrativeArea",
+                    "name": "Yorkshire"
+                }
+            ]
         }
     ]
 }
@@ -227,6 +255,8 @@
                         <button type="button" role="radio" aria-checked="false" data-palette="matcha"><span class="swatch" style="--sw1:#2d6a4f;--sw2:#ff7a45"></span>Matcha</button>
                         <button type="button" role="radio" aria-checked="false" data-palette="builders"><span class="swatch" style="--sw1:#a24a17;--sw2:#f2b134"></span>Builder's Tea</button>
                         <button type="button" role="radio" aria-checked="false" data-palette="earlgrey"><span class="swatch" style="--sw1:#4a52c4;--sw2:#f59fb5"></span>Earl Grey</button>
+                        <button type="button" role="radio" aria-checked="false" data-palette="midnight"><span class="swatch" style="--sw1:#14284b;--sw2:#c8a24b"></span>Midnight</button>
+                        <button type="button" role="radio" aria-checked="false" data-palette="signal"><span class="swatch" style="--sw1:#2b2d42;--sw2:#d90429"></span>Signal</button>
                     </div>
                 </div>
 
@@ -259,7 +289,7 @@
             </nav>
                 <div class="free-hero">
                     <div>
-                        <p class="eyebrow">Free website programme</p>
+                        <p class="eyebrow">Free website programme · Leeds &amp; Yorkshire</p>
                         <h1 id="page-title" style="max-width:none">Apply for a <span class="hl">free website.</span></h1>
                         <p class="lead">We only offer a free website to a few small businesses, to help them expand their online presence and to help us build a stronger portfolio. Applying does not guarantee a place, but we would love to hear from you.</p>
                         <div class="page-hero-actions">
@@ -436,6 +466,10 @@
                     <details name="faq">
                         <summary>What&#x27;s the catch?</summary>
                         <p>No catch, but a fair swap. We offer free websites to help small businesses expand, and to help us build a stronger portfolio. We ask that you take part properly (send content, give feedback), let us feature the finished site in our portfolio, and share a short testimonial if you&#x27;re happy with it. We build our reputation, you get a website.</p>
+                    </details>
+                    <details name="faq">
+                        <summary>Do you offer free websites in Leeds and Yorkshire?</summary>
+                        <p>Yes. We are based in Leeds and mainly work with small businesses and community groups in Leeds and across Yorkshire, though we also welcome applications from elsewhere in the UK. Places are limited and there is no guarantee.</p>
                     </details>
                     <details name="faq">
                         <summary>How many free websites do you build?</summary>

@@ -79,6 +79,42 @@ html[data-palette="earlgrey"] {
 }
 
 
+/* ---- Palette 5: Midnight (dark navy, calm and professional) ---- */
+html[data-palette="midnight"] {
+	--c-bg: #f2f5f9;
+	--c-bg-alt: #e6ebf3;
+	--c-surface: #ffffff;
+	--c-ink: #0e1a2e;
+	--c-ink-soft: #47566e;
+	--c-primary: #14284b;
+	--c-on-primary: #ffffff;
+	--c-primary-deep: #0b1a35;
+	--c-accent: #c8a24b;
+	--c-accent-text: #7a5c14;
+	--c-on-accent: #1b1405;
+	--c-line: #d3dae6;
+	--c-shadow: rgba(14, 26, 46, 0.14);
+	color-scheme: light;
+}
+
+/* ---- Palette 6: Signal (space indigo, platinum and red) ---- */
+html[data-palette="signal"] {
+	--c-bg: #edf2f4;
+	--c-bg-alt: #dfe6ea;
+	--c-surface: #ffffff;
+	--c-ink: #2b2d42;
+	--c-ink-soft: #565d75;
+	--c-primary: #d90429;
+	--c-on-primary: #ffffff;
+	--c-primary-deep: #a8021f;
+	--c-accent: #8d99ae;
+	--c-accent-text: #465068;
+	--c-on-accent: #1d1f31;
+	--c-line: #ccd5dc;
+	--c-shadow: rgba(43, 45, 66, 0.16);
+	color-scheme: light;
+}
+
 /* ---- Palette 4: Hibiscus (pink, the default) ---- */
 :root,
 html[data-palette="hibiscus"] {
@@ -150,6 +186,40 @@ html[data-theme="dark"][data-palette="earlgrey"] {
 	--c-accent: #ff9fbe;
 	--c-accent-text: #ffa9c4;
 	--c-on-accent: #3a0a1a;
+}
+
+/* Midnight keeps its own navy surfaces in dark mode */
+html[data-theme="dark"][data-palette="midnight"] {
+	--c-bg: #080d19;
+	--c-bg-alt: #0c1322;
+	--c-surface: #121b2e;
+	--c-ink: #eef2f9;
+	--c-ink-soft: #a9b4c8;
+	--c-line: #1f2b45;
+	--c-edge: #2c3b5c;
+	--c-primary: #86a9e6;
+	--c-on-primary: #08122a;
+	--c-primary-deep: #b3caf3;
+	--c-accent: #d9b865;
+	--c-accent-text: #e3c97f;
+	--c-on-accent: #1b1405;
+}
+
+/* Signal in dark mode: space indigo surfaces, red accents */
+html[data-theme="dark"][data-palette="signal"] {
+	--c-bg: #1b1c2b;
+	--c-bg-alt: #20223a;
+	--c-surface: #2b2d42;
+	--c-ink: #edf2f4;
+	--c-ink-soft: #aab3c6;
+	--c-line: #3b3e5a;
+	--c-edge: #4b4f70;
+	--c-primary: #ff4d63;
+	--c-on-primary: #1d0a10;
+	--c-primary-deep: #ff8e9c;
+	--c-accent: #8d99ae;
+	--c-accent-text: #b4bfd2;
+	--c-on-accent: #14162a;
 }
 
 /* Soft colour glow in two corners (fixed, so it never scrolls or repaints) */

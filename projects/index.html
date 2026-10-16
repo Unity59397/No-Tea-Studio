@@ -12,7 +12,7 @@
                 var stored = localStorage.getItem('theme');
                 theme = stored || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
                 var p = localStorage.getItem('palette');
-                if (/^(matcha|builders|earlgrey|hibiscus)$/.test(p || '')) { palette = p; }
+                if (/^(matcha|builders|earlgrey|midnight|signal|hibiscus)$/.test(p || '')) { palette = p; }
             } catch (e) { }
             d.setAttribute('data-theme', theme);
             d.setAttribute('data-palette', palette);
@@ -201,6 +201,8 @@
                         <button type="button" role="radio" aria-checked="false" data-palette="matcha"><span class="swatch" style="--sw1:#2d6a4f;--sw2:#ff7a45"></span>Matcha</button>
                         <button type="button" role="radio" aria-checked="false" data-palette="builders"><span class="swatch" style="--sw1:#a24a17;--sw2:#f2b134"></span>Builder's Tea</button>
                         <button type="button" role="radio" aria-checked="false" data-palette="earlgrey"><span class="swatch" style="--sw1:#4a52c4;--sw2:#f59fb5"></span>Earl Grey</button>
+                        <button type="button" role="radio" aria-checked="false" data-palette="midnight"><span class="swatch" style="--sw1:#14284b;--sw2:#c8a24b"></span>Midnight</button>
+                        <button type="button" role="radio" aria-checked="false" data-palette="signal"><span class="swatch" style="--sw1:#2b2d42;--sw2:#d90429"></span>Signal</button>
                     </div>
                 </div>
 
