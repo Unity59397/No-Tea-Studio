@@ -12,7 +12,7 @@
                 var stored = localStorage.getItem('theme');
                 theme = stored || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
                 var p = localStorage.getItem('palette');
-                if (/^(matcha|builders|earlgrey|midnight|signal|hibiscus)$/.test(p || '')) { palette = p; }
+                if (/^(matcha|builders|earlgrey|signal|halloween|hibiscus)$/.test(p || '')) { palette = p; }
             } catch (e) { }
             d.setAttribute('data-theme', theme);
             d.setAttribute('data-palette', palette);
@@ -74,12 +74,28 @@
     <header class="site-header">
         <nav class="nav container" aria-label="Main">
             <a class="brand" href="/" aria-label="No-Tea Studio, home">
-                <svg viewBox="20 44 150 94" aria-hidden="true">
+                <svg class="brand-mark brand-mark--tea" viewBox="20 44 150 94" aria-hidden="true">
                     <ellipse class="cup-saucer" cx="80" cy="132" rx="62" ry="10" />
                     <path class="cup-handle" d="M128 70c26-4 26 34-2 34" />
                     <path class="cup-handle-in" d="M128 70c26-4 26 34-2 34" />
                     <path class="cup-body" d="M28 56h104v16c0 30-22 52-52 52s-52-22-52-52z" />
                     <ellipse class="cup-tea" cx="80" cy="56" rx="52" ry="9" />
+                </svg>
+                <svg class="brand-mark brand-mark--pumpkin" viewBox="6 12 148 132" aria-hidden="true">
+                    <ellipse class="pk-shadow" cx="80" cy="141" rx="56" ry="7" />
+                    <ellipse class="pk-rib pk-rib-o" cx="40" cy="89" rx="30" ry="44" />
+                    <ellipse class="pk-rib pk-rib-o" cx="120" cy="89" rx="30" ry="44" />
+                    <ellipse class="pk-rib pk-rib-m" cx="58" cy="91" rx="32" ry="48" />
+                    <ellipse class="pk-rib pk-rib-m" cx="102" cy="91" rx="32" ry="48" />
+                    <ellipse class="pk-rib pk-rib-c" cx="80" cy="92" rx="26" ry="50" />
+                    <path class="pk-vine" d="M92 30c10-8 22-4 24 6" />
+                    <path class="pk-stem" d="M72 46c-1-14 5-24 14-28l7 7c-5 4-6 10-5 21z" />
+                    <g class="pk-face">
+                        <path class="pk-eye" d="M46 80l16-14 6 20z" />
+                        <path class="pk-eye" d="M114 80l-16-14-6 20z" />
+                        <path d="M80 90l-7 12h14z" />
+                        <path d="M46 108l12 6 10-8 12 10 12-10 10 8 12-6c-6 18-22 24-34 24s-28-6-34-24z" />
+                    </g>
                 </svg>
                 <span>No-Tea Studio</span>
             </a>
@@ -105,8 +121,8 @@
                         <button type="button" role="radio" aria-checked="false" data-palette="matcha"><span class="swatch" style="--sw1:#2d6a4f;--sw2:#ff7a45"></span>Matcha</button>
                         <button type="button" role="radio" aria-checked="false" data-palette="builders"><span class="swatch" style="--sw1:#a24a17;--sw2:#f2b134"></span>Builder's Tea</button>
                         <button type="button" role="radio" aria-checked="false" data-palette="earlgrey"><span class="swatch" style="--sw1:#4a52c4;--sw2:#f59fb5"></span>Earl Grey</button>
-                        <button type="button" role="radio" aria-checked="false" data-palette="midnight"><span class="swatch" style="--sw1:#14284b;--sw2:#c8a24b"></span>Midnight</button>
                         <button type="button" role="radio" aria-checked="false" data-palette="signal"><span class="swatch" style="--sw1:#2b2d42;--sw2:#d90429"></span>Signal</button>
+                        <button type="button" role="radio" aria-checked="false" data-palette="halloween"><span class="swatch" style="--sw1:#e8590c;--sw2:#5b21b6"></span>Halloween</button>
                     </div>
                 </div>
 
@@ -130,6 +146,10 @@
             <svg class="page-spark a" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" /></svg>
             <svg class="page-spark b" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" /></svg>
             <svg class="page-spark c" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" /></svg>
+            <div class="spider" aria-hidden="true"><i class="spider-thread"></i><svg viewBox="0 0 32 30" aria-hidden="true"><path class="sp-leg" d="M11 16L3 10l-2 4M10 20L2 21l-1 5M12 23l-6 6M21 16l8-6 2 4M22 20l8 1 1 5M20 23l6 6" /><ellipse class="sp-body" cx="16" cy="20" rx="6.5" ry="7.5" /><circle class="sp-body" cx="16" cy="11" r="4.2" /><circle class="sp-eye" cx="14.5" cy="10.4" r="1.1" /><circle class="sp-eye" cx="17.5" cy="10.4" r="1.1" /></svg></div>
+            <span class="bat bat-a" aria-hidden="true"><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M24 21l-3-7c-2 2-4 1-6-1-3 2-7 1-11 3 0-4 2-8 5-10-3 0-6 1-9 3C3 3 10 0 17 2c3 1 5 2 7 5c2-3 4-4 7-5 7-2 14 1 17 7-3-2-6-3-9-3 3 2 5 6 5 10-4-2-8-1-11-3-2 2-4 3-6 1z" /></svg></span>
+            <span class="bat bat-b" aria-hidden="true"><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M24 21l-3-7c-2 2-4 1-6-1-3 2-7 1-11 3 0-4 2-8 5-10-3 0-6 1-9 3C3 3 10 0 17 2c3 1 5 2 7 5c2-3 4-4 7-5 7-2 14 1 17 7-3-2-6-3-9-3 3 2 5 6 5 10-4-2-8-1-11-3-2 2-4 3-6 1z" /></svg></span>
+            <span class="bat bat-c" aria-hidden="true"><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M24 21l-3-7c-2 2-4 1-6-1-3 2-7 1-11 3 0-4 2-8 5-10-3 0-6 1-9 3C3 3 10 0 17 2c3 1 5 2 7 5c2-3 4-4 7-5 7-2 14 1 17 7-3-2-6-3-9-3 3 2 5 6 5 10-4-2-8-1-11-3-2 2-4 3-6 1z" /></svg></span>
             <div class="container">
                 <nav aria-label="Breadcrumb">
                 <ol class="crumbs">
@@ -316,12 +336,28 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a class="brand" href="/" aria-label="No-Tea Studio, home">
-                        <svg viewBox="20 44 150 94" aria-hidden="true">
+                        <svg class="brand-mark brand-mark--tea" viewBox="20 44 150 94" aria-hidden="true">
                     <ellipse class="cup-saucer" cx="80" cy="132" rx="62" ry="10" />
                     <path class="cup-handle" d="M128 70c26-4 26 34-2 34" />
                     <path class="cup-handle-in" d="M128 70c26-4 26 34-2 34" />
                     <path class="cup-body" d="M28 56h104v16c0 30-22 52-52 52s-52-22-52-52z" />
                     <ellipse class="cup-tea" cx="80" cy="56" rx="52" ry="9" />
+                </svg>
+                <svg class="brand-mark brand-mark--pumpkin" viewBox="6 12 148 132" aria-hidden="true">
+                    <ellipse class="pk-shadow" cx="80" cy="141" rx="56" ry="7" />
+                    <ellipse class="pk-rib pk-rib-o" cx="40" cy="89" rx="30" ry="44" />
+                    <ellipse class="pk-rib pk-rib-o" cx="120" cy="89" rx="30" ry="44" />
+                    <ellipse class="pk-rib pk-rib-m" cx="58" cy="91" rx="32" ry="48" />
+                    <ellipse class="pk-rib pk-rib-m" cx="102" cy="91" rx="32" ry="48" />
+                    <ellipse class="pk-rib pk-rib-c" cx="80" cy="92" rx="26" ry="50" />
+                    <path class="pk-vine" d="M92 30c10-8 22-4 24 6" />
+                    <path class="pk-stem" d="M72 46c-1-14 5-24 14-28l7 7c-5 4-6 10-5 21z" />
+                    <g class="pk-face">
+                        <path class="pk-eye" d="M46 80l16-14 6 20z" />
+                        <path class="pk-eye" d="M114 80l-16-14-6 20z" />
+                        <path d="M80 90l-7 12h14z" />
+                        <path d="M46 108l12 6 10-8 12 10 12-10 10 8 12-6c-6 18-22 24-34 24s-28-6-34-24z" />
+                    </g>
                 </svg>
                         <span>No-Tea Studio</span>
                     </a>
@@ -348,7 +384,7 @@
             </div>
             <div class="footer-base">
                 <p>&copy; 2026 No-Tea Studio. All rights reserved.</p>
-                <p>Made in Leeds. Brewed with curiosity, served with a side of zero jargon.</p>
+                <p data-halloween="Made in Leeds. Brewed with curiosity, haunted by zero jargon.">Made in Leeds. Brewed with curiosity, served with a side of zero jargon.</p>
             </div>
         </div>
     </footer>

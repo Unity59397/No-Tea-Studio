@@ -2,7 +2,7 @@
    No-Tea Studio - shared site styles (homepage + base for every page;
    pages.css adds the inner-page layouts on top of this file).
 
-   COLOUR: every colour comes from the --c-* tokens below. There are four
+   COLOUR: every colour comes from the --c-* tokens below. There are six
    palettes ("brews") x light/dark. Hibiscus (pink) is the default; the
    visitor can switch palette with the swatch button in the header and the
    choice is remembered on every page.
@@ -79,24 +79,6 @@ html[data-palette="earlgrey"] {
 }
 
 
-/* ---- Palette 5: Midnight (dark navy, calm and professional) ---- */
-html[data-palette="midnight"] {
-	--c-bg: #f2f5f9;
-	--c-bg-alt: #e6ebf3;
-	--c-surface: #ffffff;
-	--c-ink: #0e1a2e;
-	--c-ink-soft: #47566e;
-	--c-primary: #14284b;
-	--c-on-primary: #ffffff;
-	--c-primary-deep: #0b1a35;
-	--c-accent: #c8a24b;
-	--c-accent-text: #7a5c14;
-	--c-on-accent: #1b1405;
-	--c-line: #d3dae6;
-	--c-shadow: rgba(14, 26, 46, 0.14);
-	color-scheme: light;
-}
-
 /* ---- Palette 6: Signal (space indigo, platinum and red) ---- */
 html[data-palette="signal"] {
 	--c-bg: #edf2f4;
@@ -112,6 +94,27 @@ html[data-palette="signal"] {
 	--c-on-accent: #1d1f31;
 	--c-line: #ccd5dc;
 	--c-shadow: rgba(43, 45, 66, 0.16);
+	color-scheme: light;
+}
+
+/* ---- Palette 7: Halloween (seasonal: pumpkin orange and witching-hour purple) ---- */
+html[data-palette="halloween"] {
+	--c-bg: #fff4e8;
+	--c-bg-alt: #ffe9d6;
+	--c-surface: #ffffff;
+	--c-ink: #24102f;
+	--c-ink-soft: #5b4468;
+	--c-primary: #c2410c;
+	--c-on-primary: #ffffff;
+	--c-primary-deep: #9a3412;
+	--c-accent: #6d28d9;
+	--c-accent-text: #5b21b6;
+	--c-on-accent: #ffffff;
+	--c-line: #f1d6bf;
+	--c-shadow: rgba(36, 16, 47, 0.16);
+	--web-ink: #5b4468;
+	--bat: #24102f;
+	--spider: #24102f;
 	color-scheme: light;
 }
 
@@ -188,23 +191,6 @@ html[data-theme="dark"][data-palette="earlgrey"] {
 	--c-on-accent: #3a0a1a;
 }
 
-/* Midnight keeps its own navy surfaces in dark mode */
-html[data-theme="dark"][data-palette="midnight"] {
-	--c-bg: #080d19;
-	--c-bg-alt: #0c1322;
-	--c-surface: #121b2e;
-	--c-ink: #eef2f9;
-	--c-ink-soft: #a9b4c8;
-	--c-line: #1f2b45;
-	--c-edge: #2c3b5c;
-	--c-primary: #86a9e6;
-	--c-on-primary: #08122a;
-	--c-primary-deep: #b3caf3;
-	--c-accent: #d9b865;
-	--c-accent-text: #e3c97f;
-	--c-on-accent: #1b1405;
-}
-
 /* Signal in dark mode: space indigo surfaces, red accents */
 html[data-theme="dark"][data-palette="signal"] {
 	--c-bg: #1b1c2b;
@@ -220,6 +206,26 @@ html[data-theme="dark"][data-palette="signal"] {
 	--c-accent: #8d99ae;
 	--c-accent-text: #b4bfd2;
 	--c-on-accent: #14162a;
+}
+
+/* Halloween in dark mode: purple-black surfaces, pumpkin and violet accents */
+html[data-theme="dark"][data-palette="halloween"] {
+	--c-bg: #120a1c;
+	--c-bg-alt: #180e24;
+	--c-surface: #221535;
+	--c-ink: #f6eefc;
+	--c-ink-soft: #bfb0cf;
+	--c-line: #35214d;
+	--c-edge: #48306d;
+	--c-primary: #ff8a3d;
+	--c-on-primary: #2a1100;
+	--c-primary-deep: #ffb27a;
+	--c-accent: #a78bfa;
+	--c-accent-text: #c4b5fd;
+	--c-on-accent: #1a0b33;
+	--web-ink: #d9c9f0;
+	--bat: #3d2760;
+	--spider: #cbb8ea;
 }
 
 /* Soft colour glow in two corners (fixed, so it never scrolls or repaints) */
@@ -2813,5 +2819,276 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
 
 	.marquee-group {
 		flex-wrap: wrap;
+	}
+}
+
+/* =====================================================================
+   Halloween extras: pumpkin, cobwebs, a dangling spider and a few bats.
+   Everything below is hidden or inert unless html[data-palette="halloween"].
+   ===================================================================== */
+
+html[data-palette="halloween"] {
+	--web-size: clamp(64px, 13vw, 190px);
+	--web-l: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg%3E%3Cpath d='M0 0L120.0 0.0M0 0L111.3 45.0M0 0L84.9 84.9M0 0L45.0 111.3M0 0L0.0 120.0M20.0 0.0Q15.7 3.1 17.4 7.0M17.4 7.0Q13.3 8.8 14.7 14.7M14.7 14.7Q8.8 13.3 7.3 18.0M7.3 18.0Q3.1 15.7 0.0 20.0M37.6 0.0Q31.4 6.1 38.6 15.6M38.6 15.6Q26.7 17.7 27.4 27.4M27.4 27.4Q17.7 26.7 15.0 37.1M15.0 37.1Q6.1 31.4 0.0 40.0M64.5 0.0Q48.7 9.5 55.8 22.5M55.8 22.5Q41.4 27.4 43.8 43.8M43.8 43.8Q27.4 41.4 23.2 57.5M23.2 57.5Q9.5 48.7 0.0 58.3M83.4 0.0Q67.5 13.1 79.7 32.2M79.7 32.2Q57.4 38.0 60.8 60.8M60.8 60.8Q38.0 57.4 30.3 75.0M30.3 75.0Q13.1 67.5 0.0 89.4M112.0 0.0Q88.0 17.1 103.8 42.0M103.8 42.0Q74.7 49.5 74.4 74.4M74.4 74.4Q49.5 74.7 43.6 108.0M43.6 108.0Q17.1 88.0 0.0 108.6' fill='none' stroke='%23000' stroke-width='1.4' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E");
+	--web-r: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg transform=%22translate%28120 0%29 scale%28-1 1%29%22%3E%3Cpath d='M0 0L120.0 0.0M0 0L111.3 45.0M0 0L84.9 84.9M0 0L45.0 111.3M0 0L0.0 120.0M20.0 0.0Q15.7 3.1 17.4 7.0M17.4 7.0Q13.3 8.8 14.7 14.7M14.7 14.7Q8.8 13.3 7.3 18.0M7.3 18.0Q3.1 15.7 0.0 20.0M37.6 0.0Q31.4 6.1 38.6 15.6M38.6 15.6Q26.7 17.7 27.4 27.4M27.4 27.4Q17.7 26.7 15.0 37.1M15.0 37.1Q6.1 31.4 0.0 40.0M64.5 0.0Q48.7 9.5 55.8 22.5M55.8 22.5Q41.4 27.4 43.8 43.8M43.8 43.8Q27.4 41.4 23.2 57.5M23.2 57.5Q9.5 48.7 0.0 58.3M83.4 0.0Q67.5 13.1 79.7 32.2M79.7 32.2Q57.4 38.0 60.8 60.8M60.8 60.8Q38.0 57.4 30.3 75.0M30.3 75.0Q13.1 67.5 0.0 89.4M112.0 0.0Q88.0 17.1 103.8 42.0M103.8 42.0Q74.7 49.5 74.4 74.4M74.4 74.4Q49.5 74.7 43.6 108.0M43.6 108.0Q17.1 88.0 0.0 108.6' fill='none' stroke='%23000' stroke-width='1.4' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Teacup -> pumpkin (hero mascot and the logo in the header and footer) */
+.brand .brand-mark--pumpkin,
+.art-cup .cup-art--pumpkin {
+	display: none;
+}
+
+html[data-palette="halloween"] .brand .brand-mark--tea,
+html[data-palette="halloween"] .art-cup .cup-art--tea {
+	display: none;
+}
+
+html[data-palette="halloween"] .brand .brand-mark--pumpkin,
+html[data-palette="halloween"] .art-cup .cup-art--pumpkin {
+	display: block;
+}
+
+.pk-shadow {
+	fill: var(--c-shadow);
+}
+
+.pk-rib {
+	stroke: #3b1a08;
+	stroke-width: 3;
+}
+
+.pk-rib-o { fill: #e8590c; }
+.pk-rib-m { fill: #fd7e14; }
+.pk-rib-c { fill: #ff922b; }
+
+.pk-stem {
+	fill: #5f8a2e;
+	stroke: #3b1a08;
+	stroke-width: 3;
+	stroke-linejoin: round;
+}
+
+.pk-vine {
+	fill: none;
+	stroke: #5f8a2e;
+	stroke-width: 3.5;
+	stroke-linecap: round;
+}
+
+.pk-face path {
+	fill: #2b0f33;
+	stroke: #3b1a08;
+	stroke-width: 2.5;
+	stroke-linejoin: round;
+}
+
+.pk-eye {
+	transform-box: fill-box;
+	transform-origin: center;
+	animation: blink 5s infinite;
+}
+
+/* lit from inside once the lights go down */
+html[data-theme="dark"] .pk-face path {
+	fill: #ffd54a;
+}
+
+html[data-theme="dark"] .art-cup .cup-art--pumpkin {
+	filter: drop-shadow(0 0 18px rgba(255, 138, 61, 0.5)) drop-shadow(0 12px 14px var(--c-shadow));
+}
+
+html[data-theme="dark"] .brand .brand-mark--pumpkin {
+	filter: drop-shadow(0 0 6px rgba(255, 138, 61, 0.55));
+}
+
+/* "BOO!" moment: the pumpkin jumps and the bubble shouts */
+.art-cup.is-boo {
+	animation: boo 650ms var(--ease);
+}
+
+.cup-bubble.is-boo {
+	padding: 0.45rem 1.1rem;
+	border-radius: 18px 18px 4px 18px;
+	color: var(--c-on-primary);
+	background: var(--c-primary);
+	font-family: var(--font-display);
+	font-size: 1.9rem;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+	line-height: 1.2;
+}
+
+/* Cobwebs in the top corners of the hero, page headers and footer. They are masks, so
+   they pick up --web-ink in light and dark mode, and sit behind the content. The right
+   corner always has one; the left corner only on wide screens, where it clears the text. */
+html[data-palette="halloween"] .hero::after,
+html[data-palette="halloween"] .page-hero::after,
+html[data-palette="halloween"] .site-footer::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	background: var(--web-ink);
+	opacity: 0.5;
+	pointer-events: none;
+	-webkit-mask-image: var(--web-r);
+	mask-image: var(--web-r);
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	-webkit-mask-position: right top;
+	mask-position: right top;
+	-webkit-mask-size: var(--web-size) var(--web-size);
+	mask-size: var(--web-size) var(--web-size);
+}
+
+@media (min-width: 1500px) {
+	html[data-palette="halloween"] .hero::after,
+	html[data-palette="halloween"] .page-hero::after,
+	html[data-palette="halloween"] .site-footer::after {
+		-webkit-mask-image: var(--web-l), var(--web-r);
+		mask-image: var(--web-l), var(--web-r);
+		-webkit-mask-position: left top, right top;
+		mask-position: left top, right top;
+	}
+}
+
+html[data-palette="halloween"] .site-footer {
+	position: relative;
+	overflow: clip;
+}
+
+html[data-palette="halloween"] .hero-grid,
+html[data-palette="halloween"] .site-footer .container {
+	position: relative;
+	z-index: 1;
+}
+
+/* The spider and the bats */
+.spider,
+.bat {
+	display: none;
+	pointer-events: none;
+}
+
+html[data-palette="halloween"] .spider {
+	position: absolute;
+	top: 0;
+	left: 53%;
+	z-index: 1;
+	display: block;
+	width: 30px;
+	transform-origin: 50% 0;
+	animation: dangle 5s ease-in-out infinite;
+}
+
+html[data-palette="halloween"] .page-hero .spider {
+	left: auto;
+	right: 24%;
+	--drop: 62px;
+}
+
+.spider-thread {
+	display: block;
+	width: 1.5px;
+	height: var(--drop, 92px);
+	margin: 0 auto;
+	background: var(--spider);
+	opacity: 0.75;
+}
+
+.spider svg {
+	display: block;
+	width: 30px;
+	height: auto;
+	margin-top: -3px;
+	overflow: visible;
+}
+
+.sp-leg {
+	fill: none;
+	stroke: var(--spider);
+	stroke-width: 1.5;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.sp-body {
+	fill: var(--spider);
+}
+
+.sp-eye {
+	fill: var(--c-bg);
+}
+
+html[data-palette="halloween"] .bat {
+	position: absolute;
+	left: 0;
+	top: 10%;
+	z-index: 0;
+	display: block;
+	width: 36px;
+	animation: bat-fly 19s linear infinite;
+	animation-delay: -6s;
+}
+
+html[data-palette="halloween"] .bat-b {
+	top: 30%;
+	width: 26px;
+	animation-duration: 25s;
+	animation-delay: -15s;
+}
+
+html[data-palette="halloween"] .bat-c {
+	top: 5%;
+	width: 20px;
+	animation-duration: 31s;
+	animation-delay: -22s;
+}
+
+.bat svg {
+	display: block;
+	width: 100%;
+	height: auto;
+	fill: var(--bat);
+	animation: flap 0.3s ease-in-out infinite alternate;
+	transform-origin: 50% 40%;
+}
+
+@keyframes dangle {
+	0%, 100% { transform: rotate(4deg); }
+	50% { transform: rotate(-4deg); }
+}
+
+@keyframes bat-fly {
+	0% { transform: translate(-14vw, 0); }
+	35% { transform: translate(32vw, -14px); }
+	70% { transform: translate(72vw, 16px); }
+	100% { transform: translate(116vw, -6px); }
+}
+
+@keyframes flap {
+	to { transform: scaleY(0.45); }
+}
+
+@keyframes boo {
+	0% { transform: scale(1); }
+	18% { transform: scale(1.32) rotate(-7deg); }
+	36% { transform: scale(1.2) rotate(6deg); }
+	54% { transform: scale(1.27) rotate(-4deg); }
+	100% { transform: scale(1); }
+}
+
+/* the hero stacks into one column here, so the spider and bats would sit on the text */
+@media (max-width: 880px) {
+	html[data-palette="halloween"] .spider,
+	html[data-palette="halloween"] .bat {
+		display: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html[data-palette="halloween"] .bat {
+		display: none;
 	}
 }

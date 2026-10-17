@@ -85,6 +85,29 @@
         new MutationObserver(syncThemeColor).observe(root, { attributes: true, attributeFilter: ['data-theme', 'data-palette'] });
     }
 
+    /* ---------- Halloween palette: seasonal copy ----------
+       Elements with data-halloween get that text while the Halloween palette is on and
+       their original text back otherwise. The default (non-Halloween) text stays in the HTML. */
+    function isHalloween() { return root.getAttribute('data-palette') === 'halloween'; }
+
+    var booPending = true; // the first poke of the pumpkin is always "BOO!"
+    var cupBtn = $('.art-cup');
+    function applySeasonalCopy() {
+        var on = isHalloween();
+        $$('[data-halloween]').forEach(function (el) {
+            if (!el.hasAttribute('data-default')) { el.setAttribute('data-default', el.textContent); }
+            el.textContent = on ? el.getAttribute('data-halloween') : el.getAttribute('data-default');
+        });
+        if (cupBtn) {
+            cupBtn.setAttribute('aria-label', on ? 'Pumpkin: hover or focus for a spooky fun fact' : 'Teacup: hover or focus for a fun fact');
+        }
+        if (on) { booPending = true; }
+    }
+    applySeasonalCopy();
+    if (window.MutationObserver) {
+        new MutationObserver(applySeasonalCopy).observe(root, { attributes: true, attributeFilter: ['data-palette'] });
+    }
+
     /* ---------- Palette picker ("Pick your brew") ---------- */
     var paletteBtn = $('.palette-btn');
     var palettePop = $('#palette-pop');
@@ -112,6 +135,7 @@
             root.setAttribute('data-palette', name);
             try { localStorage.setItem('palette', name); } catch (e) { /* storage blocked: still works for this visit */ }
             markPalette(name);
+            if (name === 'halloween') { toast('BOO! Happy Halloween.'); }
         });
 
         palettePop.addEventListener('keydown', function (event) {
@@ -250,15 +274,18 @@
     /* ---------- Rotating word in the hero ---------- */
     var rotator = $('.rotator');
     if (rotator && !reduceMotion) {
-        var words = (rotator.getAttribute('data-words') || '').split('|').filter(Boolean);
+        var split = function (name) { return (rotator.getAttribute(name) || '').split('|').filter(Boolean); };
+        var words = split('data-words');
+        var spookyWords = split('data-words-halloween');
         var wordIndex = 0;
         if (words.length > 1) {
             setInterval(function () {
                 if (document.hidden) { return; }
                 rotator.classList.add('is-out');
                 setTimeout(function () {
-                    wordIndex = (wordIndex + 1) % words.length;
-                    rotator.textContent = words[wordIndex];
+                    var list = isHalloween() && spookyWords.length > 1 ? spookyWords : words;
+                    wordIndex = (wordIndex + 1) % list.length;
+                    rotator.textContent = list[wordIndex];
                     rotator.classList.remove('is-out');
                 }, 240);
             }, 2600);
@@ -269,28 +296,58 @@
     var cup = $('.art-cup');
     var bubble = $('#cup-bubble');
     if (cup && bubble) {
-        var quips = [
-            'Plot twist: there is no tea in No-Tea.',
-            'We spill no tea. Only clean code.',
-            'Fun fact: I am 100% SVG and 0% caffeine.',
-            'Websites without the drama. Just the good bits.',
-            'Our waffle budget is zero. Our enthusiasm budget is not.',
-            'Yes, we really do aim to reply within 24 hours.',
-            'Psst... the Book Us button is right up there.',
-            'I have no hands, but I have strong opinions about spacing.'
-        ];
-        var lastQuip = -1;
+        var quipSets = {
+            tea: [
+                'Plot twist: there is no tea in No-Tea.',
+                'We spill no tea. Only clean code.',
+                'Fun fact: I am 100% SVG and 0% caffeine.',
+                'Websites without the drama. Just the good bits.',
+                'Our waffle budget is zero. Our enthusiasm budget is not.',
+                'Yes, we really do aim to reply within 24 hours.',
+                'Psst... the Book Us button is right up there.',
+                'I have no hands, but I have strong opinions about spacing.'
+            ],
+            halloween: [
+                'BOO!',
+                'Did I scare you? Be honest. I can take it.',
+                'No tea here. Only tricks, treats and tidy code.',
+                'Trick or treat? The treat is asking us for a quote.',
+                'Slow-loading pages are scarier than any ghost.',
+                'Broken links are the real horror story. We bury them.',
+                'We will not haunt your inbox. We aim to reply within 24 hours.',
+                'Is your current website a bit... cursed? We can help.',
+                'Is your website a zombie? We can bring it back to life.',
+                'I am 100% SVG and 0% pumpkin spice.',
+                'Carved by hand? Nope. Carved by CSS.',
+                'We spill no tea. Only candy corn.',
+                'Psst... the Book Us button is up there. Boo-k Us, if you like.',
+                'I have no hands, but I have strong opinions about spacing. And teeth.'
+            ]
+        };
+        var lastQuip = { tea: -1, halloween: -1 };
         var nextQuip = function () {
+            var key = isHalloween() ? 'halloween' : 'tea';
+            if (key === 'halloween' && booPending) { booPending = false; return 'BOO!'; }
+            var list = quipSets[key];
             var next;
-            do { next = Math.floor(Math.random() * quips.length); } while (next === lastQuip);
-            lastQuip = next;
-            return quips[next];
+            do { next = Math.floor(Math.random() * list.length); } while (next === lastQuip[key]);
+            lastQuip[key] = next;
+            return list[next];
+        };
+        var speak = function () {
+            var line = nextQuip();
+            var boo = line === 'BOO!';
+            bubble.textContent = line;
+            bubble.classList.toggle('is-boo', boo);
+            bubble.classList.add('is-on');
+            cup.classList.remove('is-boo');
+            if (boo && !reduceMotion) {
+                void cup.offsetWidth; // restart the jump animation
+                cup.classList.add('is-boo');
+            }
         };
         // The bubble only exists while the cup is hovered or focused.
-        var showQuip = function () {
-            bubble.textContent = nextQuip();
-            bubble.classList.add('is-on');
-        };
+        var showQuip = speak;
         var hideQuip = function () { bubble.classList.remove('is-on'); };
 
         // Pointer events with pointerType 'mouse' so a touch tap (which fakes mouse events) doesn't
@@ -306,8 +363,7 @@
         // Click / tap: a fresh quip and a hop. Touch screens have no hover, so a tap shows it
         // and a tap anywhere else hides it again.
         cup.addEventListener('click', function () {
-            bubble.textContent = nextQuip();
-            bubble.classList.add('is-on');
+            speak();
             cup.classList.remove('is-hop');
             void cup.offsetWidth; // restart the hop animation
             cup.classList.add('is-hop');
