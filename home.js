@@ -85,23 +85,32 @@
         new MutationObserver(syncThemeColor).observe(root, { attributes: true, attributeFilter: ['data-theme', 'data-palette'] });
     }
 
-    /* ---------- Halloween palette: seasonal copy ----------
-       Elements with data-halloween get that text while the Halloween palette is on and
-       their original text back otherwise. The default (non-Halloween) text stays in the HTML. */
-    function isHalloween() { return root.getAttribute('data-palette') === 'halloween'; }
+    /* ---------- Seasonal palettes: copy, mascot label and the first shout ----------
+       Seasons: 'christmas' (live) and 'halloween' (hidden from the picker until next October,
+       but everything for it is still here). Elements with data-christmas / data-halloween get
+       that text while their palette is on and their original text back otherwise. The default
+       text stays in the HTML. */
+    var SEASONS = ['halloween', 'christmas'];
+    function season() {
+        var p = root.getAttribute('data-palette');
+        return SEASONS.indexOf(p) > -1 ? p : '';
+    }
 
-    var booPending = true; // the first poke of the pumpkin is always "BOO!"
+    var shoutPending = true; // the first poke of the mascot is always the seasonal shout
     var cupBtn = $('.art-cup');
+    var CUP_LABELS = {
+        '': 'Teacup: hover or focus for a fun fact',
+        halloween: 'Pumpkin: hover or focus for a spooky fun fact',
+        christmas: 'Christmas tree: hover or focus for a festive fun fact'
+    };
     function applySeasonalCopy() {
-        var on = isHalloween();
-        $$('[data-halloween]').forEach(function (el) {
+        var now = season();
+        $$('[data-halloween], [data-christmas]').forEach(function (el) {
             if (!el.hasAttribute('data-default')) { el.setAttribute('data-default', el.textContent); }
-            el.textContent = on ? el.getAttribute('data-halloween') : el.getAttribute('data-default');
+            el.textContent = (now && el.getAttribute('data-' + now)) || el.getAttribute('data-default');
         });
-        if (cupBtn) {
-            cupBtn.setAttribute('aria-label', on ? 'Pumpkin: hover or focus for a spooky fun fact' : 'Teacup: hover or focus for a fun fact');
-        }
-        if (on) { booPending = true; }
+        if (cupBtn) { cupBtn.setAttribute('aria-label', CUP_LABELS[now]); }
+        if (now) { shoutPending = true; }
     }
     applySeasonalCopy();
     if (window.MutationObserver) {
@@ -135,7 +144,8 @@
             root.setAttribute('data-palette', name);
             try { localStorage.setItem('palette', name); } catch (e) { /* storage blocked: still works for this visit */ }
             markPalette(name);
-            if (name === 'halloween') { toast('BOO! Happy Halloween.'); }
+            var greeting = { halloween: 'BOO! Happy Halloween.', christmas: 'Ho ho ho! Merry Christmas.' }[name];
+            if (greeting) { toast(greeting); }
         });
 
         palettePop.addEventListener('keydown', function (event) {
@@ -276,14 +286,15 @@
     if (rotator && !reduceMotion) {
         var split = function (name) { return (rotator.getAttribute(name) || '').split('|').filter(Boolean); };
         var words = split('data-words');
-        var spookyWords = split('data-words-halloween');
+        var seasonal = { halloween: split('data-words-halloween'), christmas: split('data-words-christmas') };
         var wordIndex = 0;
         if (words.length > 1) {
             setInterval(function () {
                 if (document.hidden) { return; }
                 rotator.classList.add('is-out');
                 setTimeout(function () {
-                    var list = isHalloween() && spookyWords.length > 1 ? spookyWords : words;
+                    var themed = seasonal[season()];
+                    var list = themed && themed.length > 1 ? themed : words;
                     wordIndex = (wordIndex + 1) % list.length;
                     rotator.textContent = list[wordIndex];
                     rotator.classList.remove('is-out');
@@ -322,13 +333,31 @@
                 'We spill no tea. Only candy corn.',
                 'Psst... the Book Us button is up there. Boo-k Us, if you like.',
                 'I have no hands, but I have strong opinions about spacing. And teeth.'
+            ],
+            christmas: [
+                'Ho ho ho!',
+                'Fun fact: I am 100% SVG and 0% pine needles. Nothing to hoover up.',
+                'Is your website tangled like last year\'s fairy lights? We can untangle it.',
+                'Slow-loading pages are the Brussels sprouts of the internet.',
+                'Broken links go straight on the naughty list. We fix them.',
+                'Your website works on Christmas Day too. No bank holiday needed.',
+                'We spill no tea. Only glitter.',
+                'We aim to reply within 24 hours. Reindeer not required.',
+                'Is your current website a bit... Scrooge? Let us brighten it up.',
+                'All wrapping and no present? Not here. Good looks and good code.',
+                'Psst... the Book Us button is up there. Tell Santa we sent you.',
+                'Decorated by hand? Nope. Decorated by CSS.',
+                'I have no hands, but I have strong opinions about spacing. And tinsel.',
+                'A website for the new year? Pop it at the top of the list.'
             ]
         };
-        var lastQuip = { tea: -1, halloween: -1 };
+        // The line that gets the big treatment, and the class that styles it.
+        var SHOUTS = { 'BOO!': 'is-boo', 'Ho ho ho!': 'is-ho' };
+        var lastQuip = {};
         var nextQuip = function () {
-            var key = isHalloween() ? 'halloween' : 'tea';
-            if (key === 'halloween' && booPending) { booPending = false; return 'BOO!'; }
+            var key = season() || 'tea';
             var list = quipSets[key];
+            if (key !== 'tea' && shoutPending) { shoutPending = false; return list[0]; }
             var next;
             do { next = Math.floor(Math.random() * list.length); } while (next === lastQuip[key]);
             lastQuip[key] = next;
@@ -336,14 +365,15 @@
         };
         var speak = function () {
             var line = nextQuip();
-            var boo = line === 'BOO!';
+            var shout = SHOUTS[line] || '';
             bubble.textContent = line;
-            bubble.classList.toggle('is-boo', boo);
+            bubble.classList.remove('is-boo', 'is-ho');
+            if (shout) { bubble.classList.add(shout); }
             bubble.classList.add('is-on');
-            cup.classList.remove('is-boo');
-            if (boo && !reduceMotion) {
-                void cup.offsetWidth; // restart the jump animation
-                cup.classList.add('is-boo');
+            cup.classList.remove('is-boo', 'is-ho');
+            if (shout && !reduceMotion) {
+                void cup.offsetWidth; // restart the shout animation
+                cup.classList.add(shout);
             }
         };
         // The bubble only exists while the cup is hovered or focused.

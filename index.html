@@ -13,7 +13,9 @@
                 var stored = localStorage.getItem('theme');
                 theme = stored || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
                 var p = localStorage.getItem('palette');
-                if (/^(matcha|builders|earlgrey|signal|halloween|hibiscus)$/.test(p || '')) { palette = p; }
+                // Seasonal palettes: christmas is live. To bring Halloween back next October, add "halloween"
+                // to this list and uncomment its button in the palette picker (search for HALLOWEEN).
+                if (/^(matcha|builders|earlgrey|signal|christmas|hibiscus)$/.test(p || '')) { palette = p; }
             } catch (e) { }
             d.setAttribute('data-theme', theme);
             d.setAttribute('data-palette', palette);
@@ -218,6 +220,31 @@
                         <path d="M46 108l12 6 10-8 12 10 12-10 10 8 12-6c-6 18-22 24-34 24s-28-6-34-24z" />
                     </g>
                 </svg>
+                <svg class="brand-mark brand-mark--tree" viewBox="22 -2 116 144" aria-hidden="true">
+                    <ellipse class="xt-shadow" cx="80" cy="141" rx="46" ry="6" />
+                    <rect class="xt-trunk" x="68" y="120" width="24" height="19" rx="3" />
+                    <path class="xt-tier xt-t3" d="M80 62L135 124Q107.5 134 80 124Q52.5 134 25 124z" />
+                    <path class="xt-tier xt-t2" d="M80 36L123 96Q101.5 105 80 96Q58.5 105 37 96z" />
+                    <path class="xt-tier xt-t1" d="M80 16L111 68Q95.5 76 80 68Q64.5 76 49 68z" />
+                    <path class="xt-string" d="M56 58Q80 70 104 58M48 86Q80 100 112 86" />
+                    <circle class="xt-lamp xt-lamp-a" cx="64" cy="61.3" r="3.2" />
+                    <circle class="xt-lamp xt-lamp-b" cx="80" cy="64" r="3.2" />
+                    <circle class="xt-lamp xt-lamp-a" cx="96" cy="61.3" r="3.2" />
+                    <circle class="xt-lamp xt-lamp-b" cx="58" cy="89.7" r="3.2" />
+                    <circle class="xt-lamp xt-lamp-a" cx="80" cy="93" r="3.2" />
+                    <circle class="xt-lamp xt-lamp-b" cx="102" cy="89.7" r="3.2" />
+                    <circle class="xt-bauble xt-bau-r" cx="42" cy="115" r="5.5" />
+                    <circle class="xt-bauble xt-bau-g" cx="118" cy="113" r="5.5" />
+                    <circle class="xt-bauble xt-bau-b" cx="72" cy="45" r="4.6" />
+                    <g class="xt-face">
+                        <circle class="xt-eye" cx="65" cy="108" r="4.3" />
+                        <circle class="xt-eye" cx="95" cy="108" r="4.3" />
+                        <ellipse class="xt-cheek" cx="55" cy="116" rx="5.5" ry="3.4" />
+                        <ellipse class="xt-cheek" cx="105" cy="116" rx="5.5" ry="3.4" />
+                        <path class="xt-smile" d="M72 114q8 8 16 0" />
+                    </g>
+                    <path class="xt-star" d="M80.0 0.0L83.3 8.5L92.4 9.0L85.3 14.7L87.6 23.5L80.0 18.6L72.4 23.5L74.7 14.7L67.6 9.0L76.7 8.5z" />
+                </svg>
                 <span>No-Tea Studio</span>
             </a>
 
@@ -244,7 +271,10 @@
                         <button type="button" role="radio" aria-checked="false" data-palette="builders"><span class="swatch" style="--sw1:#a24a17;--sw2:#f2b134"></span>Builder's Tea</button>
                         <button type="button" role="radio" aria-checked="false" data-palette="earlgrey"><span class="swatch" style="--sw1:#4a52c4;--sw2:#f59fb5"></span>Earl Grey</button>
                         <button type="button" role="radio" aria-checked="false" data-palette="signal"><span class="swatch" style="--sw1:#2b2d42;--sw2:#d90429"></span>Signal</button>
+                        <button type="button" role="radio" aria-checked="false" data-palette="christmas"><span class="swatch" style="--sw1:#b91c1c;--sw2:#1f7a45"></span>Christmas</button>
+                        <!-- HALLOWEEN (hidden until next October): uncomment this button and add "halloween" to the palette list in the head script to bring it back.
                         <button type="button" role="radio" aria-checked="false" data-palette="halloween"><span class="swatch" style="--sw1:#e8590c;--sw2:#5b21b6"></span>Halloween</button>
+                        -->
                     </div>
                 </div>
 
@@ -275,7 +305,7 @@
                     <h1 id="hero-heading">Website design, <span class="hl">tailored to you.</span></h1>
                     <p class="lead">Professional websites for small businesses, creatives and sole traders.</p>
                     <p class="hero-copy">We design and build responsive websites that make your business easy to find, understand and contact. From a focused one-page launch to a larger custom site, every project is shaped around your goals, audience and budget.</p>
-                    <p class="rotator-line">Websites that are <span class="rotator" data-words="friendly|fast|findable|plain-spoken|mobile-ready|yours" data-words-halloween="frightfully friendly|dead fast|findable|ghost-free|mobile-ready|yours">friendly</span>.</p>
+                    <p class="rotator-line">Websites that are <span class="rotator" data-words="friendly|fast|findable|plain-spoken|mobile-ready|yours" data-words-halloween="frightfully friendly|dead fast|findable|ghost-free|mobile-ready|yours" data-words-christmas="merry|friendly|fast|findable|gift-wrapped|yours">friendly</span>.</p>
                     <div class="hero-actions">
                         <a class="btn btn-primary" href="#contact">Get a quote
                             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
@@ -289,7 +319,7 @@
                     <svg class="spark spark-a" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" /></svg>
                     <svg class="spark spark-b" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" /></svg>
                     <div class="sticker sticker-a" aria-hidden="true">24-hour reply goal</div>
-                    <div class="sticker sticker-b" aria-hidden="true" data-halloween="Ghost-free zone">Jargon-free zone</div>
+                    <div class="sticker sticker-b" aria-hidden="true" data-halloween="Ghost-free zone" data-christmas="Jargon: naughty list">Jargon-free zone</div>
 
                     <div class="art-layer" data-depth="12" aria-hidden="true">
                         <div class="art-window">
@@ -338,6 +368,31 @@
                                 <path d="M80 90l-7 12h14z" />
                                 <path d="M46 108l12 6 10-8 12 10 12-10 10 8 12-6c-6 18-22 24-34 24s-28-6-34-24z" />
                             </g>
+                        </svg>
+                        <svg class="cup-art cup-art--tree" viewBox="0 0 160 150" aria-hidden="true">
+                            <ellipse class="xt-shadow" cx="80" cy="141" rx="46" ry="6" />
+                            <rect class="xt-trunk" x="68" y="120" width="24" height="19" rx="3" />
+                            <path class="xt-tier xt-t3" d="M80 62L135 124Q107.5 134 80 124Q52.5 134 25 124z" />
+                            <path class="xt-tier xt-t2" d="M80 36L123 96Q101.5 105 80 96Q58.5 105 37 96z" />
+                            <path class="xt-tier xt-t1" d="M80 16L111 68Q95.5 76 80 68Q64.5 76 49 68z" />
+                            <path class="xt-string" d="M56 58Q80 70 104 58M48 86Q80 100 112 86" />
+                            <circle class="xt-lamp xt-lamp-a" cx="64" cy="61.3" r="3.2" />
+                            <circle class="xt-lamp xt-lamp-b" cx="80" cy="64" r="3.2" />
+                            <circle class="xt-lamp xt-lamp-a" cx="96" cy="61.3" r="3.2" />
+                            <circle class="xt-lamp xt-lamp-b" cx="58" cy="89.7" r="3.2" />
+                            <circle class="xt-lamp xt-lamp-a" cx="80" cy="93" r="3.2" />
+                            <circle class="xt-lamp xt-lamp-b" cx="102" cy="89.7" r="3.2" />
+                            <circle class="xt-bauble xt-bau-r" cx="42" cy="115" r="5.5" />
+                            <circle class="xt-bauble xt-bau-g" cx="118" cy="113" r="5.5" />
+                            <circle class="xt-bauble xt-bau-b" cx="72" cy="45" r="4.6" />
+                            <g class="xt-face">
+                                <circle class="xt-eye" cx="65" cy="108" r="4.3" />
+                                <circle class="xt-eye" cx="95" cy="108" r="4.3" />
+                                <ellipse class="xt-cheek" cx="55" cy="116" rx="5.5" ry="3.4" />
+                                <ellipse class="xt-cheek" cx="105" cy="116" rx="5.5" ry="3.4" />
+                                <path class="xt-smile" d="M72 114q8 8 16 0" />
+                            </g>
+                            <path class="xt-star" d="M80.0 0.0L83.3 8.5L92.4 9.0L85.3 14.7L87.6 23.5L80.0 18.6L72.4 23.5L74.7 14.7L67.6 9.0L76.7 8.5z" />
                         </svg>
                     </button>
                     <p class="cup-bubble" id="cup-bubble" role="status" aria-live="polite"></p>
@@ -673,7 +728,7 @@
             <div class="container">
                 <div class="cta-band reveal">
                     <h2 id="cta-heading">Ready when you are.</h2>
-                    <p data-halloween="Bring a clear idea or just a vague feeling and we'll help shape it into a website you're proud of. Cauldron optional.">Bring a clear idea or just a vague feeling and we'll help shape it into a website you're proud of. Kettle optional.</p>
+                    <p data-halloween="Bring a clear idea or just a vague feeling and we'll help shape it into a website you're proud of. Cauldron optional." data-christmas="Bring a clear idea or just a vague feeling and we'll help shape it into a website you're proud of. Mince pies optional.">Bring a clear idea or just a vague feeling and we'll help shape it into a website you're proud of. Kettle optional.</p>
                     <div class="cta-actions">
                         <a class="btn btn-light" href="#contact">Get a quote</a>
                         <a class="btn btn-outline" href="/pricing/">See pricing</a>
@@ -712,6 +767,31 @@
                                 <path d="M46 108l12 6 10-8 12 10 12-10 10 8 12-6c-6 18-22 24-34 24s-28-6-34-24z" />
                             </g>
                         </svg>
+                        <svg class="brand-mark brand-mark--tree" viewBox="22 -2 116 144" aria-hidden="true">
+                            <ellipse class="xt-shadow" cx="80" cy="141" rx="46" ry="6" />
+                            <rect class="xt-trunk" x="68" y="120" width="24" height="19" rx="3" />
+                            <path class="xt-tier xt-t3" d="M80 62L135 124Q107.5 134 80 124Q52.5 134 25 124z" />
+                            <path class="xt-tier xt-t2" d="M80 36L123 96Q101.5 105 80 96Q58.5 105 37 96z" />
+                            <path class="xt-tier xt-t1" d="M80 16L111 68Q95.5 76 80 68Q64.5 76 49 68z" />
+                            <path class="xt-string" d="M56 58Q80 70 104 58M48 86Q80 100 112 86" />
+                            <circle class="xt-lamp xt-lamp-a" cx="64" cy="61.3" r="3.2" />
+                            <circle class="xt-lamp xt-lamp-b" cx="80" cy="64" r="3.2" />
+                            <circle class="xt-lamp xt-lamp-a" cx="96" cy="61.3" r="3.2" />
+                            <circle class="xt-lamp xt-lamp-b" cx="58" cy="89.7" r="3.2" />
+                            <circle class="xt-lamp xt-lamp-a" cx="80" cy="93" r="3.2" />
+                            <circle class="xt-lamp xt-lamp-b" cx="102" cy="89.7" r="3.2" />
+                            <circle class="xt-bauble xt-bau-r" cx="42" cy="115" r="5.5" />
+                            <circle class="xt-bauble xt-bau-g" cx="118" cy="113" r="5.5" />
+                            <circle class="xt-bauble xt-bau-b" cx="72" cy="45" r="4.6" />
+                            <g class="xt-face">
+                                <circle class="xt-eye" cx="65" cy="108" r="4.3" />
+                                <circle class="xt-eye" cx="95" cy="108" r="4.3" />
+                                <ellipse class="xt-cheek" cx="55" cy="116" rx="5.5" ry="3.4" />
+                                <ellipse class="xt-cheek" cx="105" cy="116" rx="5.5" ry="3.4" />
+                                <path class="xt-smile" d="M72 114q8 8 16 0" />
+                            </g>
+                            <path class="xt-star" d="M80.0 0.0L83.3 8.5L92.4 9.0L85.3 14.7L87.6 23.5L80.0 18.6L72.4 23.5L74.7 14.7L67.6 9.0L76.7 8.5z" />
+                        </svg>
                         <span>No-Tea Studio</span>
                     </a>
                     <p>Thoughtful, tailored websites built around the people and businesses they represent.</p>
@@ -737,7 +817,7 @@
             </div>
             <div class="footer-base">
                 <p>&copy; 2026 No-Tea Studio. All rights reserved.</p>
-                <p data-halloween="Made in Leeds. Brewed with curiosity, haunted by zero jargon.">Made in Leeds. Brewed with curiosity, served with a side of zero jargon.</p>
+                <p data-halloween="Made in Leeds. Brewed with curiosity, haunted by zero jargon." data-christmas="Made in Leeds. Wrapped with care, with no jargon left under the tree.">Made in Leeds. Brewed with curiosity, served with a side of zero jargon.</p>
             </div>
         </div>
     </footer>
