@@ -454,8 +454,42 @@
             message: 'Hi No-Tea Studio, I would like a small multi-page website (for example home, about, services and contact). A bit about my business:\n\n'
         },
         custom: {
+            label: 'Mix & Match',
             subject: 'Custom website enquiry',
             message: 'Hi No-Tea Studio, I have a more custom idea in mind. The features I am thinking about are:\n\n'
+        },
+        portfolio: {
+            subject: 'Portfolio website enquiry',
+            message: 'Hi No-Tea Studio, I am interested in a portfolio-style website to showcase my work. The work I would like to feature is:\n\n'
+        },
+        shop: {
+            subject: 'Online shop enquiry',
+            message: 'Hi No-Tea Studio, I am interested in an online shop to sell my products. The products and features I have in mind are:\n\n'
+        },
+        gallery: {
+            label: 'Gallery',
+            subject: 'Portfolio enquiry: Gallery template',
+            message: 'Hi No-Tea Studio, I would like a personal portfolio using the Gallery template, a big image-led grid. The work I would like to show is:\n\n'
+        },
+        casestudy: {
+            label: 'Case Study',
+            subject: 'Portfolio enquiry: Case Study template',
+            message: 'Hi No-Tea Studio, I would like a personal portfolio using the Case Study template, with a write-up for each project. The projects I would like to feature are:\n\n'
+        },
+        cv: {
+            label: 'One-Page CV',
+            subject: 'Portfolio enquiry: One-Page CV template',
+            message: 'Hi No-Tea Studio, I would like a personal portfolio using the One-Page CV template. A bit about me, my skills and my experience:\n\n'
+        },
+        showreel: {
+            label: 'Showreel',
+            subject: 'Portfolio enquiry: Showreel template',
+            message: 'Hi No-Tea Studio, I would like a personal portfolio using the Showreel template, led by video or audio. The work I would like to feature is:\n\n'
+        },
+        writer: {
+            label: 'Writer\u2019s Desk',
+            subject: 'Portfolio enquiry: Writer\u2019s Desk template',
+            message: 'Hi No-Tea Studio, I would like a personal portfolio using the Writer\u2019s Desk template. The pieces and publications I would like to feature are:\n\n'
         },
         unsure: {
             subject: 'Help me work out what I need',
@@ -465,11 +499,21 @@
     var autoSubject = '';
     var autoMessage = '';
 
+    var templateField = $('#template-field');
+    var templateChosen = $('#template-chosen');
+    var templateChosenName = $('#template-chosen-name');
+    function setTemplate(label) {
+        if (templateField) { templateField.value = label || ''; }
+        if (templateChosen) { templateChosen.hidden = !label; }
+        if (templateChosenName) { templateChosenName.textContent = label || ''; }
+    }
+
     function clearAutoFill() {
         if (messageInput && messageInput.value === autoMessage) { messageInput.value = ''; }
         if (subjectInput && subjectInput.value === autoSubject) { subjectInput.value = ''; }
         autoSubject = '';
         autoMessage = '';
+        setTemplate('');
     }
 
     if (form && subjectInput && messageInput && chips.length) {
@@ -491,11 +535,42 @@
                     subjectInput.value = preset.subject;
                     autoSubject = preset.subject;
                 }
-                messageInput.focus();
+                setTemplate(preset.label || '');
+                if (preset.label) { toast(preset.label + ' template added to your enquiry.'); }
+                var card = $('#form-card');
+                if (card) {
+                    var r = card.getBoundingClientRect();
+                    if (r.top > window.innerHeight * 0.6 || r.bottom < 0) {
+                        card.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+                    }
+                }
+                messageInput.focus({ preventScroll: true });
                 messageInput.setSelectionRange(messageInput.value.length, messageInput.value.length);
             });
         });
     }
+
+    /* ---------- Contact: quick-add details to the message ---------- */
+    var clientName = $('#client-name');
+    $$('.message-add').forEach(function (button) {
+        button.addEventListener('click', function () {
+            var text = button.hasAttribute('data-add-name')
+                ? (clientName && clientName.value.trim() ? 'My name is ' + clientName.value.trim() + '.' : '')
+                : button.getAttribute('data-add-text');
+            if (!text) {
+                if (clientName) { clientName.focus(); }
+                return;
+            }
+            if (messageInput && messageInput.value.indexOf(text) === -1) {
+                var existingMessage = messageInput.value.trimEnd();
+                messageInput.value = existingMessage + (existingMessage ? '\n\n' : '') + text;
+            }
+            if (messageInput) {
+                messageInput.focus();
+                messageInput.setSelectionRange(messageInput.value.length, messageInput.value.length);
+            }
+        });
+    });
 
     /* ---------- Contact form: friendly validation + no-reload send ---------- */
     if (form) {
@@ -508,6 +583,11 @@
         var submitLabel = submitBtn ? submitBtn.textContent : 'Get Quote';
 
         var fields = [
+            {
+                el: $('#client-name'), err: $('#client-name-error'),
+                ok: function (f) { return f.el.value.trim().length > 0; },
+                msg: 'Please tell us your name.'
+            },
             {
                 el: $('#email'), err: $('#email-error'),
                 ok: function (f) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.el.value.trim()); },
@@ -559,6 +639,7 @@
             chips.forEach(function (c) { c.setAttribute('aria-pressed', 'false'); });
             autoSubject = '';
             autoMessage = '';
+            setTemplate('');
             fields.forEach(function (f) { f.el.removeAttribute('aria-invalid'); f.err.textContent = ''; });
             if (status) { status.hidden = true; }
             if (formWrap) { formWrap.hidden = true; }

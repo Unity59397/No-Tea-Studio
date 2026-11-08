@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-theme="light" data-palette="hibiscus">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        (function () {
+            var d = document.documentElement;
+            var theme = 'light';
+            var palette = 'hibiscus';
+            try {
+                var stored = localStorage.getItem('theme');
+                theme = stored || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                var p = localStorage.getItem('palette');
+                if (/^(matcha|builders|earlgrey|signal|christmas|hibiscus)$/.test(p || '')) { palette = p; }
+            } catch (e) { }
+            d.setAttribute('data-theme', theme);
+            d.setAttribute('data-palette', palette);
+            d.classList.add('js');
+            setTimeout(function () {
+                if (!d.classList.contains('js-ready')) { d.classList.remove('js'); }
+            }, 5000);
+        })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#fff6f6" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#131417" media="(prefers-color-scheme: dark)">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <title>Portfolio Website Templates | No-Tea Studio</title>
+    <meta name="description" content="Pick a personal portfolio template, from a photo gallery to a case-study site or one-page CV, and tell No-Tea Studio what you have in mind.">
+    <meta name="author" content="No-Tea Studio">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://noteastudio.co.uk/templates/">
+    <link rel="alternate" hreflang="en-GB" href="https://noteastudio.co.uk/templates/">
+    <link rel="alternate" hreflang="x-default" href="https://noteastudio.co.uk/templates/">
+    <meta property="og:title" content="Portfolio Website Templates | No-Tea Studio">
+    <meta property="og:description" content="Pick a portfolio template and your enquiry fills itself in.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://noteastudio.co.uk/templates/">
+    <meta property="og:site_name" content="No-Tea Studio">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:image" content="https://noteastudio.co.uk/images/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Portfolio Website Templates | No-Tea Studio">
+    <meta name="twitter:description" content="Pick a portfolio template and your enquiry fills itself in.">
+    <meta name="twitter:image" content="https://noteastudio.co.uk/images/og-image.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <link rel="stylesheet" href="/home.css">
+    <link rel="stylesheet" href="/pages.css">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "name": "Portfolio website templates",
+            "description": "Choose a personal portfolio template and contact No-Tea Studio about a project.",
+            "url": "https://noteastudio.co.uk/templates/",
+            "inLanguage": "en-GB",
+            "isPartOf": { "@id": "https://noteastudio.co.uk/#website" },
+            "about": { "@id": "https://noteastudio.co.uk/#business" }
+        }
+    </script>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="progress" aria-hidden="true"><span></span></div>
+
+    <header class="site-header">
+        <nav class="nav container" aria-label="Main">
+            <a class="brand" href="/" aria-label="No-Tea Studio, home"><span>No-Tea Studio</span></a>
+            <div class="nav-panel" id="nav-panel">
+                <ul class="nav-links">
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/pricing/">Pricing</a></li>
+                    <li><a href="/projects/">Projects</a></li>
+                    <li><a href="/templates/" aria-current="page">Templates</a></li>
+                    <li><a href="/free-website/">Free Website</a></li>
+                </ul>
+                <a class="btn btn-primary btn-sm nav-cta" href="/bookings/">Book Us</a>
+            </div>
+            <div class="nav-tools">
+                <div class="palette">
+                    <button class="tool-btn palette-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="palette-pop" aria-label="Choose a colour palette">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3s6 6.2 6 10.5A6 6 0 0 1 6 13.5C6 9.2 12 3 12 3z" /></svg>
+                    </button>
+                    <div class="palette-pop" id="palette-pop" role="radiogroup" aria-label="Colour palette" hidden>
+                        <p class="palette-title">Pick your brew</p>
+                        <button type="button" role="radio" aria-checked="true" data-palette="hibiscus"><span class="swatch" style="--sw1:#c2255c;--sw2:#ffb703"></span>Hibiscus</button>
+                        <button type="button" role="radio" aria-checked="false" data-palette="matcha"><span class="swatch" style="--sw1:#2d6a4f;--sw2:#ff7a45"></span>Matcha</button>
+                        <button type="button" role="radio" aria-checked="false" data-palette="builders"><span class="swatch" style="--sw1:#a24a17;--sw2:#f2b134"></span>Builder's Tea</button>
+                        <button type="button" role="radio" aria-checked="false" data-palette="earlgrey"><span class="swatch" style="--sw1:#4a52c4;--sw2:#f59fb5"></span>Earl Grey</button>
+                        <button type="button" role="radio" aria-checked="false" data-palette="signal"><span class="swatch" style="--sw1:#2b2d42;--sw2:#d90429"></span>Signal</button>
+                        <button type="button" role="radio" aria-checked="false" data-palette="christmas"><span class="swatch" style="--sw1:#b91c1c;--sw2:#1f7a45"></span>Christmas</button>
+                    </div>
+                </div>
+                <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4" />
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l1.41-1.41" />
+                    </svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
+                    </svg>
+                </button>
+                <button class="tool-btn nav-burger" type="button" aria-expanded="false" aria-controls="nav-panel" aria-label="Open menu"><span></span></button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main">
+        <section class="page-hero" aria-labelledby="page-title">
+            <svg class="page-spark a" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" /></svg>
+            <svg class="page-spark b" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" /></svg>
+            <div class="container">
+                <nav aria-label="Breadcrumb">
+                    <ol class="crumbs">
+                        <li><a href="/">Home</a></li>
+                        <li aria-current="page">Templates</li>
+                    </ol>
+                </nav>
+                <p class="eyebrow">Personal portfolios</p>
+                <h1 id="page-title">Pick a portfolio <span class="hl">template.</span></h1>
+                <p class="lead">Choose the layout that suits your work. Your pick drops straight into the enquiry form, and we tailor the finished site to you. They are starting points, not off-the-shelf designs.</p>
+                <div class="page-hero-actions">
+                    <a class="btn btn-primary" href="#templates">Browse the templates</a>
+                    <a class="btn btn-ghost" href="#project-enquiry">Tell us about your idea</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-section section-alt" id="templates" aria-labelledby="templates-heading">
+            <div class="container">
+                <p class="eyebrow">Choose a template</p>
+                <h2 id="templates-heading">Which portfolio feels like you?</h2>
+                <p class="template-intro">Select a template and it is added to the enquiry form below, along with a message starter. You can edit or replace every word, and you can change your mind at any time.</p>
+                <div class="template-grid" role="group" aria-label="Choose a portfolio template">
+                    <button class="template-card chip" type="button" data-preset="gallery" aria-pressed="false">
+                        <span class="template-preview template-preview--gallery" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+                        <strong>Gallery</strong>
+                        <span class="template-for">Photographers, artists, illustrators</span>
+                        <span>A big, image-led grid that lets your work do the talking, with a simple way to enquire or buy prints.</span>
+                    </button>
+                    <button class="template-card chip" type="button" data-preset="casestudy" aria-pressed="false">
+                        <span class="template-preview template-preview--case" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+                        <strong>Case Study</strong>
+                        <span class="template-for">Designers, developers, creatives</span>
+                        <span>Each project gets its own write-up: the brief, what you did and the result. Great for winning clients or jobs.</span>
+                    </button>
+                    <button class="template-card chip" type="button" data-preset="cv" aria-pressed="false">
+                        <span class="template-preview template-preview--cv" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+                        <strong>One-Page CV</strong>
+                        <span class="template-for">Students, graduates, job seekers</span>
+                        <span>A tidy personal page with your story, skills, experience and contact details, all in one scroll.</span>
+                    </button>
+                    <button class="template-card chip" type="button" data-preset="showreel" aria-pressed="false">
+                        <span class="template-preview template-preview--reel" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+                        <strong>Showreel</strong>
+                        <span class="template-for">Musicians, filmmakers, performers</span>
+                        <span>Lead with video or audio. A hero reel, a row of highlights and easy booking for gigs or commissions.</span>
+                    </button>
+                    <button class="template-card chip" type="button" data-preset="writer" aria-pressed="false">
+                        <span class="template-preview template-preview--writer" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+                        <strong>Writer’s Desk</strong>
+                        <span class="template-for">Writers, journalists, bloggers</span>
+                        <span>Clean, readable layout for your articles, clippings and bio, with your best pieces up front.</span>
+                    </button>
+                    <button class="template-card chip" type="button" data-preset="custom" aria-pressed="false">
+                        <span class="template-preview template-preview--mix" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+                        <strong>Mix &amp; Match</strong>
+                        <span class="template-for">Anything else</span>
+                        <span>Want parts of two templates, or something different? Tell us and we will put it together for you.</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-section" id="project-enquiry" aria-labelledby="enquiry-heading">
+            <div class="container">
+                <div class="template-builder">
+                    <div class="contact-intro">
+                        <p class="eyebrow">Make it yours</p>
+                        <h2 id="enquiry-heading">Your template is added for you.</h2>
+                        <p>Pick a template above and the form fills in the subject and a starter message. Then add any details that help. The buttons add editable text to your message.</p>
+                        <p class="chips-label" id="message-add-label">Add a detail to your message</p>
+                        <div class="message-adds" role="group" aria-labelledby="message-add-label">
+                            <button class="message-add" type="button" data-add-name>Add my name</button>
+                            <button class="message-add" type="button" data-add-text="A bit about me and what I do:">About me</button>
+                            <button class="message-add" type="button" data-add-text="The main thing I would like my portfolio to help with is:">My main goal</button>
+                            <button class="message-add" type="button" data-add-text="A style or website I like is:">A style I like</button>
+                            <button class="message-add" type="button" data-add-text="The work and pages I would like to include are:">Work to show</button>
+                            <button class="message-add" type="button" data-add-text="My ideal launch timing is:">Timing</button>
+                        </div>
+                        <p class="chips-hint">You can edit, rearrange or remove the starter text before sending.</p>
+                        <div class="direct">
+                            <span>Prefer email?</span>
+                            <a href="mailto:info@noteastudio.co.uk">info@noteastudio.co.uk</a>
+                        </div>
+                    </div>
+
+                    <section class="form-card" id="form-card" aria-labelledby="form-heading">
+                        <div id="form-wrap">
+                            <h2 id="form-heading">Tell us about your portfolio</h2>
+                            <form class="contact-form" id="contact-form" action="https://formspree.io/f/xbgrnyqe" method="POST">
+                                <input type="hidden" name="_subject" id="form-subject" value="New website enquiry">
+                                <input type="hidden" name="template" id="template-field" value="">
+                                <p class="template-chosen" id="template-chosen" hidden>
+                                    <span>Template: <strong id="template-chosen-name"></strong></span>
+                                    <a href="#templates">Change</a>
+                                </p>
+                                <div class="field">
+                                    <label for="client-name">Your name</label>
+                                    <input type="text" id="client-name" name="name" autocomplete="name" required aria-describedby="client-name-error">
+                                    <p class="field-error" id="client-name-error"></p>
+                                </div>
+                                <div class="field">
+                                    <label for="email">Email address</label>
+                                    <input type="email" id="email" name="email" placeholder="your.email@example.com" autocomplete="email" required aria-describedby="email-error">
+                                    <p class="field-error" id="email-error"></p>
+                                </div>
+                                <div class="field">
+                                    <label for="subject">Subject</label>
+                                    <input type="text" id="subject" name="subject" placeholder="What is this about?" required aria-describedby="subject-error">
+                                    <p class="field-error" id="subject-error"></p>
+                                </div>
+                                <div class="field">
+                                    <label for="message">Message</label>
+                                    <textarea id="message" name="message" placeholder="Choose a portfolio template above or tell us about your idea in your own words." rows="7" required aria-describedby="message-error"></textarea>
+                                    <p class="field-error" id="message-error"></p>
+                                </div>
+                                <p class="hp" aria-hidden="true"><label>Leave this field empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></p>
+                                <div class="consent">
+                                    <div class="consent-row">
+                                        <input type="checkbox" id="privacy-consent" name="privacy-consent" required aria-describedby="consent-error">
+                                        <label for="privacy-consent">I have read the <a href="/privacy/">Privacy Notice</a>.</label>
+                                    </div>
+                                    <p class="field-error" id="consent-error"></p>
+                                </div>
+                                <div class="form-status is-error" id="form-status" role="alert" hidden></div>
+                                <button type="submit" class="btn btn-primary" id="submit-btn">Send enquiry</button>
+                            </form>
+                        </div>
+                        <div class="form-success" id="form-success" tabindex="-1" hidden>
+                            <div class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg></div>
+                            <h2>Message sent. No tea spilled!</h2>
+                            <p>Thanks for getting in touch. We aim to reply within 24 hours.</p>
+                            <button class="btn btn-ghost btn-sm" type="button" id="send-another">Send another message</button>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a class="brand" href="/" aria-label="No-Tea Studio, home"><span>No-Tea Studio</span></a>
+                    <p>Thoughtful, tailored websites built around the people and businesses they represent.</p>
+                </div>
+                <nav aria-label="Footer">
+                    <h2>Explore</h2>
+                    <ul class="footer-links">
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="/pricing/">Pricing</a></li>
+                        <li><a href="/projects/">Projects</a></li>
+                        <li><a href="/templates/">Templates</a></li>
+                        <li><a href="/free-website/">Free Website</a></li>
+                        <li><a href="/bookings/">Book Us</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <h2>Say hello</h2>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@noteastudio.co.uk">Email us</a></li>
+                        <li><a href="/privacy/">Privacy Notice</a></li>
+                        <li>Leeds, England</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-base">
+                <p>&copy; 2026 No-Tea Studio. All rights reserved.</p>
+                <p>Made in Leeds. Brewed with curiosity, served with a side of zero jargon.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="to-top" type="button" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" /></svg>
+    </button>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="/theme-toggle.js"></script>
+    <script src="/cookie-consent.js"></script>
+    <script src="/home.js"></script>
+</body>
+</html>
