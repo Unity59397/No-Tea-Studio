@@ -699,6 +699,28 @@
         }
     }
 
+    /* ---------- Footer "Explore" dropdown: close on outside click or Escape ---------- */
+    var footerMenu = $('.footer-menu');
+    if (footerMenu) {
+        document.addEventListener('click', function (event) {
+            if (footerMenu.open && !footerMenu.contains(event.target)) { footerMenu.open = false; }
+        });
+        footerMenu.addEventListener('toggle', function () {
+            if (!footerMenu.open) { return; }
+            var list = $('.footer-links', footerMenu);
+            var bottom = list.getBoundingClientRect().bottom;
+            if (bottom > window.innerHeight) {
+                window.scrollBy({ top: bottom - window.innerHeight + 24, behavior: reduceMotion ? 'auto' : 'smooth' });
+            }
+        });
+        footerMenu.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && footerMenu.open) {
+                footerMenu.open = false;
+                $('summary', footerMenu).focus();
+            }
+        });
+    }
+
     /* ---------- Copy email ---------- */
     $$('.copy-btn').forEach(function (button) {
         button.addEventListener('click', function () {

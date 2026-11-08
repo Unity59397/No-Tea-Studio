@@ -73,7 +73,16 @@
 
     <header class="site-header">
         <nav class="nav container" aria-label="Main">
-            <a class="brand" href="/" aria-label="No-Tea Studio, home"><span>No-Tea Studio</span></a>
+            <a class="brand" href="/" aria-label="No-Tea Studio, home">
+                <svg class="brand-mark brand-mark--tea" viewBox="20 44 150 94" aria-hidden="true">
+                    <ellipse class="cup-saucer" cx="80" cy="132" rx="62" ry="10" />
+                    <path class="cup-handle" d="M128 70c26-4 26 34-2 34" />
+                    <path class="cup-handle-in" d="M128 70c26-4 26 34-2 34" />
+                    <path class="cup-body" d="M28 56h104v16c0 30-22 52-52 52s-52-22-52-52z" />
+                    <ellipse class="cup-tea" cx="80" cy="56" rx="52" ry="9" />
+                </svg>
+                <span>No-Tea Studio</span>
+            </a>
             <div class="nav-panel" id="nav-panel">
                 <ul class="nav-links">
                     <li><a href="/about/">About</a></li>
@@ -261,11 +270,21 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a class="brand" href="/" aria-label="No-Tea Studio, home"><span>No-Tea Studio</span></a>
+                    <a class="brand" href="/" aria-label="No-Tea Studio, home">
+                        <svg class="brand-mark brand-mark--tea" viewBox="20 44 150 94" aria-hidden="true">
+                            <ellipse class="cup-saucer" cx="80" cy="132" rx="62" ry="10" />
+                            <path class="cup-handle" d="M128 70c26-4 26 34-2 34" />
+                            <path class="cup-handle-in" d="M128 70c26-4 26 34-2 34" />
+                            <path class="cup-body" d="M28 56h104v16c0 30-22 52-52 52s-52-22-52-52z" />
+                            <ellipse class="cup-tea" cx="80" cy="56" rx="52" ry="9" />
+                        </svg>
+                        <span>No-Tea Studio</span>
+                    </a>
                     <p>Thoughtful, tailored websites built around the people and businesses they represent.</p>
                 </div>
                 <nav aria-label="Footer">
-                    <h2>Explore</h2>
+                    <details class="footer-menu">
+                        <summary>Explore</summary>
                     <ul class="footer-links">
                         <li><a href="/about/">About</a></li>
                         <li><a href="/pricing/">Pricing</a></li>
@@ -274,6 +293,7 @@
                         <li><a href="/free-website/">Free Website</a></li>
                         <li><a href="/bookings/">Book Us</a></li>
                     </ul>
+                    </details>
                 </nav>
                 <div>
                     <h2>Say hello</h2>
